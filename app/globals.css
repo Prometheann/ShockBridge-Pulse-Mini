@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0f1117;
+  color: #f0f0f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+p, li, span {
+  text-wrap: pretty;
+}
+
+/* Print styles for PDF export */
+@media print {
+  @page {
+    margin: 18mm 20mm;
+    size: A4;
+  }
+
+  /* Hide everything except the memo */
+  header, nav, footer,
+  .no-print, button,
+  [class*="paywall"] {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  /* Branding header */
+  #memo-output::before {
+    content: "ShockBridge Pulse — Scenario Note";
+    display: block;
+    font-size: 8pt;
+    font-weight: 600;
+    color: #f59e0b !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 1.5px solid #f59e0b;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+  }
+
+  #memo-output {
+    background: #ffffff !important;
+    color: #111111 !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Section labels stay amber */
+  #memo-output p[class*="amber"],
+  #memo-output p[class*="text-amber"] {
+    color: #b45309 !important;
+    font-weight: 700;
+    font-size: 8pt;
+    letter-spacing: 0.1em;
+  }
+
+  /* Title */
+  #memo-output h2 {
+    font-size: 16pt !important;
+    font-weight: 700 !important;
+    color: #111111 !important;
+    margin-bottom: 8px;
+  }
+
+  /* Summary and body text */
+  #memo-output p {
+    color: #333333 !important;
+    background: transparent !important;
+  }
+
+  /* Bullet items */
+  #memo-output li {
+    color: #222222 !important;
+    background: transparent !important;
+  }
+
+  /* Borders */
+  #memo-output [class*="border"] {
+    border-color: #e5e7eb !important;
+  }
+
+  /* Backgrounds */
+  #memo-output [class*="bg-"] {
+    background: #f9fafb !important;
+  }
+
+  /* Watch next tags */
+  #memo-output span[class*="rounded-full"] {
+    background: #f3f4f6 !important;
+    color: #374151 !important;
+    border-color: #d1d5db !important;
+  }
+
+  /* Badges */
+  #memo-output [class*="Badge"],
+  #memo-output span[class*="rounded"] {
+    background: #fef3c7 !important;
+    color: #92400e !important;
+    border-color: #fde68a !important;
+  }
+
+  /* Grid layouts keep 2 columns in print */
+  #memo-output .grid {
+    display: grid !important;
+  }
+
+  /* No page break inside key sections */
+  #memo-output > div {
+    page-break-inside: avoid;
+  }
+
+  /* Footer disclaimer */
+  #memo-output::after {
+    content: "ShockBridge Pulse Mini is a research and writing tool. This is not financial advice.";
+    display: block;
+    font-size: 7.5pt;
+    color: #9ca3af !important;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 8px;
+    margin-top: 20px;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d3148;
+  border-radius: 3px;
+}
