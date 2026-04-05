@@ -11,13 +11,15 @@ export interface MemoOutput {
   title: string;
   summary: string;
   first_order_effects: string[];
-  second_order_effects: string[];
-  bullish_path: string;
-  bearish_path: string;
-  key_uncertainties: string[];
+  // Basic + Creator only
+  second_order_effects?: string[];
+  bullish_path?: string;
+  bearish_path?: string;
+  key_uncertainties?: string[];
   watch_next: string[];
-  x_post: string;
-  linkedin_post: string;
+  // Creator only
+  x_post?: string;
+  linkedin_post?: string;
 }
 
 export type Plan = "free" | "basic" | "creator";
