@@ -41,7 +41,7 @@ export function PricingSection() {
           <div className="bg-[#0f1117] border border-[#2d3148] rounded-2xl p-8">
             <p className="text-xs text-[#6b7280] uppercase tracking-wider mb-2">Basic</p>
             <div className="flex items-end gap-1 mb-1">
-              <span className="text-4xl font-bold text-[#f0f0f0]">€9</span>
+              <span className="text-4xl font-bold text-[#f0f0f0]">$9</span>
             </div>
             <p className="text-[#9ca3af] text-sm mb-6">Test the engine</p>
 
@@ -71,7 +71,7 @@ export function PricingSection() {
 
             <p className="text-xs text-amber-400 uppercase tracking-wider mb-2">Creator</p>
             <div className="flex items-end gap-1 mb-1">
-              <span className="text-4xl font-bold text-[#f0f0f0]">€19</span>
+              <span className="text-4xl font-bold text-[#f0f0f0]">$19</span>
             </div>
             <p className="text-[#9ca3af] text-sm mb-6">Build and publish faster</p>
 

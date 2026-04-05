@@ -26,7 +26,7 @@ export function HeroSection() {
             </Link>
             <Link href="#pricing" className="w-full sm:w-auto">
               <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                Get Creator — €19
+                Get Creator — $19
               </Button>
             </Link>
           </div>

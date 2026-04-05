@@ -15,7 +15,7 @@ export function FinalCTASection() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/generate" className="w-full sm:w-auto">
-            <Button size="lg" className="w-full sm:w-auto">Get Creator — €19</Button>
+            <Button size="lg" className="w-full sm:w-auto">Get Creator — $19</Button>
           </Link>
           <Link href="/generate" className="w-full sm:w-auto">
             <Button size="lg" variant="secondary" className="w-full sm:w-auto">

@@ -145,7 +145,7 @@ export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
               Upgrade to Creator to unlock publish-ready social content and PDF export.
             </p>
             <Link href="#pricing">
-              <Button size="sm">Get Creator — €19</Button>
+              <Button size="sm">Get Creator — $19</Button>
             </Link>
           </div>
         </div>
