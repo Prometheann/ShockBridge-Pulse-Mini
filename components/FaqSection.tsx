@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "What is the difference between Basic and Creator?",
     answer:
-      "Basic gives you 5 memos with the full scenario analysis. Creator gives you 20 memos plus X post output, LinkedIn post output, and PDF export — for people who want to publish or share their analysis.",
+      "Basic gives you 5 memos with the full scenario analysis. Creator gives you 20 memos plus X post output, LinkedIn post output, and PDF export. Built for people who want to publish or share their analysis.",
   },
   {
     question: "How do I access the tool after purchasing?",

@@ -93,7 +93,7 @@ export function PricingSection() {
 
         <p className="text-center text-xs text-[#6b7280] mt-6">
           One payment. No recurring subscription at launch. After purchase you receive an access
-          code by email — redeem it in the app to unlock your memos.
+          code by email. Redeem it in the app to unlock your memos.
         </p>
         <p className="text-center text-xs text-[#4b5563] mt-2">
           ShockBridge Pulse is a research and writing tool. It does not provide financial

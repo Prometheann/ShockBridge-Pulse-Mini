@@ -99,11 +99,11 @@ export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
 
       {/* Watch next — all plans */}
       <Section title="Watch next">
-        <div className="flex flex-wrap gap-1.5">
+        <div>
           {memo.watch_next.map((item, i) => (
             <span
               key={i}
-              className="text-xs bg-[#232636] text-[#9ca3af] border border-[#2d3148] px-2.5 py-1 rounded-full"
+              className="inline-block text-xs bg-[#232636] text-[#9ca3af] border border-[#2d3148] px-2.5 py-1 rounded-full mr-1.5 mb-1.5"
             >
               {item}
             </span>
@@ -115,7 +115,7 @@ export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
       {isCreator && memo.x_post && memo.linkedin_post ? (
         <div className="border-t border-[#2d3148] pt-6 space-y-5">
           <p className="text-xs text-amber-500 uppercase tracking-wider font-semibold">
-            Content outputs — Creator
+            Content outputs: Creator
           </p>
 
           {/* X post */}
@@ -152,7 +152,7 @@ export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
               Upgrade to Creator for publish-ready social content, in-depth analysis, and PDF export.
             </p>
             <Link href="#pricing">
-              <Button size="sm">Get Creator — $19</Button>
+              <Button size="sm">Get Creator $19</Button>
             </Link>
           </div>
         </div>

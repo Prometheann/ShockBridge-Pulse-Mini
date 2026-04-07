@@ -29,10 +29,10 @@ p, li {
   word-break: break-word;
 }
 
-/* Justify body text on sm+ (640px+) — left-align on mobile to avoid word gaps */
+/* Justify body text on sm+ (640px+) — exclude centered/right-aligned elements */
 @media (min-width: 640px) {
-  section p,
-  main p,
+  section p:not([class*="text-center"]):not([class*="text-right"]),
+  main p:not([class*="text-center"]):not([class*="text-right"]),
   main li {
     text-align: justify;
   }
