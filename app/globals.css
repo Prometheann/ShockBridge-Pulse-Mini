@@ -23,8 +23,19 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-p, li, span {
+p, li {
   text-wrap: pretty;
+  hyphens: auto;
+  word-break: break-word;
+}
+
+/* Justify body text on sm+ (640px+) — left-align on mobile to avoid word gaps */
+@media (min-width: 640px) {
+  section p,
+  main p,
+  main li {
+    text-align: justify;
+  }
 }
 
 /* ─── PDF Export — Print Styles ─────────────────────────────────────────── */

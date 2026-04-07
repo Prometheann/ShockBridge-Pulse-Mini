@@ -24,7 +24,7 @@ function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="space-y-2">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-2 text-sm text-[#f0f0f0] leading-relaxed">
+        <li key={i} className="flex items-start gap-2 text-sm text-[#f0f0f0] leading-relaxed [text-align:justify] [hyphens:auto]">
           <span className="text-amber-500 shrink-0 mt-0.5">→</span>
           {item}
         </li>
@@ -65,7 +65,7 @@ export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
           <Badge variant="muted">{plan}</Badge>
         </div>
         <h2 className="text-xl font-bold text-[#f0f0f0] leading-snug">{memo.title}</h2>
-        <p className="text-[#9ca3af] text-sm mt-3 leading-relaxed">{memo.summary}</p>
+        <p className="text-[#9ca3af] text-sm mt-3 leading-relaxed [text-align:justify] [hyphens:auto]">{memo.summary}</p>
       </div>
 
       {/* First-order effects — all plans */}
@@ -83,10 +83,10 @@ export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
       {isBasicOrCreator && memo.bullish_path && memo.bearish_path && (
         <div className="grid md:grid-cols-2 gap-6">
           <Section title="Bullish path">
-            <p className="text-sm text-[#f0f0f0] leading-relaxed">{memo.bullish_path}</p>
+            <p className="text-sm text-[#f0f0f0] leading-relaxed [text-align:justify] [hyphens:auto]">{memo.bullish_path}</p>
           </Section>
           <Section title="Bearish path">
-            <p className="text-sm text-[#f0f0f0] leading-relaxed">{memo.bearish_path}</p>
+            <p className="text-sm text-[#f0f0f0] leading-relaxed [text-align:justify] [hyphens:auto]">{memo.bearish_path}</p>
           </Section>
         </div>
       )}
@@ -124,7 +124,7 @@ export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
               <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">X post</span>
               <CopyButton text={memo.x_post} label="X post" />
             </div>
-            <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line">{memo.x_post}</p>
+            <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line [text-align:justify] [hyphens:auto]">{memo.x_post}</p>
             <p className="text-xs text-[#4b5563] mt-2">{memo.x_post.length} / 280 characters</p>
           </div>
 
@@ -134,7 +134,7 @@ export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
               <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">LinkedIn post</span>
               <CopyButton text={memo.linkedin_post} label="LinkedIn" />
             </div>
-            <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line">{memo.linkedin_post}</p>
+            <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line [text-align:justify] [hyphens:auto]">{memo.linkedin_post}</p>
           </div>
 
           {/* PDF */}
