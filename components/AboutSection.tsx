@@ -22,31 +22,29 @@ export function AboutSection() {
           style={{ textWrap: "pretty" } as React.CSSProperties}>
           <p>
             ShockBridge Pulse Mini was built out of a simple frustration: when a major macro event
-            hits — a central bank surprise, an earnings shock, a geopolitical rupture — most tools
+            hits (a central bank surprise, an earnings shock, a geopolitical rupture), most tools
             give you headlines. What you actually need is structure. You need to know what breaks
             first, what follows, and where the real exposure sits.
           </p>
           <p>
-            This tool does that. You enter the event. The AI maps the transmission chain — from
-            first-order price effects to second-order spillovers, from the bullish interpretation
-            to the bearish one, from immediate reaction to what you should be watching over the
-            next two to four weeks. The output reads like a scenario note from a senior analyst,
-            not like a search engine summary.
+            This tool does that. You enter the event. The AI maps the transmission chain: first-order
+            price effects, second-order spillovers, the bullish interpretation, the bearish one, and
+            what you should be watching over the next two to four weeks. The output reads like a
+            scenario note from a senior analyst, not like a search engine summary.
           </p>
           <p>
             The three-tier model reflects how macro thinking actually scales. The{" "}
             <span className="text-[#d1d5db] font-medium">Free snapshot</span> gives you a fast
             orientation. The{" "}
             <span className="text-[#d1d5db] font-medium">Basic memo</span> gives you the full
-            structured analysis — effects, paths, uncertainties, watchpoints. The{" "}
-            <span className="text-amber-400 font-medium">Creator memo</span> goes deeper: causal
+            structured analysis: effects, paths, uncertainties, watchpoints. The{" "}
+            <span className="text-amber-400 font-medium">Creator memo</span> goes deeper into causal
             chains with mechanisms, multi-paragraph scenario paths, and publication-ready social
-            content for X and LinkedIn — formatted, opinionated, and ready to share.
+            content for X and LinkedIn, formatted, opinionated, and ready to share.
           </p>
           <p>
-            ShockBridge Pulse is a research and writing tool. It accelerates thinking, not
-            replaces it. Everything it produces is a starting point — yours to challenge, refine,
-            and act on.
+            ShockBridge Pulse is a research and writing tool. It accelerates thinking, not replaces
+            it. Everything it produces is a starting point, yours to challenge, refine, and act on.
           </p>
         </div>
 
