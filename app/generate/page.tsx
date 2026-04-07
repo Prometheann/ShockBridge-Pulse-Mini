@@ -205,13 +205,14 @@ export default function GeneratePage() {
               redeem an existing access code below.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-              <Link href="/#pricing">
-                <Button size="lg">See Plans</Button>
+              <Link href="/#pricing" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">See Plans</Button>
               </Link>
               <Button
                 size="lg"
                 variant="secondary"
                 onClick={() => setStep("form")}
+                className="w-full sm:w-auto"
               >
                 Redeem a Code
               </Button>
