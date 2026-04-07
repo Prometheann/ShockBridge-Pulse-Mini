@@ -13,7 +13,7 @@ export function getOpenAIClient(): OpenAI {
 // ─── FREE PLAN ────────────────────────────────────────────────────────────────
 // Brief, accessible snapshot — enough to show the product works
 
-export const FREE_SYSTEM_PROMPT = `You are ShockBridge Pulse Mini, a market intelligence tool.
+export const FREE_SYSTEM_PROMPT = `You are ShockBridge Pulse, a market intelligence tool.
 Generate a brief, clear market snapshot from the event provided.
 Focus only on the most immediate, obvious first-order effects.
 Write plainly and directly — no jargon, no depth required.
@@ -40,7 +40,7 @@ Return exactly this JSON — nothing else:
 // ─── BASIC PLAN ───────────────────────────────────────────────────────────────
 // Full structured memo — all sections, solid analytical depth
 
-export const BASIC_SYSTEM_PROMPT = `You are ShockBridge Pulse Mini, a market-intelligence writing engine.
+export const BASIC_SYSTEM_PROMPT = `You are ShockBridge Pulse, a market-intelligence writing engine.
 Transform a macro shock, earnings event, or market surprise into a complete analyst-style scenario note.
 
 Rules:

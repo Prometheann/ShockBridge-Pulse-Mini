@@ -204,7 +204,7 @@ p, li, span {
 
   /* ── Document footer ── */
   #memo-output::after {
-    content: "ShockBridge Pulse Mini  ·  Research and writing tool only. Not financial advice.  ·  shockbridgepulse.com";
+    content: "ShockBridge Pulse  ·  Research and writing tool only. Not financial advice.  ·  shockbridgepulse.com";
     display: block;
     font-size: 7pt !important;
     color: #9ca3af !important;

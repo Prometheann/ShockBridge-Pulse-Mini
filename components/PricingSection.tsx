@@ -76,9 +76,9 @@ export function PricingSection() {
             <p className="text-[#9ca3af] text-sm mb-6">Build and publish faster</p>
 
             <ul className="space-y-3 mb-8 flex-1">
-              {creatorExtras.map((f) => (
+              {creatorExtras.map((f, i) => (
                 <li key={f} className="flex items-start gap-2 text-sm text-[#f0f0f0]">
-                  <span className="text-amber-500 mt-0.5 shrink-0">★</span>
+                  <span className="text-amber-500 mt-0.5 shrink-0">{i === 0 ? "★" : "+"}</span>
                   {f}
                 </li>
               ))}
@@ -95,7 +95,7 @@ export function PricingSection() {
           code by email — redeem it in the app to unlock your memos.
         </p>
         <p className="text-center text-xs text-[#4b5563] mt-2">
-          ShockBridge Pulse Mini is a research and writing tool. It does not provide financial
+          ShockBridge Pulse is a research and writing tool. It does not provide financial
           advice.
         </p>
       </div>

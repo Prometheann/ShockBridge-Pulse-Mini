@@ -2,14 +2,14 @@ import { Accordion } from "@/components/ui/Accordion";
 
 const faqs = [
   {
-    question: "What is ShockBridge Pulse Mini?",
+    question: "What is ShockBridge Pulse?",
     answer:
       "A micro-tool that turns a macro event, earnings surprise, or market shock into a structured analyst-style memo. You enter the event details, and it returns a clean scenario note with first-order effects, second-order risks, bullish/bearish paths, and what to watch next.",
   },
   {
     question: "Is this financial advice?",
     answer:
-      "No. ShockBridge Pulse Mini is a research and writing tool designed to help users think more clearly about market scenarios. It does not provide investment recommendations or buy/sell advice.",
+      "No. ShockBridge Pulse is a research and writing tool designed to help users think more clearly about market scenarios. It does not provide investment recommendations or buy/sell advice.",
   },
   {
     question: "Do I need trading experience to use it?",

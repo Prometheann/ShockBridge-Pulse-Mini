@@ -22,7 +22,7 @@ export function AboutSection() {
           style={{ hyphens: "auto", wordBreak: "break-word" } as React.CSSProperties}
           lang="en">
           <p>
-            ShockBridge Pulse Mini was built out of a simple frustration: when a major macro event
+            ShockBridge Pulse was built out of a simple frustration: when a major macro event
             hits (a central bank surprise, an earnings shock, a geopolitical rupture), most tools
             give you headlines. What you actually need is structure. You need to know what breaks
             first, what follows, and where the real exposure sits.
