@@ -50,11 +50,16 @@ p, li {
     size: A4 portrait;
   }
 
-  /* Hide everything except memo */
-  body > * { display: none !important; }
-  main { display: block !important; }
-  main > * { display: none !important; }
-  #memo-output { display: block !important; }
+  /* Hide everything except memo using visibility (works through wrapper divs) */
+  * { visibility: hidden; }
+  #memo-output,
+  #memo-output * { visibility: visible; }
+  #memo-output {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
   .no-print { display: none !important; }
 
   body {
