@@ -12,8 +12,8 @@ const basicFeatures = [
 ];
 
 const creatorExtras = [
-  "20 memos",
   "Everything in Basic",
+  "20 memos",
   "X post (ready to publish)",
   "LinkedIn post (ready to publish)",
   "PDF export",
@@ -38,14 +38,14 @@ export function PricingSection() {
 
         <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {/* Basic */}
-          <div className="bg-[#0f1117] border border-[#2d3148] rounded-2xl p-8">
+          <div className="flex flex-col bg-[#0f1117] border border-[#2d3148] rounded-2xl p-8">
             <p className="text-xs text-[#6b7280] uppercase tracking-wider mb-2">Basic</p>
             <div className="flex items-end gap-1 mb-1">
               <span className="text-4xl font-bold text-[#f0f0f0]">$9</span>
             </div>
             <p className="text-[#9ca3af] text-sm mb-6">Test the engine</p>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8 flex-1">
               {basicFeatures.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-sm text-[#9ca3af]">
                   <span className="text-amber-500 mt-0.5 shrink-0">✓</span>
@@ -54,7 +54,7 @@ export function PricingSection() {
               ))}
             </ul>
 
-            <a href={basicLink} target="_blank" rel="noopener noreferrer">
+            <a href={basicLink} target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button variant="secondary" className="w-full">
                 Get Basic
               </Button>
@@ -62,7 +62,7 @@ export function PricingSection() {
           </div>
 
           {/* Creator */}
-          <div className="relative bg-[#0f1117] border-2 border-amber-500/50 rounded-2xl p-8">
+          <div className="relative flex flex-col bg-[#0f1117] border-2 border-amber-500/50 rounded-2xl p-8">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2">
               <span className="bg-amber-500 text-black text-xs font-bold px-3 py-1 rounded-full">
                 MOST POPULAR
@@ -75,7 +75,7 @@ export function PricingSection() {
             </div>
             <p className="text-[#9ca3af] text-sm mb-6">Build and publish faster</p>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8 flex-1">
               {creatorExtras.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-sm text-[#f0f0f0]">
                   <span className="text-amber-500 mt-0.5 shrink-0">★</span>
@@ -84,7 +84,7 @@ export function PricingSection() {
               ))}
             </ul>
 
-            <a href={creatorLink} target="_blank" rel="noopener noreferrer">
+            <a href={creatorLink} target="_blank" rel="noopener noreferrer" className="mt-auto">
               <Button className="w-full">Get Creator</Button>
             </a>
           </div>
