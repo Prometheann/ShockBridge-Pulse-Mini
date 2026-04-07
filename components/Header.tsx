@@ -9,8 +9,7 @@ export function Header() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="font-bold text-[#f0f0f0] text-lg tracking-tight">
           ShockBridge{" "}
-          <span className="text-amber-500">Pulse</span>{" "}
-          <span className="text-[#9ca3af] font-normal text-base">Mini</span>
+          <span className="text-amber-500">Pulse</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm text-[#9ca3af]">
