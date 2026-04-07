@@ -1,6 +1,7 @@
 const baseItems = [
   "Sharp title",
   "Concise summary",
+  "Macro shock + earnings shock analysis",
   "First-order effects",
   "Second-order risks",
   "Bullish path",

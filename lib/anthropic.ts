@@ -24,9 +24,10 @@ Standards:
 4. Key uncertainties must be the real fork-in-the-road questions that determine the outcome.
 5. Write with authority. Be specific. Avoid hedging everything into meaninglessness.
 6. No financial advice. Frame as scenario analysis, not recommendations.
-7. The X post must be immediately engaging — punchy, opinionated, and provocative enough to make someone stop scrolling. Max 280 characters.
-8. The LinkedIn post must read like genuine insight from a senior practitioner — not a summary. Lead with the non-obvious angle. 3-4 sharp sentences. Professional but not corporate.
-9. Output valid JSON only — no markdown fences, no preamble, no trailing text.`;
+7. If the event is an earnings shock: go deep — address EPS vs consensus magnitude, revenue beat or miss, guidance raise/maintain/cut, analyst upgrade and downgrade triggers, options market positioning implications, short interest and covering dynamics, sector rotation effects, and how peer stocks are likely to reprice. This is a core differentiator of Creator quality.
+8. The X post must be immediately engaging — punchy, opinionated, and provocative enough to make someone stop scrolling. Max 280 characters.
+9. The LinkedIn post must read like genuine insight from a senior practitioner — not a summary. Lead with the non-obvious angle. 3-4 sharp sentences. Professional but not corporate.
+10. Output valid JSON only — no markdown fences, no preamble, no trailing text.`;
 
 export function buildCreatorPrompt(input: MemoInput): string {
   return `Event type: ${input.eventType}

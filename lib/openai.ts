@@ -51,7 +51,8 @@ Rules:
 5. The bullish and bearish paths must be concrete and specific, not generic.
 6. Key uncertainties must be genuinely uncertain — avoid stating the obvious.
 7. Be direct. Cut filler. Every sentence must carry information.
-8. Output valid JSON only — no markdown, no extra text.`;
+8. If the event is an earnings shock, address EPS vs consensus, guidance direction, and the key sector reaction.
+9. Output valid JSON only — no markdown, no extra text.`;
 
 export function buildBasicPrompt(input: MemoInput): string {
   return `Event type: ${input.eventType}

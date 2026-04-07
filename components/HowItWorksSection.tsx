@@ -3,7 +3,7 @@ const steps = [
     number: "01",
     title: "Enter the event",
     description:
-      "Choose the market event, region, asset or sector, time horizon, and tone.",
+      "Choose your event type — macro shock, earnings surprise, or geopolitical rupture. Set region, asset or sector, time horizon, and tone.",
   },
   {
     number: "02",

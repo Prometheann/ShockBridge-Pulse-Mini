@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 
 const basicFeatures = [
   "5 memos",
-  "Title + summary",
+  "Macro shock + earnings shock analysis",
   "First-order effects",
   "Second-order risks",
   "Bullish path + Bearish path",
@@ -14,6 +14,7 @@ const basicFeatures = [
 const creatorExtras = [
   "Everything in Basic",
   "20 memos",
+  "Deep earnings shock breakdown (EPS vs consensus, guidance, sector rotation)",
   "X post (ready to publish)",
   "LinkedIn post (ready to publish)",
   "PDF export",

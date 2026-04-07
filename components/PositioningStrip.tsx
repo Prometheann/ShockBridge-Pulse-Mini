@@ -6,8 +6,8 @@ export function PositioningStrip() {
           Not another generic AI writer.
         </p>
         <p className="text-[#9ca3af] text-sm leading-relaxed">
-          Built to translate pressure, spillover, exposure, and uncertainty into a clean
-          scenario note you can actually use.
+          Built to translate macro shocks, earnings surprises, pressure, spillover, and
+          uncertainty into a clean scenario note you can actually use.
         </p>
       </div>
     </div>
