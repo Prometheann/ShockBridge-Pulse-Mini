@@ -145,7 +145,7 @@ export default function GeneratePage() {
             {/* Redeem code */}
             <div className="mt-6 bg-[#1a1d27] border border-[#2d3148] rounded-2xl p-5">
               <p className="text-sm font-medium text-[#f0f0f0] mb-3">Redeem an access code</p>
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
@@ -157,6 +157,7 @@ export default function GeneratePage() {
                   variant="secondary"
                   onClick={handleRedeem}
                   disabled={codeStatus === "loading"}
+                  className="w-full sm:w-auto"
                 >
                   {codeStatus === "loading" ? "..." : "Redeem"}
                 </Button>
