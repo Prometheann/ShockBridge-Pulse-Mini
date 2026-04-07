@@ -16,7 +16,9 @@ export function HeroSection() {
             <br />
             to clean signal.
           </h1>
-          <p className="text-[#9ca3af] text-lg leading-relaxed mb-8">
+          <p className="text-[#9ca3af] text-lg leading-relaxed mb-8 [text-align:justify]"
+            style={{ hyphens: "auto", wordBreak: "break-word" } as React.CSSProperties}
+            lang="en">
             Turn a macro event, earnings surprise, or market shock into a sharp
             analyst-style memo in seconds.
           </p>
