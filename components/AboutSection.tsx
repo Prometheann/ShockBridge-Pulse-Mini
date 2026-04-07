@@ -9,7 +9,7 @@ export function AboutSection() {
         </p>
 
         {/* Headline */}
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#f0f0f0] leading-tight mb-6"
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#f0f0f0] leading-tight mb-6 text-center"
           style={{ textWrap: "balance" } as React.CSSProperties}>
           Built for people who read macro events<br className="hidden sm:block" /> and need to think fast.
         </h2>
