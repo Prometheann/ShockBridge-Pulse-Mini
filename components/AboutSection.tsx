@@ -19,7 +19,8 @@ export function AboutSection() {
 
         {/* Body */}
         <div className="space-y-6 text-[#9ca3af] text-base leading-relaxed"
-          style={{ textWrap: "pretty" } as React.CSSProperties}>
+          style={{ textAlign: "justify", hyphens: "auto", wordBreak: "break-word", textWrap: "pretty" } as React.CSSProperties}
+          lang="en">
           <p>
             ShockBridge Pulse Mini was built out of a simple frustration: when a major macro event
             hits (a central bank surprise, an earnings shock, a geopolitical rupture), most tools
