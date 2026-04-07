@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const { code } = await request.json();
-    if (!code || typeof code !== "string") {
+    if (!code || typeof code !== "string" || code.length > 100) {
       return NextResponse.json({ error: "Invalid code." }, { status: 400 });
     }
 

@@ -36,7 +36,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
     }
 
-    const isPaid = plan === "basic" || plan === "creator";
+    // Input length limits — prevent abuse / runaway token usage
+    if (
+      input.eventType.length > 300 ||
+      input.region.length > 100 ||
+      input.sectorAsset.length > 100
+    ) {
+      return NextResponse.json({ error: "Input too long." }, { status: 400 });
+    }
+
+    // Validate plan value
+    const safePlan = ["free", "basic", "creator"].includes(plan ?? "") ? plan : "free";
+
+    const isPaid = safePlan === "basic" || safePlan === "creator";
 
     if (!isPaid) {
       const ip = getIP(request);
@@ -50,7 +62,7 @@ export async function POST(request: NextRequest) {
 
     let content: string | null = null;
 
-    if (plan === "creator") {
+    if (safePlan === "creator") {
       // Creator → Claude Sonnet 4.6 — deep, publication-quality analysis
       const anthropic = getAnthropicClient();
       const response = await anthropic.messages.create({
@@ -60,7 +72,7 @@ export async function POST(request: NextRequest) {
         messages: [{ role: "user", content: buildCreatorPrompt(input) }],
       });
       content = (response.content[0] as { type: string; text: string }).text;
-    } else if (plan === "basic") {
+    } else if (safePlan === "basic") {
       // Basic → GPT-4.1 — full structured memo
       const openai = getOpenAIClient();
       const response = await openai.chat.completions.create({
