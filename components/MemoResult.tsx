@@ -155,7 +155,7 @@ export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
             <p className="text-[#9ca3af] text-sm mb-4">
               Upgrade to Creator for publish-ready social content, in-depth analysis, and PDF export.
             </p>
-            <Link href="#pricing">
+            <Link href="/#pricing">
               <Button size="sm">Get Creator $19</Button>
             </Link>
           </div>
