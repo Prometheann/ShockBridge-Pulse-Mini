@@ -1,3 +1,5 @@
+import React from "react";
+
 const baseItems = [
   "Sharp title",
   "Concise summary",
@@ -18,11 +20,13 @@ export function WhatYouGetSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
-          <div>
+          <div className="text-center lg:text-left">
             <h2 className="text-3xl font-bold text-[#f0f0f0] mb-4">
               One input. Multiple usable outputs.
             </h2>
-            <p className="text-[#9ca3af] leading-relaxed">
+            <p className="text-[#9ca3af] leading-relaxed sm:[text-align:justify]"
+              style={{ hyphens: "auto", wordBreak: "break-word" } as React.CSSProperties}
+              lang="en">
               Each generation gives you a sharp memo built for speed and clarity, not vague
               market noise. Creator plan also gives you content you can publish immediately.
             </p>
