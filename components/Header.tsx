@@ -23,6 +23,9 @@ export function Header() {
           <Link href="#faq" className="hover:text-[#f0f0f0] transition-colors">
             FAQ
           </Link>
+          <Link href="#about" className="hover:text-[#f0f0f0] transition-colors">
+            About
+          </Link>
         </nav>
 
         <Link href="/generate">
