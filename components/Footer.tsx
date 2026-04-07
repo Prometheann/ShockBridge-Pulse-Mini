@@ -14,7 +14,7 @@ export function Footer() {
               </p>
             </div>
             <p className="text-[#6b7280] text-sm mt-1">
-              Structured market logic for people who move fast.
+              Structured market logic for fast movers.
             </p>
             <p className="text-[#4b5563] text-xs mt-3">
               Research and writing tool only. Not financial advice.
