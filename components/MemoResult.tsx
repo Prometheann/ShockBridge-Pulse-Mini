@@ -99,16 +99,20 @@ export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
 
       {/* Watch next — all plans */}
       <Section title="Watch next">
-        <div>
-          {memo.watch_next.map((item, i) => (
-            <span
-              key={i}
-              className="inline-block text-xs bg-[#232636] text-[#9ca3af] border border-[#2d3148] px-2.5 py-1 rounded-full mr-1.5 mb-1.5"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
+        {memo.watch_next.some((item) => item.length > 40) ? (
+          <BulletList items={memo.watch_next} />
+        ) : (
+          <div>
+            {memo.watch_next.map((item, i) => (
+              <span
+                key={i}
+                className="inline-block text-xs bg-[#232636] text-[#9ca3af] border border-[#2d3148] px-2.5 py-1 rounded-full mr-1.5 mb-1.5"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        )}
       </Section>
 
       {/* Creator: social posts + PDF */}
