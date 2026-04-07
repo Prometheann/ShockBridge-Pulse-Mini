@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <Image src="/logo-icon.png" alt="ShockBridge Pulse" width={32} height={32} className="h-8 w-8 object-contain" />
+              <Image src="/logo-icon.png" alt="ShockBridge Pulse" width={32} height={32} className="h-8 w-8 object-contain" style={{ filter: "brightness(0) saturate(100%) invert(68%) sepia(74%) saturate(500%) hue-rotate(2deg) brightness(103%) contrast(98%)" }} />
               <p className="font-bold text-[#f0f0f0]">
                 ShockBridge{" "}<span className="text-amber-500">Pulse</span>
               </p>
