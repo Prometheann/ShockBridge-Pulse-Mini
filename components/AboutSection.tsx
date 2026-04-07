@@ -68,7 +68,7 @@ export function AboutSection() {
           style={{ hyphens: "auto", wordBreak: "break-word" } as React.CSSProperties}
           lang="en">
           Research and writing tool only. Not financial advice. No positions are recommended.
-          All outputs should be verified independently before any investment decision.
+          All outputs should be verified before any investment decision.
         </p>
       </div>
     </section>
