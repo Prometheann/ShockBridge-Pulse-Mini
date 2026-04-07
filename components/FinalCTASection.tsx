@@ -11,7 +11,7 @@ export function FinalCTASection() {
           Start reading signal.
         </h2>
         <p className="text-[#9ca3af] text-lg mb-8">
-          ShockBridge Pulse helps you turn market movement into usable structure, faster.
+          ShockBridge Pulse helps you turn market movement<br />into usable structure, faster.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/generate" className="w-full sm:w-auto">

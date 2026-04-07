@@ -53,7 +53,7 @@ export function AboutSection() {
         <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-6">
           {[
             { value: "3 plans", label: "Free · Basic · Creator" },
-            { value: "2 models", label: "GPT-4.1 + Claude Sonnet 4.6" },
+            { value: "No subscription", label: "One payment, full access" },
             { value: "< 30s", label: "From event to structured memo" },
           ].map((s) => (
             <div key={s.value} className="border-l-2 border-amber-500 pl-4">
