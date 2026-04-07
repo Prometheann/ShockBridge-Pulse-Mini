@@ -4,7 +4,7 @@ export function AboutSection() {
       <div className="max-w-4xl mx-auto px-6">
 
         {/* Label */}
-        <p className="text-amber-500 text-xs font-semibold uppercase tracking-widest mb-4">
+        <p className="text-amber-500 text-xs font-semibold uppercase tracking-widest mb-4 text-center">
           About
         </p>
 
@@ -15,7 +15,7 @@ export function AboutSection() {
         </h2>
 
         {/* Divider */}
-        <div className="w-12 h-1 bg-amber-500 rounded-full mb-10" />
+        <div className="w-12 h-1 bg-amber-500 rounded-full mb-10 mx-auto" />
 
         {/* Body */}
         <div className="space-y-6 text-[#9ca3af] text-base leading-relaxed sm:[text-align:justify]"
