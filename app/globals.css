@@ -29,12 +29,17 @@ p, li {
   word-break: break-word;
 }
 
-/* Justify body text on sm+ (640px+) — exclude centered/right-aligned elements */
+/* Justify body text on sm+ (640px+) */
 @media (min-width: 640px) {
   section p:not([class*="text-center"]):not([class*="text-right"]),
   main p:not([class*="text-center"]):not([class*="text-right"]),
   main li {
     text-align: justify;
+  }
+
+  /* Restore center alignment when inside a centered container */
+  .text-center p {
+    text-align: center !important;
   }
 }
 

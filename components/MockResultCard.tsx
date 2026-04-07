@@ -38,12 +38,12 @@ export function MockResultCard() {
           <p className="text-[#9ca3af] text-xs uppercase tracking-wider mb-1">
             Watch next
           </p>
-          <div className="flex flex-wrap gap-1">
+          <div>
             {["Rate curve", "BRL reaction", "Petrobras guidance", "Domestic cyclicals"].map(
               (tag) => (
                 <span
                   key={tag}
-                  className="text-xs bg-[#232636] text-[#9ca3af] border border-[#2d3148] px-2 py-0.5 rounded-full"
+                  className="inline-block text-xs bg-[#232636] text-[#9ca3af] border border-[#2d3148] px-2 py-0.5 rounded-full mr-1 mb-1"
                 >
                   {tag}
                 </span>
