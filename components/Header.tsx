@@ -15,10 +15,11 @@ export function Header() {
             width={44}
             height={44}
             className="h-11 w-11 object-contain"
+            style={{ filter: "brightness(0) saturate(100%) invert(68%) sepia(74%) saturate(500%) hue-rotate(2deg) brightness(103%) contrast(98%)" }}
             priority
           />
-          <span className="font-bold text-amber-500 text-lg tracking-tight leading-none">
-            ShockBridge Pulse
+          <span className="font-bold text-[#f0f0f0] text-lg tracking-tight leading-none">
+            ShockBridge{" "}<span className="text-amber-500">Pulse</span>
           </span>
         </Link>
 
