@@ -35,7 +35,7 @@ export function HeroSection() {
           <p className="mt-4 text-xs text-[#6b7280] sm:[text-align:justify]"
             style={{ hyphens: "auto" } as React.CSSProperties}
             lang="en">
-            Built for traders, creators, analysts, and serious market thinkers.
+            Built for traders, creators, analysts, and market thinkers.
           </p>
         </div>
 
