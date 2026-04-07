@@ -64,7 +64,7 @@ export function AboutSection() {
         </div>
 
         {/* Disclaimer */}
-        <p className="mt-10 text-[#4b5563] text-xs leading-relaxed border-t border-[#1e2130] pt-6 sm:[text-align:justify]"
+        <p className="mt-10 text-[#4b5563] text-xs leading-relaxed border-t border-[#1e2130] pt-6 [text-align:justify]"
           style={{ hyphens: "auto", wordBreak: "break-word" } as React.CSSProperties}
           lang="en">
           Research and writing tool only. Not financial advice. No positions are recommended.
