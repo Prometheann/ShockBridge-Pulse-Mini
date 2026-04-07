@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -6,9 +7,12 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-8">
           <div>
-            <p className="font-bold text-[#f0f0f0]">
-              ShockBridge <span className="text-amber-500">Pulse</span>
-            </p>
+            <div className="flex items-center gap-2 mb-1">
+              <Image src="/logo-icon.png" alt="ShockBridge Pulse" width={32} height={32} className="h-8 w-8 object-contain" />
+              <p className="font-bold text-[#f0f0f0]">
+                ShockBridge{" "}<span className="text-amber-500">Pulse</span>
+              </p>
+            </div>
             <p className="text-[#6b7280] text-sm mt-1">
               Structured market logic for people who move fast.
             </p>
