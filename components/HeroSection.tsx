@@ -16,7 +16,7 @@ export function HeroSection() {
             <br />
             to clean signal.
           </h1>
-          <p className="text-[#9ca3af] text-lg leading-relaxed mb-8 [text-align:justify]"
+          <p className="text-[#9ca3af] text-lg leading-relaxed mb-8 sm:[text-align:justify]"
             style={{ hyphens: "auto", wordBreak: "break-word" } as React.CSSProperties}
             lang="en">
             Turn a macro event, earnings surprise, or market shock into a sharp
@@ -32,7 +32,9 @@ export function HeroSection() {
               </Button>
             </Link>
           </div>
-          <p className="mt-4 text-xs text-[#6b7280]">
+          <p className="mt-4 text-xs text-[#6b7280] sm:[text-align:justify]"
+            style={{ hyphens: "auto" } as React.CSSProperties}
+            lang="en">
             Built for traders, creators, analysts, and serious market thinkers.
           </p>
         </div>
