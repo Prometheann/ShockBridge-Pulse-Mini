@@ -65,6 +65,7 @@ p, li {
     line-height: 1.7;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    hyphens: auto;
   }
 
   /* ── Document header ── */
@@ -93,6 +94,7 @@ p, li {
   #memo-output [class*="Badge"],
   #memo-output button,
   #memo-output a[href*="pricing"],
+  #memo-output [class*="amber-500\/5"],
   #memo-output > div:last-child {
     display: none !important;
   }
