@@ -50,7 +50,7 @@ export default function PdfPreview() {
         }
         /* Bullet list */
         ul { padding: 0; list-style: none; }
-        li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #1a2540; font-size: 12pt; line-height: 1.8; color: #cbd5e1; }
+        li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #1a2540; font-size: 12pt; line-height: 1.8; color: #cbd5e1; text-align: justify; hyphens: auto; }
         li:last-child { border-bottom: none; }
         li .arrow { color: #f59e0b; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
         /* Body paragraph */
@@ -159,11 +159,11 @@ export default function PdfPreview() {
         <div className="content" style={{paddingTop:"16mm"}}>
           <span className="section-label">First-order effects</span>
           <ul>
-            <li><span className="arrow">→</span><span>NVDA gaps down 8–12% at open as EPS misses consensus by more than 5%, triggering forced selling from quant funds with momentum overlays and stop-loss cascades in options.</span></li>
-            <li><span className="arrow">→</span><span>Hyperscaler stocks reprice 3–5% lower as the market recalibrates AI capex cycle expectations — MSFT, GOOGL, META all see negative sympathy moves.</span></li>
-            <li><span className="arrow">→</span><span>Semiconductor ETF (SOXX) sells off 4–6%, dragging AMD, AVGO, and AMAT into the correction as sector rotation accelerates out of AI infrastructure names.</span></li>
-            <li><span className="arrow">→</span><span>VIX spikes 15–20% intraday as the combination of earnings shock and geopolitical backdrop compresses risk appetite across asset classes simultaneously.</span></li>
-            <li><span className="arrow">→</span><span>Treasury yields fall 8–12bps on flight-to-safety bid as equity vol spills into rates, with the 10-year breaking below its near-term support level.</span></li>
+            <li><span className="arrow">→</span><span>NVDA gaps down 8–12% at the open as EPS misses consensus by more than 5%, triggering forced selling from quant funds with momentum overlays, stop-loss cascades in the options market, and systematic de-grossing from multi-strategy funds that have been running NVDA as their largest single-name long. The initial gap is amplified by thin pre-market liquidity and elevated put open interest that dealers must hedge into, creating a feedback loop in the first 30 minutes of trading.</span></li>
+            <li><span className="arrow">→</span><span>Hyperscaler stocks reprice 3–5% lower as the market recalibrates AI capex cycle expectations — MSFT, GOOGL, META, and AMZN all see negative sympathy moves driven by investor concern that the infrastructure buildout is hitting a demand absorption ceiling. The sell-off in hyperscalers is not indiscriminate: names with the largest disclosed AI capex commitments and the least near-term revenue visibility underperform peers, creating intra-group dispersion that signals a selective rather than wholesale de-rating.</span></li>
+            <li><span className="arrow">→</span><span>The Philadelphia Semiconductor Index (SOXX) sells off 4–6%, dragging AMD, Broadcom, and AMAT into the correction as sector rotation accelerates out of AI infrastructure names and into defensive and value exposures. Taiwan Semiconductor faces additional pressure on export control read-across, with the market pricing a non-trivial probability of incremental restrictions on advanced node capacity allocations tied to Middle East customers.</span></li>
+            <li><span className="arrow">→</span><span>VIX spikes 15–20% intraday as the combination of an earnings shock in the most widely-held equity name and a geopolitical backdrop that is already elevated compresses risk appetite simultaneously across equities, credit, and EM. The vol move is self-reinforcing: options dealers who are short gamma from elevated put selling activity are forced to sell equities into the decline to delta-hedge, extending the drawdown beyond what the fundamental miss alone would justify.</span></li>
+            <li><span className="arrow">→</span><span>Treasury yields fall 8–12bps on a flight-to-safety bid as equity volatility spills into the rates market, with the 10-year breaking below its near-term support level and the 2s10s curve flattening as short-end rates remain anchored by Fed policy expectations. The move is concentrated in real yields rather than breakevens, suggesting the market is repricing growth risk rather than inflation risk — a distinction that matters for how long the bond rally can be sustained if risk assets stabilize.</span></li>
           </ul>
         </div>
         <div className="page-footer"><span className="disc">ShockBridge Pulse · shockbridgepulse.com · Not financial advice</span><span className="num">4</span></div>
