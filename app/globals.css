@@ -268,33 +268,50 @@ p, li {
     align-items: center;
   }
 
-  /* Full logo: amber base + white text overlay via CSS grid stacking */
-  #pdf-cover-logo-wrap {
-    display: grid !important;
-    grid-template-areas: "logo" !important;
-    width: 480px !important;
-    margin-bottom: 36px !important;
-  }
-
-  /* Base image — full amber */
-  #pdf-cover-logo-amber {
-    grid-area: logo !important;
+  /* Icon — large, centered, amber-filtered */
+  #pdf-cover-logo-icon {
     display: block !important;
-    width: 480px !important;
+    width: 120px !important;
     height: auto !important;
+    margin-bottom: 28px !important;
     filter: brightness(0) saturate(100%) invert(64%) sepia(100%) saturate(700%) hue-rotate(356deg) brightness(96%) contrast(106%) !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* Overlay — white, clipped to "ShockBridge" text area (bottom-left ~45% width, bottom ~33% height) */
-  #pdf-cover-logo-white {
-    grid-area: logo !important;
+  /* Brand name — ShockBridge (white) + Pulse (amber) */
+  #pdf-cover-brand {
+    font-size: 38pt !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    margin: 0 0 36px 0 !important;
+    line-height: 1.1 !important;
+  }
+
+  #pdf-cover-brand-white {
+    color: #f8fafc !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pdf-cover-brand-amber {
+    color: #f59e0b !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Creator credit gap + text */
+  #pdf-cover-creator-gap {
     display: block !important;
-    width: 480px !important;
-    height: auto !important;
-    filter: brightness(0) invert(1) !important;
-    clip-path: inset(67% 55% 0% 0%) !important;
+    height: 48px !important;
+  }
+
+  #pdf-cover-creator {
+    font-size: 9.5pt !important;
+    color: #64748b !important;
+    letter-spacing: 0.08em !important;
+    margin: 0 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -662,7 +679,14 @@ p, li {
     height: 60px !important;
   }
 
-  /* ── Closing tagline — bottom of social page ── */
+  /* ── Social section — flex column so closing text sticks to bottom ── */
+  #pdf-social-section {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 220mm !important;
+  }
+
+  /* ── Closing tagline — pushed to bottom of social page via flex ── */
   #pdf-closing-text {
     display: block !important;
     text-align: center !important;
@@ -670,10 +694,9 @@ p, li {
     font-weight: 500 !important;
     color: #94a3b8 !important;
     letter-spacing: 0.06em !important;
-    margin-top: 80px !important;
-    margin-bottom: 20px !important;
     padding-top: 24px !important;
     border-top: 1px solid #1e293b !important;
+    margin-top: auto !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
