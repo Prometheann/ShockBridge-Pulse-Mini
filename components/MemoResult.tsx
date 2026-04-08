@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { MemoInput, MemoOutput, Plan } from "@/types/memo";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -87,11 +88,17 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
   const isCreator = plan === "creator";
   const isBasicOrCreator = plan === "basic" || plan === "creator";
 
+  const [isEdge, setIsEdge] = useState(false);
+
   const printDate = new Date().toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+
+  useEffect(() => {
+    setIsEdge(/Edg\//.test(navigator.userAgent));
+  }, []);
 
   function handlePrint() {
     window.print();
@@ -262,9 +269,19 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
             <p id="pdf-closing-text">ShockBridge Pulse — From market shock to clean signal</p>
 
             {/* PDF */}
-            <Button variant="secondary" size="sm" onClick={handlePrint} className="no-print">
-              Export PDF
-            </Button>
+            <div className="no-print flex flex-col gap-2">
+              <Button variant="secondary" size="sm" onClick={handlePrint}>
+                Export PDF
+              </Button>
+              {isEdge && (
+                <p className="text-xs text-amber-500/80 leading-snug max-w-xs">
+                  ⚠ Edge may strip backgrounds. In the print dialog, go to{" "}
+                  <strong className="text-amber-500">More settings</strong> and enable{" "}
+                  <strong className="text-amber-500">Background graphics</strong> for the correct layout.
+                  For best results use Chrome.
+                </p>
+              )}
+            </div>
           </div>
         ) : !isCreator ? (
           <div className="border-t border-[#2d3148] pt-6">
