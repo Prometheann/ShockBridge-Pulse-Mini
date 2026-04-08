@@ -271,9 +271,9 @@ p, li {
   /* Icon — large, centered, amber-filtered */
   #pdf-cover-logo-icon {
     display: block !important;
-    width: 120px !important;
+    width: 200px !important;
     height: auto !important;
-    margin-bottom: 28px !important;
+    margin-bottom: 32px !important;
     filter: brightness(0) saturate(100%) invert(64%) sepia(100%) saturate(700%) hue-rotate(356deg) brightness(96%) contrast(106%) !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
