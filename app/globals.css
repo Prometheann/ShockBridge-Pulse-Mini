@@ -690,11 +690,11 @@ p, li {
   #pdf-closing-text {
     display: block !important;
     text-align: center !important;
-    font-size: 12pt !important;
-    font-weight: 500 !important;
-    color: #94a3b8 !important;
-    letter-spacing: 0.06em !important;
-    padding-top: 24px !important;
+    font-size: 9pt !important;
+    font-weight: 400 !important;
+    color: #64748b !important;
+    letter-spacing: 0.08em !important;
+    padding-top: 16px !important;
     border-top: 1px solid #1e293b !important;
     margin-top: auto !important;
     -webkit-print-color-adjust: exact;
