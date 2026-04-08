@@ -9,6 +9,10 @@ export interface MemoInput {
 
 export interface MemoOutput {
   title: string;
+  title_hook?: string;
+  title_asset?: string;
+  title_bridge?: string;
+  title_theme?: string;
   summary: string;
   first_order_effects: string[];
   // Basic + Creator only
@@ -19,7 +23,9 @@ export interface MemoOutput {
   watch_next: string[];
   // Creator only
   x_post?: string;
+  x_post_headline?: string;
   linkedin_post?: string;
+  linkedin_post_headline?: string;
 }
 
 export type Plan = "free" | "basic" | "creator";

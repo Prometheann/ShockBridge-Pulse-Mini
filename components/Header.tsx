@@ -24,16 +24,16 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm text-[#9ca3af]">
-          <Link href="#features" className="hover:text-[#f0f0f0] transition-colors">
+          <Link href="/#features" className="hover:text-[#f0f0f0] transition-colors">
             Features
           </Link>
-          <Link href="#pricing" className="hover:text-[#f0f0f0] transition-colors">
+          <Link href="/#pricing" className="hover:text-[#f0f0f0] transition-colors">
             Pricing
           </Link>
-          <Link href="#faq" className="hover:text-[#f0f0f0] transition-colors">
+          <Link href="/#faq" className="hover:text-[#f0f0f0] transition-colors">
             FAQ
           </Link>
-          <Link href="#about" className="hover:text-[#f0f0f0] transition-colors">
+          <Link href="/#about" className="hover:text-[#f0f0f0] transition-colors">
             About
           </Link>
         </nav>

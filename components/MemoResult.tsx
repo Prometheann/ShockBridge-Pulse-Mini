@@ -1,20 +1,22 @@
 "use client";
 
-import { MemoOutput, Plan } from "@/types/memo";
+import { MemoInput, MemoOutput, Plan } from "@/types/memo";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import Image from "next/image";
 import Link from "next/link";
 
 interface MemoResultProps {
   memo: MemoOutput;
   plan: Plan;
+  input?: MemoInput;
   onReset: () => void;
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mb-6">
-      <p className="text-xs text-amber-500 uppercase tracking-wider mb-2 font-semibold">{title}</p>
+      <p className="text-xs text-amber-500 uppercase tracking-wider mb-2 font-semibold pdf-section-label">{title}</p>
       {children}
     </div>
   );
@@ -24,9 +26,9 @@ function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="space-y-2">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-2 text-sm text-[#f0f0f0] leading-relaxed sm:[text-align:justify] [hyphens:auto]">
+        <li key={i} className="flex items-start gap-2">
           <span className="text-amber-500 shrink-0 mt-0.5">→</span>
-          {item}
+          <span className="text-sm text-[#f0f0f0] leading-relaxed flex-1 memo-text">{item}</span>
         </li>
       ))}
     </ul>
@@ -47,133 +49,255 @@ function CopyButton({ text, label }: { text: string; label: string }) {
   );
 }
 
-export function MemoResult({ memo, plan, onReset }: MemoResultProps) {
+/** Four-part title: hook → asset → bridge → theme */
+function PrintTitle({ title, hook, asset, bridge, theme }: {
+  title: string;
+  hook?: string;
+  asset?: string;
+  bridge?: string;
+  theme?: string;
+}) {
+  if (hook && asset && bridge && theme) {
+    return (
+      <>
+        <span className="pdf-title-hook">{hook}</span>
+        <br className="pdf-title-break" />
+        <span className="pdf-title-asset">{asset}</span>
+        <br className="pdf-title-break" />
+        <span className="pdf-title-bridge">{bridge}</span>
+        <br className="pdf-title-break" />
+        <span className="pdf-title-sub">{theme}</span>
+      </>
+    );
+  }
+  // Fallback: split at " — "
+  const parts = title.split(" — ");
+  if (parts.length < 2) return <>{title}</>;
+  return (
+    <>
+      <span className="pdf-title-hook">{parts[0]}</span>
+      <br className="pdf-title-break" />
+      <span className="pdf-title-bridge">{parts[1]}</span>
+      {parts[2] && <><br className="pdf-title-break" /><span className="pdf-title-sub">{parts[2]}</span></>}
+    </>
+  );
+}
+
+export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
   const isCreator = plan === "creator";
   const isBasicOrCreator = plan === "basic" || plan === "creator";
+
+  const printDate = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   function handlePrint() {
     window.print();
   }
 
   return (
-    <div className="space-y-6" id="memo-output">
+    <div id="memo-output">
 
-      {/* Header */}
-      <div className="border-b border-[#2d3148] pb-5">
-        <div className="flex items-center gap-2 mb-3">
-          <Badge variant="accent">Scenario Note</Badge>
-          <Badge variant="muted">{plan}</Badge>
-        </div>
-        <h2 className="text-xl font-bold text-[#f0f0f0] leading-snug">{memo.title}</h2>
-        <p className="text-[#9ca3af] text-sm mt-3 leading-relaxed sm:[text-align:justify] [hyphens:auto]">{memo.summary}</p>
+      {/* ── PDF Running header — hidden on screen, fixed top every print page ── */}
+      <div id="pdf-run-header" aria-hidden="true">
+        <span id="pdf-run-header-text">ShockBridge Pulse · Scenario Note</span>
       </div>
 
-      {/* First-order effects — all plans */}
-      <Section title="First-order effects">
-        <BulletList items={memo.first_order_effects} />
-      </Section>
+      {/* ── PDF Running footer — hidden on screen, fixed bottom every print page ── */}
+      <div id="pdf-run-footer" aria-hidden="true">
+        <span id="pdf-run-footer-disc">ShockBridge Pulse · shockbridgepulse.com · Not financial advice</span>
+        <span id="pdf-run-footer-page" />
+      </div>
 
-      {/* Basic + Creator: full memo */}
-      {isBasicOrCreator && memo.second_order_effects && (
-        <Section title="Second-order effects">
-          <BulletList items={memo.second_order_effects} />
-        </Section>
-      )}
-
-      {isBasicOrCreator && memo.bullish_path && memo.bearish_path && (
-        <div className="grid md:grid-cols-2 gap-6">
-          <Section title="Bullish path">
-            <p className="text-sm text-[#f0f0f0] leading-relaxed sm:[text-align:justify] [hyphens:auto]">{memo.bullish_path}</p>
-          </Section>
-          <Section title="Bearish path">
-            <p className="text-sm text-[#f0f0f0] leading-relaxed sm:[text-align:justify] [hyphens:auto]">{memo.bearish_path}</p>
-          </Section>
+      {/* ── PDF Cover Page — hidden on screen, page 1 in print ── */}
+      <div id="pdf-cover">
+        <div id="pdf-cover-accent" />
+        <div id="pdf-cover-inner">
+          {/* Full logo: amber base + white overlay clipped to ShockBridge text */}
+          <div id="pdf-cover-logo-wrap">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-transparent.png" alt="ShockBridge Pulse" id="pdf-cover-logo-amber" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-transparent.png" alt="" id="pdf-cover-logo-white" aria-hidden="true" />
+          </div>
+          <div id="pdf-cover-rule" />
+          <p id="pdf-cover-type">Scenario Note</p>
+          <p id="pdf-cover-plan">Creator</p>
+          <p id="pdf-cover-date">{printDate}</p>
         </div>
-      )}
+        <p id="pdf-cover-disclaimer">For research and writing purposes only. Not financial advice.</p>
+      </div>
 
-      {isBasicOrCreator && memo.key_uncertainties && (
-        <Section title="Key uncertainties">
-          <BulletList items={memo.key_uncertainties} />
-        </Section>
-      )}
+      {/* ── Memo content — screen view + pages 2+ in print ── */}
+      <div id="memo-content" className="space-y-6">
 
-      {/* Watch next — all plans */}
-      <Section title="Watch next">
-        {memo.watch_next.some((item) => item.length > 40) ? (
-          <BulletList items={memo.watch_next} />
-        ) : (
-          <div>
-            {memo.watch_next.map((item, i) => (
-              <span
-                key={i}
-                className="inline-block text-xs bg-[#232636] text-[#9ca3af] border border-[#2d3148] px-2.5 py-1 rounded-full mr-1.5 mb-1.5"
-              >
-                {item}
-              </span>
-            ))}
+        {/* Input framework — PDF only, top of page 2 */}
+        {input && (
+          <div id="pdf-input-framework">
+            <p className="pdf-if-plan">{plan.toUpperCase()}</p>
+            <div className="pdf-if-gap-lg" />
+            <p className="pdf-if-section">Scenario</p>
+            <div className="pdf-if-gap-sm" />
+            <div className="pdf-if-fields">
+              <div className="pdf-if-row"><span className="pdf-if-label">Event type</span><span className="pdf-if-value">{input.eventType}</span></div>
+              <div className="pdf-if-row"><span className="pdf-if-label">Region</span><span className="pdf-if-value">{input.region}</span></div>
+              <div className="pdf-if-row"><span className="pdf-if-label">Sector or asset</span><span className="pdf-if-value">{input.sectorAsset}</span></div>
+              <div className="pdf-if-row"><span className="pdf-if-label">Horizon</span><span className="pdf-if-value">{input.horizon}</span></div>
+              <div className="pdf-if-row"><span className="pdf-if-label">Tone</span><span className="pdf-if-value">{input.tone}</span></div>
+              {input.optionalNote && (
+                <div className="pdf-if-row"><span className="pdf-if-label">Optional thesis / context</span><span className="pdf-if-value">{input.optionalNote}</span></div>
+              )}
+            </div>
+            <div className="pdf-if-gap-xl" />
           </div>
         )}
-      </Section>
 
-      {/* Creator: social posts + PDF */}
-      {isCreator && memo.x_post && memo.linkedin_post ? (
-        <div className="border-t border-[#2d3148] pt-6 space-y-5">
-          <p className="text-xs text-amber-500 uppercase tracking-wider font-semibold">
-            Content outputs: Creator
-          </p>
-
-          {/* X post */}
-          <div className="bg-[#0f1117] rounded-xl p-4 border border-[#2d3148]">
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">X post</span>
-              <CopyButton text={memo.x_post} label="X post" />
-            </div>
-            <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line sm:[text-align:justify] [hyphens:auto]">{memo.x_post}</p>
-            <p className="text-xs text-[#4b5563] mt-2">{memo.x_post.length} / 280 characters</p>
+        {/* Header — page 3 in print */}
+        <div id="pdf-section-title" className="border-b border-[#2d3148] pb-5">
+          <div id="pdf-badge-row" className="flex items-center gap-2 mb-3">
+            <Badge variant="accent">Scenario Note</Badge>
+            <Badge variant="muted">{plan}</Badge>
           </div>
-
-          {/* LinkedIn */}
-          <div className="bg-[#0f1117] rounded-xl p-4 border border-[#2d3148]">
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">LinkedIn post</span>
-              <CopyButton text={memo.linkedin_post} label="LinkedIn" />
-            </div>
-            <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line sm:[text-align:justify] [hyphens:auto]">{memo.linkedin_post}</p>
-          </div>
-
-          {/* PDF */}
-          <Button variant="secondary" size="sm" onClick={handlePrint} className="no-print">
-            Export PDF
-          </Button>
+          <h2 className="text-xl font-bold text-[#f0f0f0] leading-snug">
+            <PrintTitle
+              title={memo.title}
+              hook={memo.title_hook}
+              asset={memo.title_asset}
+              bridge={memo.title_bridge}
+              theme={memo.title_theme}
+            />
+          </h2>
+          <p className="text-[#9ca3af] text-sm mt-3 leading-relaxed sm:[text-align:justify] [hyphens:auto]">{memo.summary}</p>
         </div>
-      ) : !isCreator ? (
-        <div className="border-t border-[#2d3148] pt-6">
-          <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 text-center">
-            <p className="text-amber-400 font-medium mb-1">
-              X post + LinkedIn post + PDF export
-            </p>
-            <p className="text-[#9ca3af] text-sm mb-4">
-              Upgrade to Creator for publish-ready social content, in-depth analysis, and PDF export.
-            </p>
-            <Link href="/#pricing">
-              <Button size="sm">Get Creator $19</Button>
-            </Link>
-          </div>
-        </div>
-      ) : null}
 
-      {/* Actions */}
-      <div className="flex gap-3 pt-2 no-print">
-        <CopyButton
-          text={`${memo.title}\n\n${memo.summary}${memo.first_order_effects ? `\n\nFirst-order effects:\n${memo.first_order_effects.map((e) => `• ${e}`).join("\n")}` : ""}`}
-          label="memo"
-        />
-        <button
-          onClick={onReset}
-          className="text-xs text-[#6b7280] hover:text-[#f0f0f0] transition-colors"
-        >
-          ← Generate another
-        </button>
+        {/* First-order effects — page 4 in print */}
+        <div className="pdf-page-section">
+          <Section title="First-order effects">
+            <BulletList items={memo.first_order_effects} />
+          </Section>
+        </div>
+
+        {/* Basic + Creator: full memo */}
+        {isBasicOrCreator && memo.second_order_effects && (
+          <div className="pdf-page-section">
+            <Section title="Second-order effects">
+              <BulletList items={memo.second_order_effects} />
+            </Section>
+          </div>
+        )}
+
+        {isBasicOrCreator && memo.bullish_path && memo.bearish_path && (
+          <div id="pdf-paths">
+            <div className="pdf-page-section">
+              <Section title="Bullish path">
+                <p className="text-sm text-[#f0f0f0] leading-relaxed sm:[text-align:justify] [hyphens:auto]">{memo.bullish_path}</p>
+              </Section>
+            </div>
+            <div className="pdf-page-section">
+              <Section title="Bearish path">
+                <p className="text-sm text-[#f0f0f0] leading-relaxed sm:[text-align:justify] [hyphens:auto]">{memo.bearish_path}</p>
+              </Section>
+            </div>
+          </div>
+        )}
+
+        {isBasicOrCreator && memo.key_uncertainties && (
+          <div className="pdf-page-section">
+            <Section title="Key uncertainties">
+              <BulletList items={memo.key_uncertainties} />
+            </Section>
+          </div>
+        )}
+
+        {/* Watch next — own page */}
+        <div className="pdf-page-section">
+          <Section title="Watch next">
+            {memo.watch_next.some((item) => item.length > 40) ? (
+              <BulletList items={memo.watch_next} />
+            ) : (
+              <div>
+                {memo.watch_next.map((item, i) => (
+                  <span
+                    key={i}
+                    className="inline-block text-xs bg-[#232636] text-[#9ca3af] border border-[#2d3148] px-2.5 py-1 rounded-full mr-1.5 mb-1.5"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            )}
+          </Section>
+        </div>
+
+        {/* Creator: social posts + PDF */}
+        {isCreator && memo.x_post && memo.linkedin_post ? (
+          <div className="pdf-page-section space-y-5" id="pdf-social-section">
+            <p className="text-xs text-amber-500 uppercase tracking-wider font-semibold pdf-section-label">
+              Content outputs: Social
+            </p>
+
+            {/* X post */}
+            <div className="bg-[#0f1117] rounded-xl p-4 border border-[#2d3148]">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">X post</span>
+                <CopyButton text={memo.x_post} label="X post" />
+              </div>
+              <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line sm:[text-align:justify] [hyphens:auto]">{memo.x_post}</p>
+              <p className="text-xs text-[#4b5563] mt-2">{memo.x_post.length} / 280 characters</p>
+            </div>
+
+            {/* LinkedIn */}
+            <div className="bg-[#0f1117] rounded-xl p-4 border border-[#2d3148]">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">LinkedIn post</span>
+                <CopyButton text={memo.linkedin_post} label="LinkedIn" />
+              </div>
+              {memo.linkedin_post_headline && (
+                <p className="text-sm font-bold text-[#f0f0f0] mb-2 leading-snug">{memo.linkedin_post_headline}</p>
+              )}
+              <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line sm:[text-align:justify] [hyphens:auto]">{memo.linkedin_post}</p>
+            </div>
+
+            {/* Closing text — PDF only */}
+            <p id="pdf-closing-text">ShockBridge Pulse — From market shock to clean signal</p>
+
+            {/* PDF */}
+            <Button variant="secondary" size="sm" onClick={handlePrint} className="no-print">
+              Export PDF
+            </Button>
+          </div>
+        ) : !isCreator ? (
+          <div className="border-t border-[#2d3148] pt-6">
+            <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 text-center">
+              <p className="text-amber-400 font-medium mb-1">
+                X post + LinkedIn post + PDF export
+              </p>
+              <p className="text-[#9ca3af] text-sm mb-4">
+                Upgrade to Creator for publish-ready social content, in-depth analysis, and PDF export.
+              </p>
+              <Link href="/#pricing">
+                <Button size="sm">Get Creator $19</Button>
+              </Link>
+            </div>
+          </div>
+        ) : null}
+
+        {/* Actions */}
+        <div className="flex gap-3 pt-2 no-print">
+          <CopyButton
+            text={`${memo.title}\n\n${memo.summary}${memo.first_order_effects ? `\n\nFirst-order effects:\n${memo.first_order_effects.map((e) => `• ${e}`).join("\n")}` : ""}`}
+            label="memo"
+          />
+          <button
+            onClick={onReset}
+            className="text-xs text-[#6b7280] hover:text-[#f0f0f0] transition-colors"
+          >
+            ← Generate another
+          </button>
+        </div>
+
       </div>
     </div>
   );

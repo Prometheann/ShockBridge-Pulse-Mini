@@ -22,13 +22,13 @@ export function Footer() {
           </div>
 
           <nav className="flex gap-6 text-sm text-[#6b7280]">
-            <Link href="#pricing" className="hover:text-[#f0f0f0] transition-colors">
+            <Link href="/#pricing" className="hover:text-[#f0f0f0] transition-colors">
               Pricing
             </Link>
-            <Link href="#faq" className="hover:text-[#f0f0f0] transition-colors">
+            <Link href="/#faq" className="hover:text-[#f0f0f0] transition-colors">
               FAQ
             </Link>
-            <Link href="#about" className="hover:text-[#f0f0f0] transition-colors">
+            <Link href="/#about" className="hover:text-[#f0f0f0] transition-colors">
               About
             </Link>
             <Link href="/generate" className="hover:text-[#f0f0f0] transition-colors">

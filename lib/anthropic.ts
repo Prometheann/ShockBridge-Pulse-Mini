@@ -39,7 +39,11 @@ Analyst thesis / additional context: ${input.optionalNote || "None provided"}
 
 Produce a deep, publication-quality scenario note. Return exactly this JSON — nothing else:
 {
-  "title": "precise, authoritative title that captures the core tension (max 14 words)",
+  "title": "full title combining all parts below, separated by ' — '",
+  "title_hook": "2-3 words MAX — the event type only, no company name (e.g. 'EARNINGS MISS' or 'RATE SHOCK' or 'OIL SPIKE'). ALL CAPS.",
+  "title_asset": "1-3 words — the company, ticker, or asset name only (e.g. 'NVIDIA' or 'FED' or 'BRL'). ALL CAPS.",
+  "title_bridge": "4-8 words — the mechanism or collision (e.g. 'Collides With Middle East Risk' or 'Hits an Overextended Market'). No trailing colon.",
+  "title_theme": "3-6 words — the core analytical theme (e.g. 'AI Premium Under Siege' or 'Dollar Breaks Its Anchor'). No trailing punctuation.",
   "summary": "3-4 sentences. Open with the non-obvious angle. State the core mechanism, the key tension, and what makes this event different from the obvious read. Write for a sophisticated reader.",
   "first_order_effects": [
     "effect + mechanism: who moves, what reprices, and why — immediately",
@@ -69,7 +73,9 @@ Produce a deep, publication-quality scenario note. Return exactly this JSON — 
     "specific indicator or event with timeframe",
     "specific indicator or event with timeframe"
   ],
+  "x_post_headline": "5-8 word punchy hook — the sharpest possible frame for this post",
   "x_post": "Max 280 characters. Lead with the sharpest, most provocative insight from the analysis. Make someone stop scrolling. Opinionated, direct, no hashtag spam.",
+  "linkedin_post_headline": "The precise analytical thesis this post is built on — max 12 words, statement form",
   "linkedin_post": "3-4 sentences. Lead with the non-obvious angle — not a summary of the event, but a genuine analytical insight a senior practitioner would share. Professional voice, not corporate speak. No emojis. End with the key question or implication."
 }`;
 }

@@ -17,6 +17,7 @@ export default function GeneratePage() {
   const [memo, setMemo] = useState<MemoOutput | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [credits, setCredits] = useState<CreditState | null>(null);
+  const [lastInput, setLastInput] = useState<MemoInput | null>(null);
 
   // Code redeem state
   const [code, setCode] = useState("");
@@ -56,6 +57,7 @@ export default function GeneratePage() {
 
       const updated = decrementCredit();
       setCredits(updated);
+      setLastInput(input);
       setMemo(data.memo);
       setStep("result");
     } catch (err) {
@@ -186,6 +188,7 @@ export default function GeneratePage() {
             <MemoResult
               memo={memo}
               plan={currentPlan}
+              input={lastInput ?? undefined}
               onReset={() => {
                 setMemo(null);
                 setStep("form");
