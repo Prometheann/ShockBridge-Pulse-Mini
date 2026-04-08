@@ -81,7 +81,7 @@ export default function PdfPreview() {
         /* Cover */
         .cover { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 18mm; width: 210mm; height: 297mm; background: #0a0f1e; position: relative; margin: 12px auto; }
         .cover-accent { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #f59e0b; }
-        .cover-icon { width: 640px; height: 380px; object-fit: cover; object-position: center 38%; display: block; margin-bottom: 0; }
+        .cover-icon { width: 500px; height: 296px; object-fit: cover; object-position: center 38%; display: block; margin-bottom: 0; }
         .cover-rule { width: 52px; height: 3px; background: #f59e0b; margin-bottom: 10px; }
         .cover-type { font-size: 22pt; font-weight: 300; color: #f1f5f9; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
         .cover-plan { font-size: 13pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 10px; }

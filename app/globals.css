@@ -272,10 +272,10 @@ p, li {
   /* Full logo — large, centered, transparent padding cropped */
   #pdf-cover-logo-icon {
     display: block !important;
-    width: 640px !important;
-    height: 320px !important;
+    width: 500px !important;
+    height: 296px !important;
     object-fit: cover !important;
-    object-position: center 45% !important;
+    object-position: center 38% !important;
     margin-bottom: 0 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
