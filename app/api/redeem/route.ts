@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         valid: true,
         plan: "creator",
-        message: "Creator plan unlocked! 20 memos + X post + LinkedIn post + PDF export.",
+        message: "Creator plan unlocked! 15 memos + X post + LinkedIn post + PDF export.",
       });
     }
 
