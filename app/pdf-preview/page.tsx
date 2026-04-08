@@ -79,7 +79,7 @@ export default function PdfPreview() {
         /* Closing text */
         .closing { text-align: center; font-size: 9pt; font-weight: 400; color: #64748b; letter-spacing: 0.08em; padding-top: 0; position: absolute; left: 24mm; right: 24mm; bottom: 16mm; }
         /* Cover */
-        .cover { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 18mm; width: 210mm; height: 297mm; background: #0a0f1e; position: relative; margin: 12px auto; }
+        .cover { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 44mm; width: 210mm; height: 297mm; background: #0a0f1e; position: relative; margin: 12px auto; }
         .cover-accent { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #f59e0b; }
         .cover-icon { width: 500px; height: 296px; object-fit: cover; object-position: center 38%; display: block; margin-bottom: 0; }
         .cover-rule { width: 52px; height: 3px; background: #f59e0b; margin-top: 28px; margin-bottom: 10px; }
