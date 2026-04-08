@@ -300,7 +300,8 @@ p, li {
     width: 52px;
     height: 3px;
     background: #f59e0b !important;
-    margin-bottom: 12px;
+    margin-top: 28px;
+    margin-bottom: 10px;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
