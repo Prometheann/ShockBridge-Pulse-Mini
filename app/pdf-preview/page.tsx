@@ -79,14 +79,14 @@ export default function PdfPreview() {
         /* Closing text */
         .closing { text-align: center; font-size: 9pt; font-weight: 400; color: #64748b; letter-spacing: 0.08em; padding-top: 0; position: absolute; left: 24mm; right: 24mm; bottom: 16mm; }
         /* Cover */
-        .cover { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 210mm; height: 297mm; background: #0a0f1e; position: relative; margin: 12px auto; }
+        .cover { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 4mm; width: 210mm; height: 297mm; background: #0a0f1e; position: relative; margin: 12px auto; }
         .cover-accent { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #f59e0b; }
-        .cover-icon { width: 640px; height: auto; margin-bottom: 36px; }
-        .cover-rule { width: 52px; height: 3px; background: #f59e0b; margin-bottom: 28px; }
-        .cover-type { font-size: 22pt; font-weight: 300; color: #f1f5f9; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
-        .cover-plan { font-size: 13pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 36px; }
+        .cover-icon { width: 640px; height: 320px; object-fit: cover; object-position: center 45%; display: block; margin-bottom: 0; }
+        .cover-rule { width: 52px; height: 3px; background: #f59e0b; margin-bottom: 10px; }
+        .cover-type { font-size: 22pt; font-weight: 300; color: #f1f5f9; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
+        .cover-plan { font-size: 13pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 10px; }
         .cover-date { font-size: 8.5pt; color: #475569; letter-spacing: 0.06em; margin-bottom: 0; }
-        .cover-creator-gap { height: 48px; display: block; }
+        .cover-creator-gap { height: 12px; display: block; }
         .cover-creator { font-size: 9.5pt; color: #64748b; letter-spacing: 0.08em; }
         .cover-disc { position: absolute; bottom: 18mm; left: 0; right: 0; text-align: center; font-size: 11pt; color: #475569; letter-spacing: 0.04em; }
         .page-label { position: absolute; top: 4px; right: 8px; font-size: 9px; background: #f59e0b; color: #000; padding: 2px 6px; border-radius: 3px; font-weight: 700; z-index: 999; }

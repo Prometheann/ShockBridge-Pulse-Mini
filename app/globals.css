@@ -241,7 +241,8 @@ p, li {
     display: flex !important;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 4mm;
     width: 210mm;
     height: 297mm;
     background: #0a0f1e !important;
@@ -268,12 +269,14 @@ p, li {
     align-items: center;
   }
 
-  /* Full logo — large, centered, no filter (already correctly coloured) */
+  /* Full logo — large, centered, transparent padding cropped */
   #pdf-cover-logo-icon {
     display: block !important;
     width: 640px !important;
-    height: auto !important;
-    margin-bottom: 36px !important;
+    height: 320px !important;
+    object-fit: cover !important;
+    object-position: center 45% !important;
+    margin-bottom: 0 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -281,7 +284,7 @@ p, li {
   /* Creator credit gap + text */
   #pdf-cover-creator-gap {
     display: block !important;
-    height: 48px !important;
+    height: 16px !important;
   }
 
   #pdf-cover-creator {
@@ -297,7 +300,7 @@ p, li {
     width: 52px;
     height: 3px;
     background: #f59e0b !important;
-    margin-bottom: 28px;
+    margin-bottom: 12px;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -308,7 +311,7 @@ p, li {
     color: #f1f5f9 !important;
     letter-spacing: 0.14em !important;
     text-transform: uppercase !important;
-    margin: 0 0 10px 0 !important;
+    margin: 0 0 6px 0 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -319,7 +322,7 @@ p, li {
     color: #f59e0b !important;
     letter-spacing: 0.22em !important;
     text-transform: uppercase !important;
-    margin: 0 0 36px 0 !important;
+    margin: 0 0 12px 0 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
