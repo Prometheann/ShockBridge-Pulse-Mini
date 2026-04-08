@@ -31,6 +31,9 @@ export function Footer() {
             <Link href="/#about" className="hover:text-[#f0f0f0] transition-colors">
               About
             </Link>
+            <a href="mailto:help@shockbridgepulse.com" className="hover:text-[#f0f0f0] transition-colors">
+              Help
+            </a>
             <Link href="/generate" className="hover:text-[#f0f0f0] transition-colors">
               Generate
             </Link>

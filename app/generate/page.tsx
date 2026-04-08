@@ -132,7 +132,17 @@ export default function GeneratePage() {
           <div>
             {error && (
               <div className="mb-4 bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-red-400 text-sm">
-                {error}
+                {error}{" "}
+                <span className="text-[#9ca3af]">
+                  If this keeps happening, contact{" "}
+                  <a
+                    href="mailto:help@shockbridgepulse.com"
+                    className="underline hover:text-[#f0f0f0] transition-colors"
+                  >
+                    help@shockbridgepulse.com
+                  </a>
+                  .
+                </span>
               </div>
             )}
             {codeStatus === "success" && (
