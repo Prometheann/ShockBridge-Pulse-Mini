@@ -284,7 +284,7 @@ p, li {
   /* Creator credit gap + text */
   #pdf-cover-creator-gap {
     display: block !important;
-    height: 16px !important;
+    height: 12px !important;
   }
 
   #pdf-cover-creator {
@@ -323,7 +323,7 @@ p, li {
     color: #f59e0b !important;
     letter-spacing: 0.22em !important;
     text-transform: uppercase !important;
-    margin: 0 0 12px 0 !important;
+    margin: 0 0 10px 0 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
