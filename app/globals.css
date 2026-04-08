@@ -694,8 +694,8 @@ p, li {
     font-weight: 400 !important;
     color: #64748b !important;
     letter-spacing: 0.08em !important;
-    padding-top: 16px !important;
-    border-top: 1px solid #1e293b !important;
+    padding-top: 0 !important;
+    border-top: none !important;
     margin-top: auto !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
