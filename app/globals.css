@@ -271,7 +271,7 @@ p, li {
   /* Full logo — large, centered, no filter (already correctly coloured) */
   #pdf-cover-logo-icon {
     display: block !important;
-    width: 320px !important;
+    width: 640px !important;
     height: auto !important;
     margin-bottom: 36px !important;
     -webkit-print-color-adjust: exact;
