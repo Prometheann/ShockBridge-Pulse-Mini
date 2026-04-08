@@ -115,13 +115,9 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
       <div id="pdf-cover">
         <div id="pdf-cover-accent" />
         <div id="pdf-cover-inner">
-          {/* Icon only — large, amber-filtered */}
+          {/* Full logo — transparent background, large */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-icon.png" alt="ShockBridge Pulse" id="pdf-cover-logo-icon" />
-          {/* Brand text: ShockBridge white · Pulse amber */}
-          <p id="pdf-cover-brand">
-            <span id="pdf-cover-brand-white">ShockBridge</span><span id="pdf-cover-brand-amber"> Pulse</span>
-          </p>
+          <img src="/logo-transparent.png" alt="ShockBridge Pulse" id="pdf-cover-logo-icon" />
           <div id="pdf-cover-rule" />
           <p id="pdf-cover-type">Scenario Note</p>
           <p id="pdf-cover-plan">Creator</p>

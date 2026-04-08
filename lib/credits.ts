@@ -5,7 +5,7 @@ import { CreditState, Plan } from "@/types/memo";
 const STORAGE_KEY = "sbp_credits";
 const FREE_MEMOS = 1;
 const BASIC_MEMOS = 5;
-const CREATOR_MEMOS = 20;
+const CREATOR_MEMOS = 15;
 
 export function getCredits(): CreditState {
   if (typeof window === "undefined") {

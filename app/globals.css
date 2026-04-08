@@ -268,35 +268,12 @@ p, li {
     align-items: center;
   }
 
-  /* Icon — large, centered, amber-filtered */
+  /* Full logo — large, centered, no filter (already correctly coloured) */
   #pdf-cover-logo-icon {
     display: block !important;
-    width: 200px !important;
+    width: 320px !important;
     height: auto !important;
-    margin-bottom: 32px !important;
-    filter: brightness(0) saturate(100%) invert(64%) sepia(100%) saturate(700%) hue-rotate(356deg) brightness(96%) contrast(106%) !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  /* Brand name — ShockBridge (white) + Pulse (amber) */
-  #pdf-cover-brand {
-    font-size: 38pt !important;
-    font-weight: 800 !important;
-    white-space: nowrap !important;
-    text-align: center !important;
-    margin: 0 0 36px 0 !important;
-    line-height: 1.1 !important;
-  }
-
-  #pdf-cover-brand-white {
-    color: #f8fafc !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  #pdf-cover-brand-amber {
-    color: #f59e0b !important;
+    margin-bottom: 36px !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }

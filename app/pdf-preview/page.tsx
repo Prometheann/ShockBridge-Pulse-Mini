@@ -81,10 +81,7 @@ export default function PdfPreview() {
         /* Cover */
         .cover { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 210mm; height: 297mm; background: #0a0f1e; position: relative; margin: 12px auto; }
         .cover-accent { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #f59e0b; }
-        .cover-icon { width: 200px; height: auto; margin-bottom: 32px; filter: brightness(0) saturate(100%) invert(64%) sepia(100%) saturate(700%) hue-rotate(356deg) brightness(96%) contrast(106%); }
-        .cover-brand { font-size: 38pt; font-weight: 800; white-space: nowrap; margin-bottom: 36px; text-align: center; }
-        .cover-brand .w { color: #f8fafc; }
-        .cover-brand .a { color: #f59e0b; }
+        .cover-icon { width: 320px; height: auto; margin-bottom: 36px; }
         .cover-rule { width: 52px; height: 3px; background: #f59e0b; margin-bottom: 28px; }
         .cover-type { font-size: 22pt; font-weight: 300; color: #f1f5f9; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
         .cover-plan { font-size: 13pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 36px; }
@@ -100,8 +97,7 @@ export default function PdfPreview() {
         <span className="page-label">PAGE 1 — COVER</span>
         <div className="cover-accent" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo-icon.png" alt="ShockBridge Pulse" className="cover-icon" />
-        <div className="cover-brand"><span className="w">ShockBridge</span><span className="a"> Pulse</span></div>
+        <img src="/logo-transparent.png" alt="ShockBridge Pulse" className="cover-icon" />
         <div className="cover-rule" />
         <div className="cover-type">Scenario Note</div>
         <div className="cover-plan">Creator</div>

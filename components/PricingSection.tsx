@@ -13,7 +13,7 @@ const basicFeatures = [
 
 const creatorExtras = [
   "Everything in Basic",
-  "20 memos",
+  "15 memos",
   "Deep earnings shock breakdown (EPS vs consensus, guidance, sector rotation)",
   "X post (ready to publish)",
   "LinkedIn post (ready to publish)",
