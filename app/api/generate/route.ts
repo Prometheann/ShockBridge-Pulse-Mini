@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getOpenAIClient, FREE_SYSTEM_PROMPT, buildFreePrompt, BASIC_SYSTEM_PROMPT, buildBasicPrompt } from "@/lib/openai";
 import { getAnthropicClient, CREATOR_SYSTEM_PROMPT, buildCreatorPrompt } from "@/lib/anthropic";
+import { signToken, verifyToken } from "@/lib/token";
 import { MemoInput, MemoOutput } from "@/types/memo";
 
 // Simple in-memory rate limiter (resets on server restart — fine for v1)
@@ -40,7 +41,7 @@ function resolveServerPlan(code: string): "free" | "basic" | "creator" {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { input, code } = body as { input: MemoInput; code?: string };
+    const { input, code, token } = body as { input: MemoInput; code?: string; token?: string };
 
     if (!input?.eventType || !input?.region || !input?.sectorAsset || !input?.horizon || !input?.tone) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
@@ -59,6 +60,24 @@ export async function POST(request: NextRequest) {
     const safePlan = resolveServerPlan(code ?? "");
 
     const isPaid = safePlan === "basic" || safePlan === "creator";
+
+    // For paid plans, validate usage token
+    let usagePayload = token ? verifyToken(token) : null;
+    if (isPaid) {
+      const normalizedCode = (code ?? "").trim().toUpperCase();
+      if (!usagePayload || usagePayload.code !== normalizedCode || usagePayload.plan !== safePlan) {
+        return NextResponse.json(
+          { error: "Invalid session. Please re-enter your access code.", code: "INVALID_TOKEN" },
+          { status: 403 }
+        );
+      }
+      if (usagePayload.memosUsed >= usagePayload.memosTotal) {
+        return NextResponse.json(
+          { error: "All memos used for this code.", code: "QUOTA_EXCEEDED" },
+          { status: 403 }
+        );
+      }
+    }
 
     if (!isPaid) {
       const ip = getIP(request);
@@ -128,7 +147,17 @@ export async function POST(request: NextRequest) {
       console.error("[/api/generate] JSON parse failed. Content length:", content.length, "Last 200 chars:", content.slice(-200));
       throw new Error("Model returned invalid JSON");
     }
-    return NextResponse.json({ memo });
+
+    // Update usage token for paid plans
+    let updatedToken: string | undefined;
+    let memosRemaining: number | undefined;
+    if (isPaid && usagePayload) {
+      const updated = { ...usagePayload, memosUsed: usagePayload.memosUsed + 1 };
+      updatedToken = signToken(updated);
+      memosRemaining = Math.max(0, updated.memosTotal - updated.memosUsed);
+    }
+
+    return NextResponse.json({ memo, token: updatedToken, memosRemaining });
   } catch (err) {
     console.error("[/api/generate]", err);
     return NextResponse.json(

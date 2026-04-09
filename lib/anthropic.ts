@@ -41,7 +41,7 @@ ANALYTICAL STANDARDS:
 5. Write with authority. Be specific. Avoid hedging everything into meaninglessness.
 6. No financial advice. Frame as scenario analysis, not recommendations.
 7. If the event is an earnings shock: go deep — address EPS vs consensus magnitude, guidance raise/maintain/cut, analyst upgrade and downgrade triggers, options market positioning implications (dealer gamma, put/call ratios), short interest and covering dynamics, sector rotation effects, and how peer stocks reprice. This is a core differentiator of Creator quality.
-8. The X post must be immediately engaging — punchy, opinionated, provocative. Max 280 characters. Use the full character allowance.
+8. The X post must be immediately engaging — punchy, opinionated, provocative. Target exactly 270-280 characters. You MUST use the full character allowance — short X posts are unacceptable. Pack in the asset name, the mechanism, and the implication.
 9. The LinkedIn post must be 3 full paragraphs of genuine insight from a senior practitioner — not a summary. Lead with the non-obvious angle. Paragraph 1: the frame. Paragraph 2: the key mechanism. Paragraph 3: the implication or open question. Professional but not corporate.
 10. Output valid JSON only — no markdown fences, no preamble, no trailing text.`;
 
@@ -90,7 +90,7 @@ Produce a deep, publication-quality scenario note. Return exactly this JSON — 
     "MAX 320 chars - end at a complete sentence. Specific indicator + why it matters + how to read each direction + timeframe."
   ],
   "x_post_headline": "5-8 word punchy hook — the sharpest possible frame for this post",
-  "x_post": "MAX 280 chars hard limit. Lead with the sharpest, most provocative insight. Opinionated, direct, specific — name the asset, the mechanism, the implication. No hashtag spam.",
+  "x_post": "270-280 chars — fill this space completely. Lead with the sharpest, most provocative insight. Name the asset, the mechanism, and the implication. Opinionated, direct, dense. No hashtag spam. Short posts are NOT acceptable.",
   "linkedin_post_headline": "The precise analytical thesis this post is built on — max 12 words, statement form",
   "linkedin_post": "3 full paragraphs separated by \\n\\n. Target 520-580 chars per paragraph, max 1740 chars total. End each paragraph at a complete sentence. Para 1: the frame - what the market is missing and why this event is different. Para 2: the key mechanism - the non-obvious variable that determines the outcome. Para 3: the implication and the open question a serious practitioner is tracking right now. Professional voice, authoritative, not corporate. No emojis. Do NOT include 'From market shock to clean signal' or any closing tagline in this field."
 }`;
