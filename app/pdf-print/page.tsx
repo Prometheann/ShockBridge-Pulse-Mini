@@ -98,7 +98,7 @@ const CSS = `
   .closing {
     text-align: center; font-size: 9pt; font-weight: 400; color: #64748b;
     letter-spacing: 0.08em; white-space: nowrap;
-    position: absolute; left: 24mm; right: 24mm; bottom: 16mm;
+    position: absolute; left: 24mm; right: 24mm; bottom: 4mm;
   }
   .cover {
     display: flex; flex-direction: column; align-items: center;

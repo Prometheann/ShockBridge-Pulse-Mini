@@ -77,7 +77,7 @@ export default function PdfPreview() {
         .social-box .headline { font-size: 11.5pt; font-weight: 700; color: #f8fafc; margin-bottom: 10px; }
         .social-box .post-text { font-size: 12pt; color: #94a3b8; text-align: justify; line-height: 1.85; }
         /* Closing text */
-        .closing { text-align: center; font-size: 9pt; font-weight: 400; color: #64748b; letter-spacing: 0.08em; padding-top: 0; position: absolute; left: 24mm; right: 24mm; bottom: 16mm; }
+        .closing { text-align: center; font-size: 9pt; font-weight: 400; color: #64748b; letter-spacing: 0.08em; padding-top: 0; position: absolute; left: 24mm; right: 24mm; bottom: 4mm; }
         /* Cover */
         .cover { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 44mm; width: 210mm; height: 297mm; background: #0a0f1e; position: relative; margin: 12px auto; }
         .cover-accent { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #f59e0b; }
