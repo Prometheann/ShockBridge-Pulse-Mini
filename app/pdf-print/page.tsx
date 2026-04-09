@@ -86,17 +86,19 @@ const CSS = `
   ul { padding: 0; list-style: none; }
   li {
     display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #1a2540;
-    font-size: 12pt; line-height: 1.8; color: #cbd5e1; text-align: left;
+    font-size: 12pt; line-height: 1.8; color: #cbd5e1; text-align: justify;
+    hyphens: auto; word-break: normal; overflow-wrap: normal;
   }
   li:last-child { border-bottom: none; }
   li .arrow { color: #f59e0b; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
   .body-p {
     color: #cbd5e1; font-size: 12pt; line-height: 1.9;
-    text-align: left;
+    text-align: justify; hyphens: auto; word-break: normal; overflow-wrap: normal;
   }
   .body-p + .body-p { margin-top: 20px; }
   .summary {
-    font-size: 12pt; color: #94a3b8; line-height: 1.95; text-align: left;
+    font-size: 12pt; color: #94a3b8; line-height: 1.95; text-align: justify;
+    hyphens: auto; word-break: normal; overflow-wrap: normal;
     border-left: 3px solid #f59e0b; padding-left: 14px;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
@@ -120,7 +122,7 @@ const CSS = `
   }
   .social-box .post-label { font-size: 7pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 8px; }
   .social-box .headline { font-size: 11pt; font-weight: 700; color: #f8fafc; margin-bottom: 8px; line-height: 1.3; }
-  .social-box .post-text { font-size: 11pt; color: #94a3b8; text-align: left; line-height: 1.8; }
+  .social-box .post-text { font-size: 11pt; color: #94a3b8; text-align: justify; line-height: 1.8; hyphens: auto; word-break: normal; overflow-wrap: normal; }
   .post-text + .post-text { margin-top: 12px; }
   .closing {
     text-align: center; font-size: 9pt; font-weight: 400; color: #64748b;

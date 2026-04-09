@@ -26,7 +26,8 @@ h1, h2, h3, h4, h5, h6 {
 p, li {
   text-wrap: pretty;
   hyphens: auto;
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 /* Justify body text on sm+ (640px+) */
@@ -47,7 +48,8 @@ p, li {
 .memo-text {
   text-align: justify;
   hyphens: auto;
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: normal;
   line-height: 1.7;
 }
 
