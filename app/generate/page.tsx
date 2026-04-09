@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { GeneratorForm } from "@/components/GeneratorForm";
 import { MemoResult } from "@/components/MemoResult";
 import { Button } from "@/components/ui/Button";
-import { getCredits, decrementCredit, applyCode, hasCredits, isCreator } from "@/lib/credits";
+import { getCredits, decrementCredit, applyCode, hasCredits, isCreator, getStoredCode } from "@/lib/credits";
 import { MemoInput, MemoOutput, CreditState, Plan } from "@/types/memo";
 
 type Step = "form" | "loading" | "result" | "paywall";
@@ -42,7 +42,7 @@ export default function GeneratePage() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ input, plan }),
+        body: JSON.stringify({ input, plan, code: getStoredCode() }),
       });
 
       const data = await res.json();
@@ -77,7 +77,7 @@ export default function GeneratePage() {
       });
       const data = await res.json();
       if (res.ok && data.valid) {
-        const updated = applyCode(data.plan as Plan);
+        const updated = applyCode(data.plan as Plan, code);
         setCredits(updated);
         setCodeStatus("success");
         setCodeMessage(data.message);

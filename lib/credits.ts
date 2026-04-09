@@ -38,7 +38,7 @@ export function decrementCredit(): CreditState {
   return updated;
 }
 
-export function applyCode(plan: Plan): CreditState {
+export function applyCode(plan: Plan, code: string): CreditState {
   const memos = plan === "creator" ? CREATOR_MEMOS : BASIC_MEMOS;
   const credits: CreditState = {
     plan,
@@ -47,7 +47,13 @@ export function applyCode(plan: Plan): CreditState {
     unlockedAt: Date.now(),
   };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(credits));
+  localStorage.setItem("sbp_code", code.trim().toUpperCase());
   return credits;
+}
+
+export function getStoredCode(): string {
+  if (typeof window === "undefined") return "";
+  return localStorage.getItem("sbp_code") ?? "";
 }
 
 export function hasCredits(): boolean {

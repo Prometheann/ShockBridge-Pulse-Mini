@@ -27,10 +27,20 @@ function getIP(req: NextRequest): string {
   );
 }
 
+function resolveServerPlan(code: string): "free" | "basic" | "creator" {
+  if (!code) return "free";
+  const normalized = code.trim().toUpperCase();
+  const basicCodes = (process.env.BASIC_CODES || "").split(",").map(c => c.trim().toUpperCase()).filter(Boolean);
+  const creatorCodes = (process.env.CREATOR_CODES || "").split(",").map(c => c.trim().toUpperCase()).filter(Boolean);
+  if (creatorCodes.includes(normalized)) return "creator";
+  if (basicCodes.includes(normalized)) return "basic";
+  return "free";
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { input, plan } = body as { input: MemoInput; plan?: string };
+    const { input, code } = body as { input: MemoInput; code?: string };
 
     if (!input?.eventType || !input?.region || !input?.sectorAsset || !input?.horizon || !input?.tone) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
@@ -45,8 +55,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Input too long." }, { status: 400 });
     }
 
-    // Validate plan value
-    const safePlan = ["free", "basic", "creator"].includes(plan ?? "") ? plan : "free";
+    // Derive plan from code server-side — never trust client-sent plan
+    const safePlan = resolveServerPlan(code ?? "");
 
     const isPaid = safePlan === "basic" || safePlan === "creator";
 

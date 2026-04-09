@@ -173,7 +173,12 @@ export default function PdfPrint() {
       // Wait for fonts + images to load, then generate PDF
       setTimeout(async () => {
         setStatus("generating");
-        await downloadAsPDF();
+        try {
+          await downloadAsPDF();
+        } catch (err) {
+          console.error("PDF generation failed:", err);
+          alert("PDF generation failed. Please try again.");
+        }
         setStatus("done");
         window.close();
       }, 1800);
