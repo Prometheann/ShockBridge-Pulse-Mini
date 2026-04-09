@@ -1,22 +1,28 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GeneratorForm } from "@/components/GeneratorForm";
 import { MemoResult } from "@/components/MemoResult";
 import { Button } from "@/components/ui/Button";
-import { getCredits, decrementCredit, applyCode, hasCredits, isCreator, getStoredCode } from "@/lib/credits";
 import { MemoInput, MemoOutput, CreditState, Plan } from "@/types/memo";
 
 type Step = "form" | "loading" | "result" | "paywall";
+
+const PLAN_MEMOS: Record<Plan, number> = { free: 1, basic: 5, creator: 15 };
+
+function initialCredits(): CreditState {
+  return { plan: "free", memosRemaining: 1, memosTotal: 1 };
+}
 
 export default function GeneratePage() {
   const [step, setStep] = useState<Step>("form");
   const [memo, setMemo] = useState<MemoOutput | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [credits, setCredits] = useState<CreditState | null>(null);
+  const [credits, setCredits] = useState<CreditState>(initialCredits());
+  const [accessCode, setAccessCode] = useState<string>("");
   const [lastInput, setLastInput] = useState<MemoInput | null>(null);
 
   // Code redeem state
@@ -24,12 +30,8 @@ export default function GeneratePage() {
   const [codeStatus, setCodeStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [codeMessage, setCodeMessage] = useState("");
 
-  useEffect(() => {
-    setCredits(getCredits());
-  }, []);
-
   async function handleGenerate(input: MemoInput) {
-    if (!hasCredits()) {
+    if (credits.memosRemaining <= 0) {
       setStep("paywall");
       return;
     }
@@ -38,11 +40,10 @@ export default function GeneratePage() {
     setError(null);
 
     try {
-      const plan = credits?.plan ?? "free";
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ input, plan, code: getStoredCode() }),
+        body: JSON.stringify({ input, code: accessCode }),
       });
 
       const data = await res.json();
@@ -55,8 +56,7 @@ export default function GeneratePage() {
         throw new Error(data.error || "Generation failed.");
       }
 
-      const updated = decrementCredit();
-      setCredits(updated);
+      setCredits(prev => ({ ...prev, memosRemaining: Math.max(0, prev.memosRemaining - 1) }));
       setLastInput(input);
       setMemo(data.memo);
       setStep("result");
@@ -77,8 +77,10 @@ export default function GeneratePage() {
       });
       const data = await res.json();
       if (res.ok && data.valid) {
-        const updated = applyCode(data.plan as Plan, code);
-        setCredits(updated);
+        const plan = data.plan as Plan;
+        const memos = PLAN_MEMOS[plan];
+        setCredits({ plan, memosRemaining: memos, memosTotal: memos, unlockedAt: Date.now() });
+        setAccessCode(code.trim().toUpperCase());
         setCodeStatus("success");
         setCodeMessage(data.message);
         setStep("form");
@@ -92,7 +94,7 @@ export default function GeneratePage() {
     }
   }
 
-  const currentPlan: Plan = credits?.plan ?? "free";
+  const currentPlan: Plan = credits.plan;
 
   return (
     <div className="min-h-screen bg-[#0f1117] flex flex-col">
@@ -100,24 +102,18 @@ export default function GeneratePage() {
 
       <main className="flex-1 max-w-2xl mx-auto w-full px-6 py-12">
         {/* Credit counter */}
-        {credits && (
-          <div className="flex items-center justify-between mb-8 bg-[#1a1d27] border border-[#2d3148] rounded-xl px-5 py-3">
-            <div className="flex items-center gap-3">
-              <span className="text-xs text-[#9ca3af] uppercase tracking-wider">Plan</span>
-              <span className="text-sm font-semibold text-amber-500 capitalize">{currentPlan}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-xs text-[#9ca3af]">Memos remaining</span>
-              <span
-                className={`text-sm font-bold ${
-                  credits.memosRemaining > 0 ? "text-[#f0f0f0]" : "text-red-400"
-                }`}
-              >
-                {credits.memosRemaining}
-              </span>
-            </div>
+        <div className="flex items-center justify-between mb-8 bg-[#1a1d27] border border-[#2d3148] rounded-xl px-5 py-3">
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-[#9ca3af] uppercase tracking-wider">Plan</span>
+            <span className="text-sm font-semibold text-amber-500 capitalize">{currentPlan}</span>
           </div>
-        )}
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-[#9ca3af]">Memos remaining</span>
+            <span className={`text-sm font-bold ${credits.memosRemaining > 0 ? "text-[#f0f0f0]" : "text-red-400"}`}>
+              {credits.memosRemaining}
+            </span>
+          </div>
+        </div>
 
         {/* Title */}
         <div className="mb-8">
@@ -135,13 +131,9 @@ export default function GeneratePage() {
                 {error}{" "}
                 <span className="text-[#9ca3af]">
                   If this keeps happening, contact{" "}
-                  <a
-                    href="mailto:help@shockbridgepulse.com"
-                    className="underline hover:text-[#f0f0f0] transition-colors"
-                  >
+                  <a href="mailto:help@shockbridgepulse.com" className="underline hover:text-[#f0f0f0] transition-colors">
                     help@shockbridgepulse.com
-                  </a>
-                  .
+                  </a>.
                 </span>
               </div>
             )}
@@ -211,22 +203,18 @@ export default function GeneratePage() {
         {step === "paywall" && (
           <div className="bg-[#1a1d27] border border-[#2d3148] rounded-2xl p-8 text-center">
             <p className="text-2xl font-bold text-[#f0f0f0] mb-3">
-              Free demo memo used
+              {currentPlan === "free" ? "Free demo memo used" : "All memos used"}
             </p>
             <p className="text-[#9ca3af] mb-6 leading-relaxed">
-              You&apos;ve used your free demo. Purchase a plan to generate more memos — or
-              redeem an existing access code below.
+              {currentPlan === "free"
+                ? "You've used your free demo. Purchase a plan to generate more memos — or redeem an existing access code below."
+                : "You've used all your memos for this session. Enter your code again to continue."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <Link href="/#pricing" className="w-full sm:w-auto">
                 <Button size="lg" className="w-full sm:w-auto">See Plans</Button>
               </Link>
-              <Button
-                size="lg"
-                variant="secondary"
-                onClick={() => setStep("form")}
-                className="w-full sm:w-auto"
-              >
+              <Button size="lg" variant="secondary" onClick={() => setStep("form")} className="w-full sm:w-auto">
                 Redeem a Code
               </Button>
             </div>
