@@ -140,8 +140,9 @@ const CSS = `
   .cover-type { font-size: 22pt; font-weight: 300; color: #f1f5f9; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
   .cover-plan { font-size: 13pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .cover-date { font-size: 8.5pt; color: #475569; letter-spacing: 0.06em; margin-bottom: 0; }
-  .cover-creator-gap { height: 12px; display: block; }
-  .cover-creator { font-size: 9.5pt; color: #64748b; letter-spacing: 0.08em; }
+  .cover-creator-gap { height: 40px; display: block; }
+  .cover-creator-label { font-size: 9pt; color: #64748b; letter-spacing: 0.10em; text-transform: uppercase; }
+  .cover-creator-name { font-size: 15pt; font-weight: 600; color: #e2e8f0; letter-spacing: 0.06em; margin-top: 8px; }
   .cover-disc { position: absolute; bottom: 18mm; left: 0; right: 0; text-align: center; font-size: 11pt; color: #475569; letter-spacing: 0.04em; }
 `;
 
@@ -219,7 +220,7 @@ export default function PdfPrint() {
       )}
 
       {/* PAGE 1 — Cover */}
-      <div className="cover">
+      <div className="cover" lang="en">
         <div className="cover-accent" />
         <div className="cover-icon" aria-label="ShockBridge Pulse" />
         <div className="cover-rule" />
@@ -227,12 +228,13 @@ export default function PdfPrint() {
         <div className="cover-plan">{plan}</div>
         <div className="cover-date">{date}</div>
         <span className="cover-creator-gap" />
-        <div className="cover-creator">Created by Rodolfo Pereira</div>
+        <div className="cover-creator-label">Created by</div>
+        <div className="cover-creator-name">Rodolfo Pereira</div>
         <div className="cover-disc">For research and writing purposes only. Not financial advice.</div>
       </div>
 
       {/* PAGE 2 — Scenario */}
-      <div className="page">
+      <div className="page" lang="en">
         <Header />
         <div className="content" style={{ paddingTop: "17mm" }}>
           <p className="if-plan">{plan.toUpperCase()}</p>
@@ -254,7 +256,7 @@ export default function PdfPrint() {
       </div>
 
       {/* PAGE 3 — Title + Summary */}
-      <div className="page">
+      <div className="page" lang="en">
         <Header />
         <div className="content content-top">
           <h2>
@@ -271,7 +273,7 @@ export default function PdfPrint() {
       </div>
 
       {/* PAGE 4 — First-order effects */}
-      <div className="page">
+      <div className="page" lang="en">
         <Header />
         <div className="content content-top">
           <span className="section-label">First-order effects</span>
@@ -286,7 +288,7 @@ export default function PdfPrint() {
 
       {/* PAGE 5 — Second-order effects */}
       {memo.second_order_effects && (
-        <div className="page">
+        <div className="page" lang="en">
           <Header />
           <div className="content content-top">
             <span className="section-label">Second-order effects</span>
@@ -302,7 +304,7 @@ export default function PdfPrint() {
 
       {/* PAGE 6 — Bullish path */}
       {memo.bullish_path && (
-        <div className="page">
+        <div className="page" lang="en">
           <Header />
           <div className="content content-top">
             <span className="section-label">Bullish path</span>
@@ -316,7 +318,7 @@ export default function PdfPrint() {
 
       {/* PAGE 7 — Bearish path */}
       {memo.bearish_path && (
-        <div className="page">
+        <div className="page" lang="en">
           <Header />
           <div className="content content-top">
             <span className="section-label">Bearish path</span>
@@ -330,7 +332,7 @@ export default function PdfPrint() {
 
       {/* PAGE 8 — Key uncertainties */}
       {memo.key_uncertainties && (
-        <div className="page">
+        <div className="page" lang="en">
           <Header />
           <div className="content content-top">
             <span className="section-label">Key uncertainties</span>
@@ -345,7 +347,7 @@ export default function PdfPrint() {
       )}
 
       {/* PAGE 9 — Watch next */}
-      <div className="page">
+      <div className="page" lang="en">
         <Header />
         <div className="content content-top">
           <span className="section-label">Watch next</span>
@@ -360,7 +362,7 @@ export default function PdfPrint() {
 
       {/* PAGE 10 — Content Outputs: Social */}
       {memo.x_post && memo.linkedin_post && (
-        <div className="page">
+        <div className="page" lang="en">
           <Header />
           <div className="content content-top" style={{ position: "relative", minHeight: "calc(297mm - 14mm - 12mm)" }}>
             <span className="section-label">Content Outputs: Social</span>
