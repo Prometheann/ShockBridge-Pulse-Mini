@@ -10,9 +10,7 @@ export function FinalCTASection() {
           <br />
           Start reading signal.
         </h2>
-        <p className="text-[#9ca3af] text-lg mb-8 [text-align:justify]"
-          style={{ hyphens: "auto", overflowWrap: "break-word" } as React.CSSProperties}
-          lang="en">
+        <p className="text-[#9ca3af] text-lg mb-8 text-center">
           ShockBridge Pulse helps you turn market movement into usable structure, faster.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
