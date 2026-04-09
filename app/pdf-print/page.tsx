@@ -3,6 +3,32 @@
 import { useEffect, useState } from "react";
 import { MemoOutput, MemoInput, Plan } from "@/types/memo";
 
+async function downloadAsPDF() {
+  const [{ default: jsPDF }, { default: html2canvas }] = await Promise.all([
+    import("jspdf"),
+    import("html2canvas"),
+  ]);
+
+  const pages = Array.from(document.querySelectorAll<HTMLElement>(".cover, .page"));
+  const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+
+  for (let i = 0; i < pages.length; i++) {
+    const canvas = await html2canvas(pages[i], {
+      scale: 2.5,
+      useCORS: true,
+      backgroundColor: "#0a0f1e",
+      width: pages[i].offsetWidth,
+      height: pages[i].offsetHeight,
+      logging: false,
+    });
+    const img = canvas.toDataURL("image/jpeg", 0.92);
+    if (i > 0) pdf.addPage();
+    pdf.addImage(img, "JPEG", 0, 0, 210, 297);
+  }
+
+  pdf.save("shockbridge-pulse-memo.pdf");
+}
+
 interface PrintData {
   memo: MemoOutput;
   input: MemoInput;
@@ -137,20 +163,27 @@ function Footer({ n }: { n: number }) {
 
 export default function PdfPrint() {
   const [data, setData] = useState<PrintData | null>(null);
+  const [status, setStatus] = useState<"loading" | "rendering" | "generating" | "done">("loading");
 
   useEffect(() => {
     const raw = sessionStorage.getItem("sbp_print_data");
     if (raw) {
       setData(JSON.parse(raw));
-      // Auto-print after fonts load
-      setTimeout(() => window.print(), 1200);
+      setStatus("rendering");
+      // Wait for fonts + images to load, then generate PDF
+      setTimeout(async () => {
+        setStatus("generating");
+        await downloadAsPDF();
+        setStatus("done");
+        window.close();
+      }, 1800);
     }
   }, []);
 
   if (!data) {
     return (
       <div style={{ color: "#f0f0f0", background: "#0f1117", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "sans-serif" }}>
-        Loading PDF...
+        Loading...
       </div>
     );
   }
@@ -164,6 +197,19 @@ export default function PdfPrint() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
+
+      {/* Status overlay */}
+      {status === "generating" && (
+        <div style={{
+          position: "fixed", inset: 0, background: "rgba(10,15,30,0.92)",
+          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+          zIndex: 9999, fontFamily: "Inter, sans-serif", gap: "16px"
+        }}>
+          <div style={{ width: "40px", height: "40px", border: "3px solid #f59e0b", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
+          <p style={{ color: "#f59e0b", fontSize: "13px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" }}>Generating PDF…</p>
+          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        </div>
+      )}
 
       {/* PAGE 1 — Cover */}
       <div className="cover">
