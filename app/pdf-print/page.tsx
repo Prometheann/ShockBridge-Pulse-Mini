@@ -98,7 +98,7 @@ const CSS = `
   .closing {
     text-align: center; font-size: 9pt; font-weight: 400; color: #64748b;
     letter-spacing: 0.08em; white-space: nowrap;
-    position: absolute; left: 24mm; right: 24mm; bottom: 4mm;
+    position: absolute; left: 24mm; right: 24mm; bottom: 14mm;
   }
   .cover {
     display: flex; flex-direction: column; align-items: center;
@@ -327,8 +327,8 @@ export default function PdfPrint() {
                 ))}
               </div>
             </div>
-            <p className="closing">ShockBridge Pulse — From market shock to clean signal</p>
           </div>
+          <p className="closing">ShockBridge Pulse — From market shock to clean signal</p>
           <Footer n={10} />
         </div>
       )}
