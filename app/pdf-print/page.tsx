@@ -9,6 +9,11 @@ async function downloadAsPDF(filename = "ShockBridge-Pulse-Memo") {
     import("html2canvas"),
   ]);
 
+  // Wait for all fonts to finish loading before capturing
+  await document.fonts.ready;
+
+  const PAGE_W_PX = 794; // 210mm at 96dpi
+  const PAGE_H_PX = 1123; // 297mm at 96dpi
   const pages = Array.from(document.querySelectorAll<HTMLElement>(".cover, .page"));
   const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
 
@@ -17,8 +22,9 @@ async function downloadAsPDF(filename = "ShockBridge-Pulse-Memo") {
       scale: 2,
       useCORS: true,
       backgroundColor: "#0a0f1e",
-      width: pages[i].offsetWidth,
-      height: pages[i].offsetHeight,
+      width: PAGE_W_PX,
+      height: PAGE_H_PX,
+      windowWidth: PAGE_W_PX,
       logging: false,
     });
     const img = canvas.toDataURL("image/jpeg", 0.92);
@@ -40,7 +46,7 @@ interface PrintData {
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: #555; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { background: #555; min-width: 210mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .page {
     width: 210mm; height: 297mm; background: #0a0f1e;
     margin: 12px auto; position: relative; overflow: hidden;
@@ -72,7 +78,7 @@ const CSS = `
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 24mm; -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  .page-footer .disc { font-size: 7pt; color: #475569; }
+  .page-footer .disc { font-size: 9pt; color: #475569; }
   .page-footer .num { font-size: 10pt; font-weight: 700; color: #f59e0b; }
   .content {
     position: absolute;
@@ -180,7 +186,7 @@ export default function PdfPrint() {
       const parsed = JSON.parse(raw) as PrintData;
       setData(parsed);
       setStatus("rendering");
-      // Wait for fonts + images to load, then generate PDF
+      // Wait for React to render, then fonts, then generate
       setTimeout(async () => {
         setStatus("generating");
         try {
@@ -191,7 +197,7 @@ export default function PdfPrint() {
         }
         setStatus("done");
         window.close();
-      }, 1800);
+      }, 600);
     }
   }, []);
 
