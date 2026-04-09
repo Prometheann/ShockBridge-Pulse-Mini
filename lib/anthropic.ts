@@ -28,7 +28,7 @@ Each section prints on exactly one A4 page. You MUST stay within these limits. A
 - Key uncertainties (4 bullets): max 320 chars per bullet. End each bullet at a full sentence.
 - Watch next (5 bullets): max 250 chars per bullet. End each bullet at a full sentence.
 - X post: max 280 chars hard limit. No exceptions.
-- LinkedIn post (3 paragraphs): fill the remaining page space after the X post — target 600–700 chars per paragraph (1800–2100 chars total). End each paragraph at a full sentence. This is the most expansive section — use the space.
+- LinkedIn post (3 paragraphs): fill the page space after the X post — target 520–580 chars per paragraph (1560–1740 chars total). End each paragraph at a full sentence. Leave room at the bottom for the closing tagline "ShockBridge Pulse — From market shock to clean signal" — never exceed 1740 chars total.
 
 ANALYTICAL STANDARDS:
 1. Every effect must have a clear causal mechanism — not a statement, but a chain of causality.
@@ -89,6 +89,6 @@ Produce a deep, publication-quality scenario note. Return exactly this JSON — 
   "x_post_headline": "5-8 word punchy hook — the sharpest possible frame for this post",
   "x_post": "MAX 280 chars hard limit. Lead with the sharpest, most provocative insight. Opinionated, direct, specific — name the asset, the mechanism, the implication. No hashtag spam.",
   "linkedin_post_headline": "The precise analytical thesis this post is built on — max 12 words, statement form",
-  "linkedin_post": "3 full paragraphs separated by \\n\\n. Target 600–700 chars per paragraph — this fills the page after the X post. End each paragraph at a complete sentence. Para 1: the frame — what the market is missing and why this event is different. Para 2: the key mechanism — the non-obvious variable that determines the outcome. Para 3: the implication and the open question a serious practitioner is tracking right now. Professional voice, authoritative, not corporate. No emojis. This is your most expansive field — write with full depth."
+  "linkedin_post": "3 full paragraphs separated by \\n\\n. Target 520–580 chars per paragraph, max 1740 chars total — this fills the page after the X post while leaving room for the closing tagline at the bottom. End each paragraph at a complete sentence. Para 1: the frame — what the market is missing and why this event is different. Para 2: the key mechanism — the non-obvious variable that determines the outcome. Para 3: the implication and the open question a serious practitioner is tracking right now. Professional voice, authoritative, not corporate. No emojis."
 }`;
 }
