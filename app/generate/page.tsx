@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -25,19 +25,6 @@ export default function GeneratePage() {
   const [accessCode, setAccessCode] = useState<string>("");
   const [lastInput, setLastInput] = useState<MemoInput | null>(null);
 
-  // Usage token — persisted in localStorage, signed by server
-  const [usageToken, setUsageToken] = useState<string>("");
-
-  useEffect(() => {
-    const stored = localStorage.getItem("sbp_usage_token");
-    if (stored) setUsageToken(stored);
-  }, []);
-
-  function saveToken(t: string) {
-    setUsageToken(t);
-    localStorage.setItem("sbp_usage_token", t);
-  }
-
   // Code redeem state
   const [code, setCode] = useState("");
   const [codeStatus, setCodeStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -56,7 +43,7 @@ export default function GeneratePage() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ input, code: accessCode, token: usageToken }),
+        body: JSON.stringify({ input, code: accessCode }),
       });
 
       const data = await res.json();
@@ -66,17 +53,9 @@ export default function GeneratePage() {
           setStep("paywall");
           return;
         }
-        if (data.code === "INVALID_TOKEN") {
-          setCodeStatus("idle");
-          setCredits(initialCredits());
-          setAccessCode("");
-          saveToken("");
-          throw new Error("Session expired. Please re-enter your access code.");
-        }
         throw new Error(data.error || "Generation failed.");
       }
 
-      if (data.token) saveToken(data.token);
       setCredits(prev => ({
         ...prev,
         memosRemaining: data.memosRemaining ?? Math.max(0, prev.memosRemaining - 1),
@@ -97,14 +76,13 @@ export default function GeneratePage() {
       const res = await fetch("/api/redeem", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code, token: usageToken }),
+        body: JSON.stringify({ code }),
       });
       const data = await res.json();
       if (res.ok && data.valid) {
         const plan = data.plan as Plan;
         setCredits({ plan, memosRemaining: data.memosRemaining, memosTotal: data.memosTotal, unlockedAt: Date.now() });
         setAccessCode(code.trim().toUpperCase());
-        if (data.token) saveToken(data.token);
         setCodeStatus("success");
         setCodeMessage(data.message);
         setStep("form");

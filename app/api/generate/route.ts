@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getOpenAIClient, FREE_SYSTEM_PROMPT, buildFreePrompt, BASIC_SYSTEM_PROMPT, buildBasicPrompt } from "@/lib/openai";
 import { getAnthropicClient, CREATOR_SYSTEM_PROMPT, buildCreatorPrompt } from "@/lib/anthropic";
-import { signToken, verifyToken } from "@/lib/token";
+import { consumeMemo } from "@/lib/usage";
 import { MemoInput, MemoOutput } from "@/types/memo";
 
-// Simple in-memory rate limiter (resets on server restart — fine for v1)
+// Simple in-memory rate limiter for free plan (resets on server restart — fine for v1)
 const freeUsage = new Map<string, { count: number; resetAt: number }>();
 
 function checkFreeLimit(ip: string): boolean {
@@ -41,13 +41,12 @@ function resolveServerPlan(code: string): "free" | "basic" | "creator" {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { input, code, token } = body as { input: MemoInput; code?: string; token?: string };
+    const { input, code } = body as { input: MemoInput; code?: string };
 
     if (!input?.eventType || !input?.region || !input?.sectorAsset || !input?.horizon || !input?.tone) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
     }
 
-    // Input length limits — prevent abuse / runaway token usage
     if (
       input.eventType.length > 300 ||
       input.region.length > 100 ||
@@ -56,29 +55,25 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Input too long." }, { status: 400 });
     }
 
-    // Derive plan from code server-side — never trust client-sent plan
+    // Derive plan server-side — never trust client
     const safePlan = resolveServerPlan(code ?? "");
-
     const isPaid = safePlan === "basic" || safePlan === "creator";
 
-    // For paid plans, validate usage token
-    let usagePayload = token ? verifyToken(token) : null;
+    // Paid plans: enforce quota via Redis
+    let memosRemaining: number | undefined;
     if (isPaid) {
       const normalizedCode = (code ?? "").trim().toUpperCase();
-      if (!usagePayload || usagePayload.code !== normalizedCode || usagePayload.plan !== safePlan) {
+      const { allowed, memosRemaining: remaining } = await consumeMemo(normalizedCode);
+      if (!allowed) {
         return NextResponse.json(
-          { error: "Invalid session. Please re-enter your access code.", code: "INVALID_TOKEN" },
+          { error: "All memos used. Enter your code to check remaining balance.", code: "QUOTA_EXCEEDED" },
           { status: 403 }
         );
       }
-      if (usagePayload.memosUsed >= usagePayload.memosTotal) {
-        return NextResponse.json(
-          { error: "All memos used for this code.", code: "QUOTA_EXCEEDED" },
-          { status: 403 }
-        );
-      }
+      memosRemaining = remaining;
     }
 
+    // Free plan: IP-based rate limit
     if (!isPaid) {
       const ip = getIP(request);
       if (!checkFreeLimit(ip)) {
@@ -92,7 +87,6 @@ export async function POST(request: NextRequest) {
     let content: string | null = null;
 
     if (safePlan === "creator") {
-      // Creator → Claude Sonnet 4.6 — deep, publication-quality analysis
       const anthropic = getAnthropicClient();
       const response = await anthropic.messages.create({
         model: "claude-sonnet-4-6",
@@ -102,7 +96,6 @@ export async function POST(request: NextRequest) {
       });
       content = (response.content[0] as { type: string; text: string }).text;
     } else if (safePlan === "basic") {
-      // Basic → GPT-4.1 — full structured memo
       const openai = getOpenAIClient();
       const response = await openai.chat.completions.create({
         model: "gpt-4.1",
@@ -116,7 +109,6 @@ export async function POST(request: NextRequest) {
       });
       content = response.choices[0]?.message?.content ?? null;
     } else {
-      // Free → GPT-4.1 — simple snapshot
       const openai = getOpenAIClient();
       const response = await openai.chat.completions.create({
         model: "gpt-4.1",
@@ -133,7 +125,6 @@ export async function POST(request: NextRequest) {
 
     if (!content) throw new Error("Empty response from model");
 
-    // Extract JSON between first { and last } — strips markdown fences or trailing text
     const jsonStart = content.indexOf("{");
     const jsonEnd = content.lastIndexOf("}");
     if (jsonStart === -1 || jsonEnd === -1) {
@@ -148,16 +139,7 @@ export async function POST(request: NextRequest) {
       throw new Error("Model returned invalid JSON");
     }
 
-    // Update usage token for paid plans
-    let updatedToken: string | undefined;
-    let memosRemaining: number | undefined;
-    if (isPaid && usagePayload) {
-      const updated = { ...usagePayload, memosUsed: usagePayload.memosUsed + 1 };
-      updatedToken = signToken(updated);
-      memosRemaining = Math.max(0, updated.memosTotal - updated.memosUsed);
-    }
-
-    return NextResponse.json({ memo, token: updatedToken, memosRemaining });
+    return NextResponse.json({ memo, memosRemaining });
   } catch (err) {
     console.error("[/api/generate]", err);
     return NextResponse.json(

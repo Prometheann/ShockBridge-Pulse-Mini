@@ -14,7 +14,7 @@ async function downloadAsPDF(filename = "ShockBridge-Pulse-Memo") {
 
   for (let i = 0; i < pages.length; i++) {
     const canvas = await html2canvas(pages[i], {
-      scale: 2.5,
+      scale: 2,
       useCORS: true,
       backgroundColor: "#0a0f1e",
       width: pages[i].offsetWidth,
@@ -74,8 +74,13 @@ const CSS = `
   }
   .page-footer .disc { font-size: 7pt; color: #475569; }
   .page-footer .num { font-size: 10pt; font-weight: 700; color: #f59e0b; }
-  .content { padding: 17mm 24mm 14mm 24mm; }
-  .content-top { padding-top: 16mm; }
+  .content {
+    position: absolute;
+    top: 14mm; bottom: 12mm; left: 0; right: 0;
+    overflow: hidden;
+    padding: 4mm 24mm 6mm 24mm;
+  }
+  .content-top { padding-top: 10mm; }
   .section-label {
     color: #f59e0b; background: #0f172a; font-size: 11pt; font-weight: 800;
     letter-spacing: 0.26em; text-transform: uppercase; display: block;
@@ -366,7 +371,7 @@ export default function PdfPrint() {
       {memo.x_post && memo.linkedin_post && (
         <div className="page" lang="en">
           <Header />
-          <div className="content content-top" style={{ position: "relative", paddingBottom: "32mm", overflow: "hidden" }}>
+          <div className="content content-top" style={{ paddingBottom: "30mm" }}>
             <span className="section-label">Content Outputs: Social</span>
             <div style={{ marginTop: "32px" }}>
               <div className="social-box">

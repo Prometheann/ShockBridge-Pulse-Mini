@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { signToken, verifyToken } from "@/lib/token";
-
-const PLAN_MEMOS: Record<string, number> = { basic: 5, creator: 15 };
+import { initCode } from "@/lib/usage";
 
 export async function POST(request: NextRequest) {
   try {
-    const { code, token } = await request.json();
+    const { code } = await request.json();
     if (!code || typeof code !== "string" || code.length > 100) {
       return NextResponse.json({ error: "Invalid code." }, { status: 400 });
     }
@@ -30,43 +28,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ valid: false, error: "Invalid code." }, { status: 400 });
     }
 
-    const memosTotal = PLAN_MEMOS[plan];
+    // Server-side usage — reads real remaining count from Redis
+    const { memosRemaining, memosTotal } = await initCode(normalized, plan);
 
-    // If client sends a valid token for this same code, restore existing usage
-    if (token && typeof token === "string") {
-      const existing = verifyToken(token);
-      if (existing && existing.code === normalized && existing.plan === plan) {
-        const memosRemaining = Math.max(0, existing.memosTotal - existing.memosUsed);
-        const message =
-          plan === "creator"
-            ? `Creator plan — ${memosRemaining} memo${memosRemaining !== 1 ? "s" : ""} remaining.`
-            : `Basic plan — ${memosRemaining} memo${memosRemaining !== 1 ? "s" : ""} remaining.`;
-        return NextResponse.json({
-          valid: true,
-          plan,
-          memosRemaining,
-          memosTotal: existing.memosTotal,
-          token, // return same token unchanged
-          message,
-        });
-      }
-    }
-
-    // New redemption — issue fresh token
-    const newToken = signToken({ code: normalized, plan, memosUsed: 0, memosTotal });
     const message =
       plan === "creator"
-        ? "Creator plan unlocked! 15 memos + X post + LinkedIn post + PDF export."
-        : "Basic plan unlocked! 5 memos.";
+        ? memosRemaining < memosTotal
+          ? `Creator plan — ${memosRemaining} memo${memosRemaining !== 1 ? "s" : ""} remaining.`
+          : "Creator plan unlocked! 15 memos + X post + LinkedIn post + PDF export."
+        : memosRemaining < memosTotal
+          ? `Basic plan — ${memosRemaining} memo${memosRemaining !== 1 ? "s" : ""} remaining.`
+          : "Basic plan unlocked! 5 memos.";
 
-    return NextResponse.json({
-      valid: true,
-      plan,
-      memosRemaining: memosTotal,
-      memosTotal,
-      token: newToken,
-      message,
-    });
+    return NextResponse.json({ valid: true, plan, memosRemaining, memosTotal, message });
   } catch (err) {
     console.error("[/api/redeem]", err);
     return NextResponse.json({ error: "Server error." }, { status: 500 });
