@@ -42,7 +42,7 @@ const CSS = `
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: #555; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .page {
-    width: 210mm; min-height: 297mm; background: #0a0f1e;
+    width: 210mm; height: 297mm; background: #0a0f1e;
     margin: 12px auto; position: relative; overflow: hidden;
     font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
     color: #f1f5f9; font-size: 10.5pt; line-height: 1.75;
@@ -86,18 +86,18 @@ const CSS = `
   ul { padding: 0; list-style: none; }
   li {
     display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #1a2540;
-    font-size: 12pt; line-height: 1.8; color: #cbd5e1; text-align: justify; hyphens: auto;
+    font-size: 12pt; line-height: 1.8; color: #cbd5e1; text-align: justify;
   }
   li:last-child { border-bottom: none; }
   li .arrow { color: #f59e0b; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
   .body-p {
     color: #cbd5e1; font-size: 12pt; line-height: 1.9;
-    text-align: justify; hyphens: auto;
+    text-align: justify;
   }
   .body-p + .body-p { margin-top: 20px; }
   .summary {
     font-size: 12pt; color: #94a3b8; line-height: 1.95; text-align: justify;
-    border-left: 3px solid #f59e0b; padding-left: 14px; hyphens: auto;
+    border-left: 3px solid #f59e0b; padding-left: 14px;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
   .summary + .summary { margin-top: 20px; }
@@ -120,7 +120,7 @@ const CSS = `
   }
   .social-box .post-label { font-size: 7pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 10px; }
   .social-box .headline { font-size: 11.5pt; font-weight: 700; color: #f8fafc; margin-bottom: 10px; line-height: 1.35; }
-  .social-box .post-text { font-size: 12pt; color: #94a3b8; text-align: justify; line-height: 1.85; hyphens: auto; }
+  .social-box .post-text { font-size: 12pt; color: #94a3b8; text-align: justify; line-height: 1.85; }
   .post-text + .post-text { margin-top: 12px; }
   .closing {
     text-align: center; font-size: 9pt; font-weight: 400; color: #64748b;
