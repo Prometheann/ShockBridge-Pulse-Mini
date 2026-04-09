@@ -16,9 +16,10 @@ export function getOpenAIClient(): OpenAI {
 export const FREE_SYSTEM_PROMPT = `You are ShockBridge Pulse, a market intelligence tool.
 Generate a brief, clear market snapshot from the event provided.
 Focus only on the most immediate, obvious first-order effects.
-Write plainly and directly — no jargon, no depth required.
+Write plainly and directly - no jargon, no depth required.
 Do not speculate beyond what the event directly implies.
-Output valid JSON only — no markdown, no extra text.`;
+Never use em-dashes (the — character). Restructure the sentence instead: use commas, semicolons, colons, or parentheses.
+Output valid JSON only - no markdown, no extra text.`;
 
 export function buildFreePrompt(input: MemoInput): string {
   return `Event type: ${input.eventType}
@@ -46,13 +47,14 @@ Transform a macro shock, earnings event, or market surprise into a complete anal
 Rules:
 1. Do not give direct buy or sell advice.
 2. Focus on causal logic, transmission paths, exposure, and uncertainty.
-3. Use precise financial language — keep it readable but substantive.
+3. Use precise financial language - keep it readable but substantive.
 4. Clearly distinguish first-order effects from second-order effects.
 5. The bullish and bearish paths must be concrete and specific, not generic.
-6. Key uncertainties must be genuinely uncertain — avoid stating the obvious.
+6. Key uncertainties must be genuinely uncertain - avoid stating the obvious.
 7. Be direct. Cut filler. Every sentence must carry information.
 8. If the event is an earnings shock, address EPS vs consensus, guidance direction, and the key sector reaction.
-9. Output valid JSON only — no markdown, no extra text.`;
+9. Never use em-dashes (the — character). Restructure the sentence instead: use commas, semicolons, colons, or parentheses.
+10. Output valid JSON only - no markdown, no extra text.`;
 
 export function buildBasicPrompt(input: MemoInput): string {
   return `Event type: ${input.eventType}

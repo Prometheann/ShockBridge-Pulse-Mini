@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
       const anthropic = getAnthropicClient();
       const response = await anthropic.messages.create({
         model: "claude-sonnet-4-6",
-        max_tokens: 8000,
+        max_tokens: 16000,
         system: CREATOR_SYSTEM_PROMPT,
         messages: [{ role: "user", content: buildCreatorPrompt(input) }],
       });
@@ -114,7 +114,20 @@ export async function POST(request: NextRequest) {
 
     if (!content) throw new Error("Empty response from model");
 
-    const memo = JSON.parse(content) as MemoOutput;
+    // Extract JSON between first { and last } — strips markdown fences or trailing text
+    const jsonStart = content.indexOf("{");
+    const jsonEnd = content.lastIndexOf("}");
+    if (jsonStart === -1 || jsonEnd === -1) {
+      console.error("[/api/generate] No JSON found. Content:", content.slice(0, 300));
+      throw new Error("Model returned no JSON");
+    }
+    let memo: MemoOutput;
+    try {
+      memo = JSON.parse(content.slice(jsonStart, jsonEnd + 1)) as MemoOutput;
+    } catch {
+      console.error("[/api/generate] JSON parse failed. Content length:", content.length, "Last 200 chars:", content.slice(-200));
+      throw new Error("Model returned invalid JSON");
+    }
     return NextResponse.json({ memo });
   } catch (err) {
     console.error("[/api/generate]", err);

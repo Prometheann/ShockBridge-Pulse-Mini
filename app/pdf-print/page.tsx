@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { MemoOutput, MemoInput, Plan } from "@/types/memo";
 
-async function downloadAsPDF() {
+async function downloadAsPDF(filename = "ShockBridge-Pulse-Memo") {
   const [{ default: jsPDF }, { default: html2canvas }] = await Promise.all([
     import("jspdf"),
     import("html2canvas"),
@@ -26,7 +26,7 @@ async function downloadAsPDF() {
     pdf.addImage(img, "JPEG", 0, 0, 210, 297);
   }
 
-  pdf.save("shockbridge-pulse-memo.pdf");
+  pdf.save(`${filename}.pdf`);
 }
 
 interface PrintData {
@@ -34,6 +34,7 @@ interface PrintData {
   input: MemoInput;
   plan: Plan;
   date: string;
+  filename?: string;
 }
 
 const CSS = `
@@ -134,7 +135,7 @@ const CSS = `
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
   .cover-accent { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #f59e0b; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .cover-icon { width: 500px; height: 296px; object-fit: cover; object-position: center 38%; display: block; }
+  .cover-icon { width: 500px; height: 296px; background-image: url('/logo-transparent.png'); background-size: cover; background-position: center 38%; display: block; }
   .cover-rule { width: 52px; height: 3px; background: #f59e0b; margin-top: 28px; margin-bottom: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .cover-type { font-size: 22pt; font-weight: 300; color: #f1f5f9; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
   .cover-plan { font-size: 13pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -168,13 +169,14 @@ export default function PdfPrint() {
   useEffect(() => {
     const raw = sessionStorage.getItem("sbp_print_data");
     if (raw) {
-      setData(JSON.parse(raw));
+      const parsed = JSON.parse(raw) as PrintData;
+      setData(parsed);
       setStatus("rendering");
       // Wait for fonts + images to load, then generate PDF
       setTimeout(async () => {
         setStatus("generating");
         try {
-          await downloadAsPDF();
+          await downloadAsPDF(parsed.filename || "ShockBridge-Pulse-Memo");
         } catch (err) {
           console.error("PDF generation failed:", err);
           alert("PDF generation failed. Please try again.");
@@ -197,7 +199,7 @@ export default function PdfPrint() {
   const summaryParas = memo.summary.split("\n\n").filter(Boolean);
   const bullishParas = (memo.bullish_path || "").split("\n\n").filter(Boolean);
   const bearishParas = (memo.bearish_path || "").split("\n\n").filter(Boolean);
-  const linkedinParas = (memo.linkedin_post || "").split("\n\n").filter(Boolean);
+  const linkedinParas = (memo.linkedin_post || "").split("\n\n").filter(p => !p.toLowerCase().includes("from market shock to clean signal")).filter(Boolean);
 
   return (
     <>
@@ -219,8 +221,7 @@ export default function PdfPrint() {
       {/* PAGE 1 — Cover */}
       <div className="cover">
         <div className="cover-accent" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo-transparent.png" alt="ShockBridge Pulse" className="cover-icon" />
+        <div className="cover-icon" aria-label="ShockBridge Pulse" />
         <div className="cover-rule" />
         <div className="cover-type">Scenario Note</div>
         <div className="cover-plan">{plan}</div>

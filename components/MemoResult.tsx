@@ -95,7 +95,10 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
   });
 
   function handlePrint() {
-    const printData = { memo, input, plan, date: printDate };
+    const count = Math.min(parseInt(localStorage.getItem("sbp_memo_count") || "0") + 1, 15);
+    localStorage.setItem("sbp_memo_count", String(count));
+    const filename = `ShockBridge-Pulse-Memo-${String(count).padStart(2, "0")}`;
+    const printData = { memo, input, plan, date: printDate, filename };
     sessionStorage.setItem("sbp_print_data", JSON.stringify(printData));
     window.open("/pdf-print", "_blank");
   }
@@ -258,7 +261,9 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
               {memo.linkedin_post_headline && (
                 <p className="text-sm font-bold text-[#f0f0f0] mb-2 leading-snug">{memo.linkedin_post_headline}</p>
               )}
-              <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line sm:[text-align:justify] [hyphens:auto]">{memo.linkedin_post}</p>
+              <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line sm:[text-align:justify] [hyphens:auto]">
+                {memo.linkedin_post.split("\n\n").filter(p => !p.toLowerCase().includes("from market shock to clean signal")).join("\n\n")}
+              </p>
             </div>
 
             {/* Closing text — PDF only */}
