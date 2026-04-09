@@ -59,10 +59,47 @@ p, li {
 #pdf-run-footer { display: none; }
 #pdf-closing-text { display: none; }
 .pdf-title-break  { display: none; }
-.pdf-title-hook   { /* inline on screen */ }
-.pdf-title-asset  { /* inline on screen */ }
-.pdf-title-bridge { /* inline on screen */ }
-.pdf-title-sub    { /* inline on screen */ }
+
+/* ─── Title parts — screen display (each part on its own line) ──────────── */
+.pdf-title-hook {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: #f59e0b;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.pdf-title-asset {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  color: #f59e0b;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.pdf-title-bridge {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #f59e0b;
+  opacity: 0.75;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+
+.pdf-title-sub {
+  display: block;
+  font-size: 17px;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
 
 /* ─── PDF Export — Print Styles ─────────────────────────────────────────── */
 @media print {
@@ -359,11 +396,15 @@ p, li {
   }
 
   /* ── Page-break sections — padding clears the 14mm fixed header ── */
+  /* max-height = 297mm page - 14mm header - 12mm footer - 16mm top pad - 10mm bottom pad */
   .pdf-page-section,
   #pdf-section-title {
     page-break-before: always !important;
+    page-break-after: always !important;
     padding-top: 16mm !important;
     border-top: none !important;
+    max-height: 245mm !important;
+    overflow: hidden !important;
   }
 
   /* ── Hide UI-only elements (actions div uses .no-print) ── */
