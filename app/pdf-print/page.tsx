@@ -86,17 +86,17 @@ const CSS = `
   ul { padding: 0; list-style: none; }
   li {
     display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #1a2540;
-    font-size: 12pt; line-height: 1.8; color: #cbd5e1; text-align: justify;
+    font-size: 12pt; line-height: 1.8; color: #cbd5e1; text-align: left;
   }
   li:last-child { border-bottom: none; }
   li .arrow { color: #f59e0b; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
   .body-p {
     color: #cbd5e1; font-size: 12pt; line-height: 1.9;
-    text-align: justify;
+    text-align: left;
   }
   .body-p + .body-p { margin-top: 20px; }
   .summary {
-    font-size: 12pt; color: #94a3b8; line-height: 1.95; text-align: justify;
+    font-size: 12pt; color: #94a3b8; line-height: 1.95; text-align: left;
     border-left: 3px solid #f59e0b; padding-left: 14px;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
@@ -115,12 +115,12 @@ const CSS = `
   .if-value   { font-size: 12pt; font-weight: 500; color: #f1f5f9; }
   .social-box {
     background: #111827; border: 1px solid #1e293b; border-left: 4px solid #f59e0b;
-    border-radius: 4px; padding: 16px 18px; margin-bottom: 32px;
+    border-radius: 4px; padding: 12px 16px; margin-bottom: 20px;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  .social-box .post-label { font-size: 7pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 10px; }
-  .social-box .headline { font-size: 11.5pt; font-weight: 700; color: #f8fafc; margin-bottom: 10px; line-height: 1.35; }
-  .social-box .post-text { font-size: 12pt; color: #94a3b8; text-align: justify; line-height: 1.85; }
+  .social-box .post-label { font-size: 7pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 8px; }
+  .social-box .headline { font-size: 11pt; font-weight: 700; color: #f8fafc; margin-bottom: 8px; line-height: 1.3; }
+  .social-box .post-text { font-size: 11pt; color: #94a3b8; text-align: left; line-height: 1.8; }
   .post-text + .post-text { margin-top: 12px; }
   .closing {
     text-align: center; font-size: 9pt; font-weight: 400; color: #64748b;
@@ -364,14 +364,14 @@ export default function PdfPrint() {
       {memo.x_post && memo.linkedin_post && (
         <div className="page" lang="en">
           <Header />
-          <div className="content content-top" style={{ position: "relative", minHeight: "calc(297mm - 14mm - 12mm)" }}>
+          <div className="content content-top" style={{ position: "relative", paddingBottom: "32mm", overflow: "hidden" }}>
             <span className="section-label">Content Outputs: Social</span>
-            <div style={{ marginTop: "40px" }}>
+            <div style={{ marginTop: "32px" }}>
               <div className="social-box">
                 <span className="post-label">X Post · {memo.x_post.length} characters</span>
                 <p className="post-text">{memo.x_post}</p>
               </div>
-              <div className="social-box">
+              <div className="social-box" style={{ marginBottom: 0 }}>
                 <span className="post-label">LinkedIn Post</span>
                 {memo.linkedin_post_headline && (
                   <p className="headline">{memo.linkedin_post_headline}</p>
