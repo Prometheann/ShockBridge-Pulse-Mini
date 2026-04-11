@@ -88,7 +88,7 @@ export function ResearchSection() {
         {/* Subscribe strip */}
         <div className="mt-8 border-t border-[#2d3148] pt-8">
           <p className="text-[#4b5563] text-xs text-center mb-4">
-            Get notified when the paper is released — one email, no spam.
+            Get notified when the paper is released. One email, no spam.
           </p>
           <div className="max-w-md mx-auto">
             <ResearchSubscribeForm />
