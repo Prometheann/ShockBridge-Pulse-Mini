@@ -117,7 +117,7 @@ export default function FromSpotToStressPage() {
             >
               The contribution is not just wavelets applied to finance. The framework connects
               multiscale localization, high-dimensional block dependence, and forward-looking
-              option-implied stress within one contagion architecture — moving from descriptive
+              option-implied stress within one contagion architecture, moving from descriptive
               turbulence to disciplined detection of hidden transmission channels.
             </p>
           </div>
