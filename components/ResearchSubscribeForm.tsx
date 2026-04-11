@@ -45,30 +45,25 @@ export function ResearchSubscribeForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
-      <div className="flex flex-col sm:flex-row gap-3">
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="your@email.com"
-          required
-          disabled={status === "loading"}
-          className="flex-1 bg-[#0a0d16] border border-[#2d3148] rounded-xl px-4 py-3 text-sm text-[#f0f0f0] placeholder-[#4b5563] focus:outline-none focus:border-amber-500/60 transition-colors disabled:opacity-50"
-        />
-        <button
-          type="submit"
-          disabled={status === "loading" || !email.trim()}
-          className="px-5 py-3 rounded-xl bg-amber-500 text-[#0a0d16] text-sm font-semibold hover:bg-amber-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-        >
-          {status === "loading" ? "Saving…" : "Notify me"}
-        </button>
-      </div>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        required
+        disabled={status === "loading"}
+        className="w-full bg-[#0a0d16] border border-[#2d3148] rounded-xl px-4 py-3 text-sm text-[#f0f0f0] placeholder-[#4b5563] focus:outline-none focus:border-amber-500/60 transition-colors disabled:opacity-50"
+      />
+      <button
+        type="submit"
+        disabled={status === "loading" || !email.trim()}
+        className="w-full py-3 rounded-xl bg-amber-500 text-[#0a0d16] text-sm font-semibold hover:bg-amber-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {status === "loading" ? "Saving…" : "Notify me"}
+      </button>
       {status === "error" && (
         <p className="text-xs text-red-400">{message}</p>
       )}
-      <p className="text-xs text-[#4b5563]">
-        No spam. One email when the paper is released.
-      </p>
     </form>
   );
 }
