@@ -1,5 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  webpack(config) {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      canvg: false,
+      dompurify: false,
+    };
+    return config;
+  },
+  turbopack: {
+    resolveAlias: {
+      canvg: "./lib/empty-module.js",
+      dompurify: "./lib/empty-module.js",
+    },
+  },
   async headers() {
     return [
       {

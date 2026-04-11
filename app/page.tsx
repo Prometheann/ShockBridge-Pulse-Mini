@@ -9,6 +9,7 @@ import { WhyDifferentSection } from "@/components/WhyDifferentSection";
 import { PricingSection } from "@/components/PricingSection";
 import { FaqSection } from "@/components/FaqSection";
 import { AboutSection } from "@/components/AboutSection";
+import { ResearchSection } from "@/components/ResearchSection";
 import { FinalCTASection } from "@/components/FinalCTASection";
 import { Footer } from "@/components/Footer";
 
@@ -27,6 +28,7 @@ export default function HomePage() {
         <PricingSection />
         <FaqSection />
         <AboutSection />
+        <ResearchSection />
         <FinalCTASection />
       </main>
       <Footer />

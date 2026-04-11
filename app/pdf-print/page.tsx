@@ -27,7 +27,7 @@ async function downloadAsPDF(filename = "ShockBridge-Pulse-Memo") {
       windowWidth: PAGE_W_PX,
       logging: false,
     });
-    const img = canvas.toDataURL("image/jpeg", 0.92);
+    const img = canvas.toDataURL("image/jpeg", 0.95);
     if (i > 0) pdf.addPage();
     pdf.addImage(img, "JPEG", 0, 0, 210, 297);
   }
@@ -78,15 +78,15 @@ const CSS = `
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 24mm; -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  .page-footer .disc { font-size: 9pt; color: #475569; }
+  .page-footer .disc { font-size: 7pt; color: #475569; }
   .page-footer .num { font-size: 10pt; font-weight: 700; color: #f59e0b; }
   .content {
     position: absolute;
     top: 14mm; bottom: 12mm; left: 0; right: 0;
     overflow: hidden;
-    padding: 4mm 24mm 6mm 24mm;
+    padding: 3mm 24mm 6mm 24mm;
   }
-  .content-top { padding-top: 10mm; }
+  .content-top { padding-top: 16mm; }
   .section-label {
     color: #f59e0b; background: #0f172a; font-size: 11pt; font-weight: 800;
     letter-spacing: 0.26em; text-transform: uppercase; display: block;
@@ -128,12 +128,12 @@ const CSS = `
   .if-value   { font-size: 12pt; font-weight: 500; color: #f1f5f9; }
   .social-box {
     background: #111827; border: 1px solid #1e293b; border-left: 4px solid #f59e0b;
-    border-radius: 4px; padding: 12px 16px; margin-bottom: 20px;
+    border-radius: 4px; padding: 16px 18px; margin-bottom: 40px;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  .social-box .post-label { font-size: 7pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 8px; }
-  .social-box .headline { font-size: 11pt; font-weight: 700; color: #f8fafc; margin-bottom: 8px; line-height: 1.3; }
-  .social-box .post-text { font-size: 11pt; color: #94a3b8; text-align: justify; line-height: 1.8; hyphens: auto; word-break: normal; overflow-wrap: normal; }
+  .social-box .post-label { font-size: 7pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 10px; }
+  .social-box .headline { font-size: 11.5pt; font-weight: 700; color: #f8fafc; margin-bottom: 10px; }
+  .social-box .post-text { font-size: 12pt; color: #94a3b8; text-align: justify; line-height: 1.85; hyphens: auto; word-break: normal; overflow-wrap: normal; }
   .post-text + .post-text { margin-top: 12px; }
   .closing {
     text-align: center; font-size: 9pt; font-weight: 400; color: #64748b;
@@ -148,14 +148,13 @@ const CSS = `
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
   .cover-accent { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #f59e0b; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .cover-icon { width: 500px; height: 296px; background-image: url('/logo-transparent.png'); background-size: cover; background-position: center 38%; display: block; }
+  .cover-icon { width: 500px; height: 296px; object-fit: cover; object-position: center 38%; display: block; margin-bottom: 0; }
   .cover-rule { width: 52px; height: 3px; background: #f59e0b; margin-top: 28px; margin-bottom: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .cover-type { font-size: 22pt; font-weight: 300; color: #f1f5f9; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
   .cover-plan { font-size: 13pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .cover-date { font-size: 8.5pt; color: #475569; letter-spacing: 0.06em; margin-bottom: 0; }
-  .cover-creator-gap { height: 40px; display: block; }
-  .cover-creator-label { font-size: 9pt; color: #64748b; letter-spacing: 0.10em; text-transform: uppercase; }
-  .cover-creator-name { font-size: 15pt; font-weight: 600; color: #e2e8f0; letter-spacing: 0.06em; margin-top: 8px; }
+  .cover-creator-gap { height: 12px; display: block; }
+  .cover-creator { font-size: 9.5pt; color: #64748b; letter-spacing: 0.08em; }
   .cover-disc { position: absolute; bottom: 18mm; left: 0; right: 0; text-align: center; font-size: 11pt; color: #475569; letter-spacing: 0.04em; }
 `;
 
@@ -235,14 +234,14 @@ export default function PdfPrint() {
       {/* PAGE 1 — Cover */}
       <div className="cover" lang="en">
         <div className="cover-accent" />
-        <div className="cover-icon" aria-label="ShockBridge Pulse" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logo-transparent.png" alt="ShockBridge Pulse" className="cover-icon" />
         <div className="cover-rule" />
         <div className="cover-type">Scenario Note</div>
         <div className="cover-plan">{plan}</div>
         <div className="cover-date">{date}</div>
         <span className="cover-creator-gap" />
-        <div className="cover-creator-label">Created by</div>
-        <div className="cover-creator-name">Rodolfo Pereira</div>
+        <div className="cover-creator">Created by Rodolfo Pereira</div>
         <div className="cover-disc">For research and writing purposes only. Not financial advice.</div>
       </div>
 
