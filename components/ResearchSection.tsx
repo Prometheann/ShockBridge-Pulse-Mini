@@ -64,7 +64,7 @@ export function ResearchSection() {
             This working paper studies how stress spreads across Brazilian equities before
             broad contagion becomes obvious. It combines Airy wavelets, regularized canonical
             dependence, Monte Carlo calibration, and option-implied stress signals to map latent
-            transmission channels across sectors and horizons — asking whether derivatives begin
+            transmission channels across sectors and horizons, asking whether derivatives begin
             signaling deterioration before spot-return networks fully reprice.
           </p>
 
