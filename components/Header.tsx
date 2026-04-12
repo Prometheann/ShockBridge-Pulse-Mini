@@ -36,6 +36,9 @@ export function Header() {
           <Link href="/#about" className="hover:text-[#f0f0f0] transition-colors">
             About
           </Link>
+          <Link href="/#research" className="hover:text-[#f0f0f0] transition-colors">
+            Research
+          </Link>
         </nav>
 
         <Link href="/generate">
