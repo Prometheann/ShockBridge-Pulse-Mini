@@ -48,8 +48,11 @@ export async function POST(req: NextRequest) {
             <p style="font-size: 15px; color: #374151; line-height: 1.7; margin: 0 0 16px 0;">
               You're on the list.
             </p>
-            <p style="font-size: 15px; color: #374151; line-height: 1.7; margin: 0 0 28px 0;">
+            <p style="font-size: 15px; color: #374151; line-height: 1.7; margin: 0 0 16px 0;">
               I'll send you one email when the working paper is released — no newsletter, no recurring updates. Just a notification when it's done.
+            </p>
+            <p style="font-size: 13px; color: #6b7280; line-height: 1.6; margin: 0 0 28px 0;">
+              If you don't see this email in your inbox, check your spam or junk folder — it may land there the first time since this is a new sender.
             </p>
             <a href="https://shockbridgepulse.com/research/from-spot-to-stress"
                style="display: inline-block; padding: 12px 20px; background: #f59e0b; color: #0a0f1e; font-size: 13px; font-weight: 700; text-decoration: none; border-radius: 8px;">

@@ -38,7 +38,10 @@ export function ResearchSubscribeForm() {
     return (
       <div className="flex items-start gap-3 p-4 rounded-xl border border-amber-500/30 bg-amber-500/5">
         <span className="text-amber-500 mt-0.5">✓</span>
-        <p className="text-sm text-[#9ca3af]">{message}</p>
+        <div className="space-y-1">
+          <p className="text-sm text-[#f0f0f0]">{message}</p>
+          <p className="text-xs text-[#6b7280]">Check your spam or junk folder — the confirmation email may land there the first time.</p>
+        </div>
       </div>
     );
   }
