@@ -16,7 +16,7 @@ const audiences = [
   },
   {
     icon: "🎓",
-    title: "Analysts & students",
+    title: "Analysts",
     description: "Organize cause and effect more clearly across markets.",
   },
 ];
