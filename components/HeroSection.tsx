@@ -9,33 +9,31 @@ export function HeroSection() {
         {/* Left */}
         <div>
           <p className="text-amber-500 text-sm font-medium tracking-wider uppercase mb-4">
-            Structured market logic
+            Macro transmission intelligence
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f0f0f0] leading-tight mb-6">
             From market shock
             <br />
-            to clean signal.
+            to transmission
+            <br />
+            to signal.
           </h1>
-          <p className="text-[#9ca3af] text-lg leading-relaxed mb-8 sm:[text-align:justify]"
-            style={{ hyphens: "auto", wordBreak: "break-word" } as React.CSSProperties}
-            lang="en">
-            Turn a macro event, earnings surprise, or market shock into a sharp
-            analyst-style memo in seconds.
+          <p className="text-[#9ca3af] text-lg leading-relaxed mb-8">
+            ShockBridge Pulse turns macro events, earnings surprises, and liquidity stress
+            into structured transmission memos, so you can move from noise to structure with speed.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/generate" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto">Generate a Sample</Button>
+              <Button size="lg" className="w-full sm:w-auto">Try a Sample</Button>
             </Link>
             <Link href="#pricing" className="w-full sm:w-auto">
               <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                Get Creator $19
+                See Pricing
               </Button>
             </Link>
           </div>
-          <p className="mt-4 text-xs text-[#6b7280] sm:[text-align:justify]"
-            style={{ hyphens: "auto" } as React.CSSProperties}
-            lang="en">
-            Built for traders, creators, analysts, and market thinkers.
+          <p className="mt-4 text-xs text-[#6b7280]">
+            Built for investors, advisors, treasury thinkers, and serious market operators.
           </p>
         </div>
 

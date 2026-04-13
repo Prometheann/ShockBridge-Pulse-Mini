@@ -18,41 +18,30 @@ export function AboutSection() {
         <div className="w-12 h-1 bg-amber-500 rounded-full mb-10 mx-auto" />
 
         {/* Body */}
-        <div className="space-y-6 text-[#9ca3af] text-base leading-relaxed [text-align:justify]"
-          style={{ hyphens: "auto", overflowWrap: "break-word", wordBreak: "break-word" } as React.CSSProperties}
-          lang="en">
+        <div className="space-y-6 text-[#9ca3af] text-base leading-relaxed">
           <p>
-            ShockBridge Pulse was built out of a simple frustration: when a major macro event
-            hits (a central bank surprise, an earnings shock, a geopolitical rupture), most tools
-            give you headlines. What you actually need is structure. You need to know what breaks
-            first, what follows, and where the real exposure sits.
+            ShockBridge Pulse was built from a simple frustration: when a major market event hits,
+            most tools stop at the headline. What serious operators need is structure.
           </p>
           <p>
-            This tool does that. You enter the event. The AI maps the transmission chain: first-order
-            price effects, second-order spillovers, the bullish interpretation, the bearish one, and
-            what you should be watching over the next two to four weeks. The output reads like a
-            scenario note from a senior analyst, not like a search engine summary.
+            I built ShockBridge Pulse to map the transmission chain behind a shock. What tends to
+            move first. What may spill over next. Where exposure can hide before it becomes obvious.
           </p>
           <p>
-            The three-tier model reflects how macro thinking actually scales. The{" "}
-            <span className="text-[#d1d5db] font-medium">Free snapshot</span> gives you a fast
-            orientation. The{" "}
-            <span className="text-[#d1d5db] font-medium">Basic memo</span> gives you the full
-            structured analysis: effects, paths, uncertainties, watchpoints. The{" "}
-            <span className="text-amber-400 font-medium">Creator memo</span> goes deeper into causal
-            chains with mechanisms, multi-paragraph scenario paths, and publication-ready social
-            content for X and LinkedIn, formatted, opinionated, and ready to share.
+            The result is a structured scenario memo designed to help professionals think more
+            clearly under pressure. It is not financial advice. It is an intelligence layer for
+            turning fast-moving conditions into usable logic.
           </p>
           <p>
-            ShockBridge Pulse is a research and writing tool. It accelerates thinking, not replaces
-            it. Everything it produces is a starting point, yours to challenge, refine, and act on.
+            Phase 1 is live today through ShockBridge Pulse. In parallel, the broader SaaS layer
+            is being developed to expand this framework into a more advanced macro transmission system.
           </p>
         </div>
 
         {/* Stat strip */}
         <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-6">
           {[
-            { value: "3 plans", label: "Free · Basic · Creator" },
+            { value: "3 plans", label: "Snapshot · Bridge · Analyst" },
             { value: "No subscription", label: "One payment, full access" },
             { value: "< 30s", label: "From event to structured memo" },
           ].map((s) => (
@@ -64,8 +53,7 @@ export function AboutSection() {
         </div>
 
         {/* Disclaimer */}
-        <p className="mt-10 text-[#4b5563] text-xs leading-relaxed border-t border-[#1e2130] pt-6 text-center"
-          lang="en">
+        <p className="mt-10 text-[#4b5563] text-xs leading-relaxed border-t border-[#1e2130] pt-6 text-center">
           Research and writing tool only. Not financial advice. No positions are recommended.
           All outputs should be verified before any investment decision.
         </p>

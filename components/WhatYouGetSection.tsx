@@ -24,11 +24,9 @@ export function WhatYouGetSection() {
             <h2 className="text-3xl font-bold text-[#f0f0f0] mb-4">
               One input. Multiple usable outputs.
             </h2>
-            <p className="text-[#9ca3af] leading-relaxed sm:[text-align:justify]"
-              style={{ hyphens: "auto", wordBreak: "break-word" } as React.CSSProperties}
-              lang="en">
+            <p className="text-[#9ca3af] leading-relaxed">
               Each generation gives you a sharp memo built for speed and clarity, not vague
-              market noise. Creator plan also gives you content you can publish immediately.
+              market noise. Analyst plan also gives you content you can publish immediately.
             </p>
           </div>
 
@@ -48,7 +46,7 @@ export function WhatYouGetSection() {
 
             <div className="bg-amber-500/5 rounded-xl p-5 border border-amber-500/20">
               <p className="text-xs text-amber-400 uppercase tracking-wider mb-3">
-                Creator plan also includes
+                Analyst plan also includes
               </p>
               <ul className="space-y-2">
                 {creatorExtras.map((item) => (
