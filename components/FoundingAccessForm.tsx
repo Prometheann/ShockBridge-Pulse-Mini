@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/Button";
 
 export function FoundingAccessForm() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -11,14 +11,14 @@ export function FoundingAccessForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || !name.trim()) return;
     setStatus("loading");
 
     try {
       const res = await fetch("/api/founding-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, message }),
+        body: JSON.stringify({ name, email, message }),
       });
       const data = await res.json();
 
@@ -49,6 +49,15 @@ export function FoundingAccessForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
       <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Your name"
+        required
+        disabled={status === "loading"}
+        className="w-full bg-[#0a0d16] border border-[#2d3148] rounded-xl px-4 py-3 text-sm text-[#f0f0f0] placeholder-[#4b5563] focus:outline-none focus:border-amber-500/60 transition-colors disabled:opacity-50"
+      />
+      <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -67,7 +76,7 @@ export function FoundingAccessForm() {
       />
       <button
         type="submit"
-        disabled={status === "loading" || !email.trim()}
+        disabled={status === "loading" || !email.trim() || !name.trim()}
         className="w-full py-3 rounded-xl bg-amber-500 text-[#0a0d16] text-sm font-semibold hover:bg-amber-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {status === "loading" ? "Sending…" : "Apply for Founding Access"}

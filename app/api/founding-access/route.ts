@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, message } = await req.json();
+    const { name, email, message } = await req.json();
 
     if (!email || typeof email !== "string") {
       return NextResponse.json({ error: "Email is required." }, { status: 400 });
@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
     // Store full application in HASH
     await redis.hset("founding_access_applications", {
       [normalised]: JSON.stringify({
+        name: name?.trim() || "",
         email: normalised,
         message: message?.trim() || "",
         date: new Date().toISOString(),
@@ -44,6 +45,7 @@ export async function POST(req: NextRequest) {
           <h2 style="font-size: 18px; font-weight: 700; margin: 0 0 16px 0; color: #0f172a;">
             New application
           </h2>
+          <p style="font-size: 14px; color: #374151; margin: 0 0 8px 0;"><strong>Name:</strong> ${name?.trim() || "—"}</p>
           <p style="font-size: 14px; color: #374151; margin: 0 0 8px 0;"><strong>Email:</strong> ${normalised}</p>
           ${message?.trim() ? `<p style="font-size: 14px; color: #374151; margin: 0 0 8px 0;"><strong>Message:</strong> ${message.trim()}</p>` : ""}
           <p style="font-size: 12px; color: #9ca3af; margin: 24px 0 0 0;">${new Date().toISOString()}</p>
@@ -62,7 +64,7 @@ export async function POST(req: NextRequest) {
             ShockBridge Pulse · Founding Access
           </p>
           <h1 style="font-size: 22px; font-weight: 700; margin: 0 0 16px 0; color: #0f172a; line-height: 1.3;">
-            Application received.
+            Application received${name?.trim() ? `, ${name.trim()}` : ""}.
           </h1>
           <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 0 0 24px 0;" />
           <p style="font-size: 15px; color: #374151; line-height: 1.7; margin: 0 0 16px 0;">
