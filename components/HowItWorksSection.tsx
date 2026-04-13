@@ -15,7 +15,7 @@ const steps = [
     number: "03",
     title: "Use it immediately",
     description:
-      "Read it, brief from it, export it, or use it immediately in your market workflow.",
+      "Read it, brief from it, export it, or plug it directly into your market workflow.",
   },
 ];
 
