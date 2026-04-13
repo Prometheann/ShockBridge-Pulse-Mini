@@ -10,7 +10,7 @@ const snapshotFeatures = [
 
 const bridgeFeatures = [
   "5 structured transmission memos",
-  "Macro and earnings shock framing",
+  "Macro + earnings shocks analysis",
   "First-order effects",
   "Second-order risks",
   "Bullish path + Bearish path",
