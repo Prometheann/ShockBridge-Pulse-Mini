@@ -25,23 +25,12 @@ h1, h2, h3, h4, h5, h6 {
 
 p, li {
   text-wrap: pretty;
-  hyphens: auto;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
   word-break: normal;
   overflow-wrap: normal;
-}
-
-/* Justify body text on sm+ (640px+) */
-@media (min-width: 640px) {
-  section p:not([class*="text-center"]):not([class*="text-right"]),
-  main p:not([class*="text-center"]):not([class*="text-right"]),
-  main li {
-    text-align: justify;
-  }
-
-  /* Restore center alignment when inside a centered container */
-  .text-center p {
-    text-align: center !important;
-  }
+  text-align: left;
 }
 
 /* ─── Screen: memo text justification (all plans) ──────────────────────── */

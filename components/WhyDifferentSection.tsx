@@ -10,7 +10,7 @@ const points = [
   },
   {
     title: "Not just analysis. Workflow-ready formats.",
-    description: "Analyst plan extends one event into multiple communication formats for faster professional use.",
+    description: "Analyst plan turns one event into multiple workflow-ready formats for faster decision support.",
   },
 ];
 
