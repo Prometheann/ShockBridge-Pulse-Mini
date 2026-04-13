@@ -24,9 +24,7 @@ export function ResearchSection() {
 
         {/* Intro */}
         <p
-          className="text-[#9ca3af] text-base leading-relaxed mb-12 text-center max-w-2xl mx-auto [text-align:justify] sm:text-center"
-          style={{ hyphens: "auto" } as object}
-          lang="en"
+          className="text-[#9ca3af] text-base leading-relaxed mb-12 text-center max-w-2xl mx-auto"
         >
           ShockBridge Pulse goes one layer deeper: from structured market logic into original
           research on contagion, option-implied stress, and hidden transmission across financial
@@ -57,9 +55,7 @@ export function ResearchSection() {
 
           {/* Summary */}
           <p
-            className="text-[#9ca3af] text-base leading-relaxed mb-6 [text-align:justify]"
-            style={{ hyphens: "auto" } as object}
-            lang="en"
+            className="text-[#9ca3af] text-base leading-relaxed mb-6"
           >
             This working paper studies how stress spreads across Brazilian equities before
             broad contagion becomes obvious. It combines Airy wavelets, regularized canonical

@@ -42,7 +42,7 @@ export function Header() {
         </nav>
 
         <Link href="/generate">
-          <Button size="sm">Try a Sample</Button>
+          <Button size="sm">Get Memo</Button>
         </Link>
       </div>
     </header>
