@@ -245,7 +245,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
             {/* X post */}
             <div className="bg-[#0f1117] rounded-xl p-4 border border-[#2d3148]">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">X post</span>
+                <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">X Brief</span>
                 <CopyButton text={memo.x_post} label="X post" />
               </div>
               <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line sm:[text-align:justify] [hyphens:auto]">{memo.x_post}</p>
@@ -255,7 +255,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
             {/* LinkedIn */}
             <div className="bg-[#0f1117] rounded-xl p-4 border border-[#2d3148]">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">LinkedIn post</span>
+                <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">LinkedIn Brief</span>
                 <CopyButton text={memo.linkedin_post} label="LinkedIn" />
               </div>
               {memo.linkedin_post_headline && (
@@ -271,20 +271,20 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
 
             {/* PDF */}
             <Button variant="secondary" size="lg" onClick={handlePrint} className="no-print w-full">
-              Export PDF
+              Export PDF Memo
             </Button>
           </div>
         ) : !isCreator ? (
           <div className="border-t border-[#2d3148] pt-6">
             <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 text-center">
               <p className="text-amber-400 font-medium mb-1">
-                X post + LinkedIn post + PDF export
+                X Brief · LinkedIn Brief · PDF Memo
               </p>
               <p className="text-[#9ca3af] text-sm mb-4">
-                Upgrade to Creator for publish-ready social content, in-depth analysis, and PDF export.
+                Upgrade to Analyst for deeper analysis, formatted distribution briefs, and PDF memo export.
               </p>
               <Link href="/#pricing">
-                <Button size="sm">Get Creator $19</Button>
+                <Button size="sm">Get Analyst</Button>
               </Link>
             </div>
           </div>
