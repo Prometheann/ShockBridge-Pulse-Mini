@@ -12,7 +12,7 @@ const baseItems = [
   "What to watch next",
 ];
 
-const creatorExtras = ["X post (ready to publish)", "LinkedIn post (ready to publish)", "PDF export"];
+const creatorExtras = ["Scenario brief — X format", "Scenario brief — LinkedIn format", "PDF memo for distribution or filing"];
 
 export function WhatYouGetSection() {
   return (
@@ -26,7 +26,7 @@ export function WhatYouGetSection() {
             </h2>
             <p className="text-[#9ca3af] leading-relaxed">
               Each generation gives you a sharp memo built for speed and clarity, not vague
-              market noise. Analyst plan also gives you content you can publish immediately.
+              market noise. Analyst plan adds formatted output channels for distribution and filing.
             </p>
           </div>
 
