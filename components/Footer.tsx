@@ -25,20 +25,20 @@ export function Footer() {
             <Link href="/#pricing" className="hover:text-[#f0f0f0] transition-colors">
               Pricing
             </Link>
-            <Link href="/#faq" className="hover:text-[#f0f0f0] transition-colors">
-              FAQ
+            <Link href="/research/from-spot-to-stress" className="hover:text-[#f0f0f0] transition-colors">
+              Research
             </Link>
             <Link href="/#about" className="hover:text-[#f0f0f0] transition-colors">
               About
             </Link>
-            <Link href="/research/from-spot-to-stress" className="hover:text-[#f0f0f0] transition-colors">
-              Research
+            <Link href="/#faq" className="hover:text-[#f0f0f0] transition-colors">
+              FAQ
             </Link>
             <a href="mailto:help@shockbridgepulse.com" className="hover:text-[#f0f0f0] transition-colors">
               Help
             </a>
             <Link href="/generate" className="hover:text-[#f0f0f0] transition-colors">
-              Generate
+              Generator
             </Link>
           </nav>
         </div>
