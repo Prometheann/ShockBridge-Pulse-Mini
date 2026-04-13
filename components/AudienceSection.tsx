@@ -1,4 +1,6 @@
-const audiences = [
+import React from "react";
+
+const audiences: { icon: string; title: React.ReactNode; description: string }[] = [
   {
     icon: "📊",
     title: "Investors & allocators",
@@ -11,7 +13,7 @@ const audiences = [
   },
   {
     icon: "🏦",
-    title: "Treasury & risk-minded operators",
+    title: <>Treasury &<br />risk-minded operators</>,
     description: "See how pressure can move from rates, FX, or commodities into real business exposure.",
   },
   {
@@ -35,9 +37,9 @@ export function AudienceSection() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {audiences.map((a) => (
+          {audiences.map((a, i) => (
             <div
-              key={a.title}
+              key={i}
               className="bg-[#0f1117] border border-[#2d3148] rounded-2xl p-5 hover:border-amber-500/30 transition-colors flex sm:block items-start gap-4"
             >
               <span className="text-2xl shrink-0">{a.icon}</span>
