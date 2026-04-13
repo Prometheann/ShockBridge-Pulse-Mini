@@ -54,11 +54,7 @@ export default function FromSpotToStressPage() {
         <div className="w-12 h-1 bg-amber-500 rounded-full mb-12" />
 
         {/* Body */}
-        <div
-          className="space-y-7 text-[#9ca3af] text-base leading-relaxed [text-align:justify]"
-          style={{ hyphens: "auto" } as React.CSSProperties}
-          lang="en"
-        >
+        <div className="space-y-7 text-[#9ca3af] text-base leading-relaxed">
           <p>
             Contagion is usually recognized too late. Stress begins in fragments: one sector
             weakens, short-horizon dependence tightens, option-implied fear rises, and only later
@@ -93,11 +89,7 @@ export default function FromSpotToStressPage() {
             <p className="text-amber-500 text-xs font-semibold uppercase tracking-widest mb-3">
               Why it matters
             </p>
-            <p
-              className="text-[#9ca3af] text-sm leading-relaxed [text-align:justify]"
-              style={{ hyphens: "auto" } as React.CSSProperties}
-              lang="en"
-            >
+            <p className="text-[#9ca3af] text-sm leading-relaxed">
               Most market commentary names stress after it is already visible. A stronger
               framework should separate ordinary interdependence from crisis-sensitive propagation
               and show whether contagion is emerging at short, medium, or longer horizons. That
@@ -110,11 +102,7 @@ export default function FromSpotToStressPage() {
             <p className="text-amber-500 text-xs font-semibold uppercase tracking-widest mb-3">
               What is new
             </p>
-            <p
-              className="text-[#9ca3af] text-sm leading-relaxed [text-align:justify]"
-              style={{ hyphens: "auto" } as React.CSSProperties}
-              lang="en"
-            >
+            <p className="text-[#9ca3af] text-sm leading-relaxed">
               The contribution is not just wavelets applied to finance. The framework connects
               multiscale localization, high-dimensional block dependence, and forward-looking
               option-implied stress within one contagion architecture, moving from descriptive
@@ -180,10 +168,10 @@ export default function FromSpotToStressPage() {
 
         {/* Bottom rule + tagline */}
         <div className="mt-16 pt-8 border-t border-[#1e2130]">
-          <p className="text-[#4b5563] text-xs text-center">
+          <p className="text-[#4b5563] text-xs">
             ShockBridge Pulse Research — market structure, stress transmission, and financial intelligence.
           </p>
-          <p className="text-[#4b5563] text-xs text-center mt-2">
+          <p className="text-[#4b5563] text-xs mt-2">
             Market-interpretation and research tool only. Not financial advice.
           </p>
         </div>
