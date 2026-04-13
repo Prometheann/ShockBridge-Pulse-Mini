@@ -117,11 +117,11 @@ export function PricingSection() {
           </div>
         </div>
 
-        <p className="text-center text-xs text-[#6b7280] mt-6">
+        <p className="text-xs text-[#6b7280] mt-6">
           One payment. No recurring subscription at launch. After purchase you receive an access
           code by email. Redeem it in the app to unlock your memos.
         </p>
-        <p className="text-center text-xs text-[#4b5563] mt-2">
+        <p className="text-xs text-[#4b5563] mt-2">
           ShockBridge Pulse is a market-interpretation and research tool. It does not provide financial advice.
         </p>
       </div>
