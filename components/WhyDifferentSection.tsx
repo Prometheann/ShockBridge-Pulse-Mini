@@ -1,7 +1,7 @@
 const points = [
   {
     title: "Not just output. Structure.",
-    description: "The tool is built around market logic, not generic rewriting.",
+    description: "The tool is built around market logic, not generic information.",
   },
   {
     title: "Not just reaction. Transmission.",
