@@ -21,7 +21,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   word-break: normal;
-  text-wrap: pretty;
 }
 
 p, li {
@@ -32,7 +31,6 @@ p, li {
   overflow-wrap: normal;
   text-align: left;
   line-height: 1.65;
-  text-wrap: pretty;
 }
 
 /* ─── Screen: memo text justification (all plans) ──────────────────────── */
