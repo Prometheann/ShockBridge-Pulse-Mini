@@ -20,7 +20,7 @@ export function WhatYouGetSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
-          <div className="text-center lg:text-left">
+          <div>
             <h2 className="text-3xl font-bold text-[#f0f0f0] mb-4">
               One input. Multiple usable outputs.
             </h2>

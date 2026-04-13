@@ -34,7 +34,7 @@ export function PricingSection() {
   return (
     <section id="pricing" className="py-20 bg-[#1a1d27] border-y border-[#2d3148]">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-12">
+        <div className="mb-12">
           <h2 className="text-3xl font-bold text-[#f0f0f0] mb-3">
             Start with the engine. Move up with the signal.
           </h2>

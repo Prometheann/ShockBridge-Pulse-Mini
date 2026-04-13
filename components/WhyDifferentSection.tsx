@@ -10,7 +10,7 @@ const points = [
   },
   {
     title: "Not just analysis. Reusable assets.",
-    description: "Creator mode turns one event into content you can publish or share.",
+    description: "Analyst plan turns one event into content you can publish or share.",
   },
 ];
 
@@ -19,11 +19,11 @@ const chain = ["Shock", "Pressure", "Spillover", "Exposure", "Watchpoints"];
 export function WhyDifferentSection() {
   return (
     <section className="py-20 max-w-6xl mx-auto px-6">
-      <div className="text-center mb-12">
+      <div className="mb-12">
         <h2 className="text-3xl font-bold text-[#f0f0f0] mb-4">
           Because it thinks in chains, not fragments.
         </h2>
-        <div className="flex items-center justify-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap">
           {chain.map((item, i) => (
             <span key={item} className="flex items-center gap-2">
               <span className="text-amber-500 font-medium">{item}</span>

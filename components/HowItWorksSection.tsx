@@ -22,7 +22,7 @@ const steps = [
 export function HowItWorksSection() {
   return (
     <section id="features" className="py-20 max-w-6xl mx-auto px-6">
-      <div className="text-center mb-12">
+      <div className="mb-12">
         <h2 className="text-3xl font-bold text-[#f0f0f0] mb-3">Simple in. Sharp out.</h2>
         <p className="text-[#9ca3af]">Three steps from market noise to structured conviction.</p>
       </div>

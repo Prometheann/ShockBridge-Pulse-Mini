@@ -22,9 +22,9 @@ const faqs = [
       "One completed scenario generation counts as one memo credit. If the generation fails due to a server error, it does not consume a credit.",
   },
   {
-    question: "What is the difference between Basic and Creator?",
+    question: "What is the difference between Bridge and Analyst?",
     answer:
-      "Basic gives you 5 memos with the full scenario analysis. Creator gives you 20 memos plus X post output, LinkedIn post output, and PDF export. Built for people who want to publish or share their analysis.",
+      "Bridge gives you 5 memos with the full scenario analysis. Analyst gives you 15 memos plus X post output, LinkedIn post output, and PDF export. Built for people who want to publish or share their analysis.",
   },
   {
     question: "How do I access the tool after purchasing?",
@@ -41,7 +41,7 @@ const faqs = [
 export function FaqSection() {
   return (
     <section id="faq" className="py-20 max-w-3xl mx-auto px-6">
-      <div className="text-center mb-12">
+      <div className="mb-12">
         <h2 className="text-3xl font-bold text-[#f0f0f0] mb-3">Questions</h2>
       </div>
       <Accordion items={faqs} />

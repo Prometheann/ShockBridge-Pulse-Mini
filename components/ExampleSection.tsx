@@ -1,7 +1,7 @@
 export function ExampleSection() {
   return (
     <section className="py-20 max-w-6xl mx-auto px-6">
-      <div className="text-center mb-12">
+      <div className="mb-12">
         <h2 className="text-3xl font-bold text-[#f0f0f0] mb-3">See it in action</h2>
         <p className="text-[#9ca3af]">One input turns into a full research-grade scenario note.</p>
       </div>
