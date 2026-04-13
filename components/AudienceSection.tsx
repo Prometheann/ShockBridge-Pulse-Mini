@@ -17,7 +17,7 @@ const audiences: { icon: string; title: React.ReactNode; description: string }[]
     description: "See how pressure can move from rates, FX, or commodities into real business exposure.",
   },
   {
-    icon: "🎓",
+    icon: "🔍",
     title: "Analysts",
     description: "Organize cause, pressure, spillover, and watchpoints more clearly across markets.",
   },
