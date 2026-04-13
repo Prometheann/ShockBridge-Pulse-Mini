@@ -40,7 +40,7 @@ export function AudienceSection() {
           {audiences.map((a, i) => (
             <div
               key={i}
-              className="bg-[#0f1117] border border-[#2d3148] rounded-2xl p-5 hover:border-amber-500/30 transition-colors flex sm:block items-start gap-4"
+              className="bg-[#0f1117] border border-[#2d3148] rounded-2xl p-6 hover:border-amber-500/30 transition-colors flex sm:block items-start gap-4"
             >
               <span className="text-2xl shrink-0">{a.icon}</span>
               <div>

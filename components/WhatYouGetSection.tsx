@@ -22,7 +22,7 @@ export function WhatYouGetSection() {
           {/* Left */}
           <div>
             <h2 className="text-3xl font-bold text-[#f0f0f0] mb-4">
-              One input. Multiple usable outputs.
+              One event. A complete transmission memo.
             </h2>
             <p className="text-[#9ca3af] leading-relaxed">
               Each generation gives you a structured transmission memo built for speed, clarity,

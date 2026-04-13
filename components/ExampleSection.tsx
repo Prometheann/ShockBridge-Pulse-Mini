@@ -28,7 +28,7 @@ export function ExampleSection() {
 
         {/* Output */}
         <div className="bg-[#1a1d27] border border-[#2d3148] rounded-2xl p-6">
-          <p className="text-xs text-[#9ca3af] uppercase tracking-wider mb-4">Example output</p>
+          <p className="text-xs text-[#9ca3af] uppercase tracking-wider mb-4">Scenario memo</p>
 
           <p className="text-[#f0f0f0] font-semibold mb-4">
             Oil Pressure Reprices Brazil&apos;s Inflation and Equity Sensitivity
