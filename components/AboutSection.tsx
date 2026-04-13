@@ -4,18 +4,18 @@ export function AboutSection() {
       <div className="max-w-4xl mx-auto px-6">
 
         {/* Label */}
-        <p className="text-amber-500 text-xs font-semibold uppercase tracking-widest mb-4 text-center">
+        <p className="text-amber-500 text-xs font-semibold uppercase tracking-widest mb-4">
           About
         </p>
 
         {/* Headline */}
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#f0f0f0] leading-tight mb-6 text-center"
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#f0f0f0] leading-tight mb-6"
           style={{ textWrap: "balance" } as React.CSSProperties}>
-          Built for people who read macro events<br className="hidden sm:block" /> and need to think fast.
+          Built for people who read macro events and need to think fast.
         </h2>
 
         {/* Divider */}
-        <div className="w-12 h-1 bg-amber-500 rounded-full mb-10 mx-auto" />
+        <div className="w-12 h-1 bg-amber-500 rounded-full mb-10" />
 
         {/* Body */}
         <div className="space-y-6 text-[#9ca3af] text-base leading-relaxed">
@@ -53,7 +53,7 @@ export function AboutSection() {
         </div>
 
         {/* Disclaimer */}
-        <p className="mt-10 text-[#4b5563] text-xs leading-relaxed border-t border-[#1e2130] pt-6 text-center">
+        <p className="mt-10 text-[#4b5563] text-xs leading-relaxed border-t border-[#1e2130] pt-6">
           Market-interpretation and research tool only. Not financial advice. No positions are recommended.
           All outputs should be verified before any investment decision.
         </p>

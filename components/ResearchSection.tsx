@@ -7,31 +7,31 @@ export function ResearchSection() {
       <div className="max-w-4xl mx-auto px-6">
 
         {/* Label */}
-        <p className="text-amber-500 text-xs font-semibold uppercase tracking-widest mb-4 text-center">
+        <p className="text-amber-500 text-xs font-semibold uppercase tracking-widest mb-4">
           Research
         </p>
 
         {/* Headline */}
         <h2
-          className="text-3xl sm:text-4xl font-bold text-[#f0f0f0] leading-tight mb-6 text-center"
+          className="text-3xl sm:text-4xl font-bold text-[#f0f0f0] leading-tight mb-6"
           style={{ textWrap: "balance" } as object}
         >
           Research the chain before contagion becomes obvious.
         </h2>
 
         {/* Divider */}
-        <div className="w-12 h-1 bg-amber-500 rounded-full mb-10 mx-auto" />
+        <div className="w-12 h-1 bg-amber-500 rounded-full mb-10" />
 
         {/* Intro */}
         <p
-          className="text-[#9ca3af] text-base leading-relaxed mb-4 text-center max-w-2xl mx-auto"
+          className="text-[#9ca3af] text-base leading-relaxed mb-4"
         >
           ShockBridge Pulse goes one layer deeper: from structured market logic into original
           research on contagion, option-implied stress, and hidden transmission across financial
           markets.
         </p>
         <p
-          className="text-[#6b7280] text-sm leading-relaxed mb-12 text-center max-w-2xl mx-auto"
+          className="text-[#6b7280] text-sm leading-relaxed mb-12"
         >
           The live product is the memo layer. The research section shows the deeper transmission
           architecture being developed in parallel to strengthen the platform over time.
@@ -89,7 +89,7 @@ export function ResearchSection() {
 
         {/* Subscribe strip */}
         <div className="mt-8 border-t border-[#2d3148] pt-8">
-          <p className="text-[#4b5563] text-xs text-center mb-4">
+          <p className="text-[#4b5563] text-xs mb-4">
             Get notified when the paper is released. One email, no spam.
           </p>
           <div className="max-w-md mx-auto">
