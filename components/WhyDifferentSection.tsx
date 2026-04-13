@@ -20,7 +20,7 @@ export function WhyDifferentSection() {
   return (
     <section className="py-20 max-w-6xl mx-auto px-6">
       <div className="mb-12">
-        <h2 className="text-3xl font-bold text-[#f0f0f0] mb-4">
+        <h2 className="text-3xl font-bold text-[#f0f0f0] mb-4" style={{ textWrap: "balance" } as React.CSSProperties}>
           Because it thinks in chains, not fragments.
         </h2>
         <div className="flex items-center gap-2 flex-wrap">
