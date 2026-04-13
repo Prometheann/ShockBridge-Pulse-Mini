@@ -14,7 +14,7 @@ export function PositioningStrip() {
           ))}
         </div>
         <p className="text-[#9ca3af] text-sm leading-relaxed">
-          ShockBridge Pulse maps the transmission chain — from shock to decision — so you can move from noise to structure with speed.
+          ShockBridge Pulse maps the transmission chain from shock to decision. So you can move from noise to structure with speed.
         </p>
       </div>
     </div>
