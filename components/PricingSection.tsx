@@ -22,9 +22,9 @@ const analystExtras = [
   "Everything in Bridge",
   "15 structured transmission memos",
   "Deep earnings shock breakdown (EPS vs consensus, guidance, sector rotation)",
-  "X post (ready to publish)",
-  "LinkedIn post (ready to publish)",
-  "PDF export",
+  "Scenario brief — X format",
+  "Scenario brief — LinkedIn format",
+  "PDF memo for distribution or filing",
 ];
 
 export function PricingSection() {
