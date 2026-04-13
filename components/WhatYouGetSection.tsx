@@ -3,7 +3,7 @@ import React from "react";
 const baseItems = [
   "Sharp title",
   "Concise summary",
-  "Macro shock + earnings shock analysis",
+  "Macro + earnings shocks analysis",
   "First-order effects",
   "Second-order risks",
   "Bullish path",
