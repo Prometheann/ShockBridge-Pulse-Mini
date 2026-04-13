@@ -13,7 +13,7 @@ const audiences: { icon: string; title: React.ReactNode; description: string }[]
   },
   {
     icon: "🏦",
-    title: <>Treasury &<br />risk-minded operators</>,
+    title: "Treasury & risk-minded operators",
     description: "See how pressure can move from rates, FX, or commodities into real business exposure.",
   },
   {
