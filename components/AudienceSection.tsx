@@ -1,23 +1,23 @@
 const audiences = [
   {
-    icon: "📈",
-    title: "Traders",
-    description: "Get cleaner scenario framing when the market moves fast.",
+    icon: "📊",
+    title: "Investors & allocators",
+    description: "Map transmission chains before positioning decisions under pressure.",
   },
   {
-    icon: "✍️",
-    title: "Finance creators",
-    description: "Turn one event into a usable angle, memo, and post.",
+    icon: "🧭",
+    title: "Advisors & research professionals",
+    description: "Structure your macro view faster when clients need answers now.",
   },
   {
-    icon: "📰",
-    title: "Newsletter writers",
-    description: "Reduce blank-page time and speed up your workflow.",
+    icon: "🏦",
+    title: "Treasury & risk operators",
+    description: "Identify spillover paths and exposure before they become obvious.",
   },
   {
     icon: "🎓",
     title: "Analysts",
-    description: "Organize cause and effect more clearly across markets.",
+    description: "Organize cause and effect more clearly across markets and horizons.",
   },
 ];
 
@@ -27,8 +27,11 @@ export function AudienceSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-[#f0f0f0] mb-3">
-            Built for people who think in markets.
+            Built for serious market operators.
           </h2>
+          <p className="text-[#9ca3af]">
+            People who need structure under pressure, not just headlines.
+          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

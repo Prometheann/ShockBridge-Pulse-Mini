@@ -24,11 +24,17 @@ export function ResearchSection() {
 
         {/* Intro */}
         <p
-          className="text-[#9ca3af] text-base leading-relaxed mb-12 text-center max-w-2xl mx-auto"
+          className="text-[#9ca3af] text-base leading-relaxed mb-4 text-center max-w-2xl mx-auto"
         >
           ShockBridge Pulse goes one layer deeper: from structured market logic into original
           research on contagion, option-implied stress, and hidden transmission across financial
           markets.
+        </p>
+        <p
+          className="text-[#6b7280] text-sm leading-relaxed mb-12 text-center max-w-2xl mx-auto"
+        >
+          The current product is the live memo layer. This research is the deeper analytical
+          framework being developed in parallel.
         </p>
 
         {/* Featured paper card */}

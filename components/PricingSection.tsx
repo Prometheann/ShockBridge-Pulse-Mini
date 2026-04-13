@@ -39,7 +39,7 @@ export function PricingSection() {
             Start with the engine. Move up with the signal.
           </h2>
           <p className="text-[#9ca3af]">
-            ShockBridge Pulse begins with simple access to the transmission engine. For professionals who want deeper involvement, a paid tier is available.
+            Start with the transmission engine. Move to deeper interpretation when the stakes demand it.
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export function PricingSection() {
             <div className="flex items-end gap-1 mb-1">
               <span className="text-4xl font-bold text-[#f0f0f0]">$19</span>
             </div>
-            <p className="text-[#9ca3af] text-sm mb-6">Deeper interpretation for professionals who brief, publish, or decide regularly</p>
+            <p className="text-[#9ca3af] text-sm mb-6">Deeper interpretation for professionals who need to brief, position, and act under pressure</p>
 
             <ul className="space-y-3 mb-8 flex-1">
               {analystExtras.map((f, i) => (

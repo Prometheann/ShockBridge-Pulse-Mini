@@ -42,7 +42,7 @@ export function FaqSection() {
   return (
     <section id="faq" className="py-20 max-w-3xl mx-auto px-6">
       <div className="mb-12">
-        <h2 className="text-3xl font-bold text-[#f0f0f0] mb-3">Questions</h2>
+        <h2 className="text-3xl font-bold text-[#f0f0f0] mb-3">A few things worth knowing</h2>
       </div>
       <Accordion items={faqs} />
     </section>
