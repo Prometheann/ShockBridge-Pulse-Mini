@@ -39,7 +39,7 @@ export function PricingSection() {
             Start with the engine. Move up with the signal.
           </h2>
           <p className="text-[#9ca3af]">
-            Start with the transmission engine. Move to deeper interpretation when the stakes demand it.
+            ShockBridge Pulse begins with simple access to the transmission engine. For professionals who need deeper interpretation and workflow-ready formats, higher tiers extend that capability.
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export function PricingSection() {
             <div className="flex items-end gap-1 mb-1">
               <span className="text-4xl font-bold text-[#f0f0f0]">$19</span>
             </div>
-            <p className="text-[#9ca3af] text-sm mb-6">Deeper interpretation for professionals who need to brief, position, and act under pressure</p>
+            <p className="text-[#9ca3af] text-sm mb-6">Deeper interpretation for professionals who need sharper market communication and faster decision support</p>
 
             <ul className="space-y-3 mb-8 flex-1">
               {analystExtras.map((f, i) => (
@@ -122,7 +122,7 @@ export function PricingSection() {
           code by email. Redeem it in the app to unlock your memos.
         </p>
         <p className="text-center text-xs text-[#4b5563] mt-2">
-          ShockBridge Pulse is a research and writing tool. It does not provide financial advice.
+          ShockBridge Pulse is a market-interpretation and research tool. It does not provide financial advice.
         </p>
       </div>
     </section>

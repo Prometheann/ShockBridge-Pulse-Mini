@@ -17,7 +17,7 @@ export function Footer() {
               Structured market logic for fast movers.
             </p>
             <p className="text-[#4b5563] text-xs mt-3">
-              Research and writing tool only. Not financial advice.
+              Market-interpretation and research tool only. Not financial advice.
             </p>
           </div>
 

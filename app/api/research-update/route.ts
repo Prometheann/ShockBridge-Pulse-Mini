@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
                 <p style="font-size: 11px; color: #9ca3af; line-height: 1.6; margin: 0;">
                   ShockBridge Pulse · shockbridgepulse.com<br />
                   You subscribed to research updates on From Spot to Stress.<br />
-                  Research and writing tool only. Not financial advice.
+                  Market-interpretation and research tool only. Not financial advice.
                 </p>
               </div>
             `,

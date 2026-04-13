@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
           <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 0 0 20px 0;" />
           <p style="font-size: 11px; color: #9ca3af; line-height: 1.6; margin: 0;">
             ShockBridge Pulse · shockbridgepulse.com<br />
-            Research and writing tool only. Not financial advice.
+            Market-interpretation and research tool only. Not financial advice.
           </p>
         </div>
       `,

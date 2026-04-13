@@ -9,8 +9,8 @@ const points = [
       "It maps what hits first, what spills over next, and what deserves attention.",
   },
   {
-    title: "Not just analysis. Reusable assets.",
-    description: "Analyst plan turns one event into content you can publish or share.",
+    title: "Not just analysis. Workflow-ready formats.",
+    description: "Analyst plan extends one event into multiple communication formats for faster professional use.",
   },
 ];
 

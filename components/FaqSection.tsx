@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "Is this financial advice?",
     answer:
-      "No. ShockBridge Pulse is a research and writing tool designed to help users think more clearly about market scenarios. It does not provide investment recommendations or buy/sell advice.",
+      "No. ShockBridge Pulse is a market-interpretation and research tool designed to help users think more clearly about market scenarios. It does not provide investment recommendations or buy/sell advice.",
   },
   {
     question: "Do I need trading experience to use it?",

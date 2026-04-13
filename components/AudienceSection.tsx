@@ -2,22 +2,22 @@ const audiences = [
   {
     icon: "📊",
     title: "Investors & allocators",
-    description: "Map transmission chains before positioning decisions under pressure.",
+    description: "Get cleaner scenario framing when market pressure distorts the surface narrative.",
   },
   {
     icon: "🧭",
     title: "Advisors & research professionals",
-    description: "Structure your macro view faster when clients need answers now.",
+    description: "Turn fast-moving events into structured interpretation clients and teams can understand.",
   },
   {
     icon: "🏦",
-    title: "Treasury & risk operators",
-    description: "Identify spillover paths and exposure before they become obvious.",
+    title: "Treasury & risk-minded operators",
+    description: "See how pressure can move from rates, FX, or commodities into real business exposure.",
   },
   {
     icon: "🎓",
     title: "Analysts",
-    description: "Organize cause and effect more clearly across markets and horizons.",
+    description: "Organize cause, pressure, spillover, and watchpoints more clearly across markets.",
   },
 ];
 

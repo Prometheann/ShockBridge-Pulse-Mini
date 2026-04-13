@@ -184,7 +184,7 @@ export default function FromSpotToStressPage() {
             ShockBridge Pulse Research — market structure, stress transmission, and financial intelligence.
           </p>
           <p className="text-[#4b5563] text-xs text-center mt-2">
-            Research and writing tool only. Not financial advice.
+            Market-interpretation and research tool only. Not financial advice.
           </p>
         </div>
 

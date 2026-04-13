@@ -25,8 +25,9 @@ export function WhatYouGetSection() {
               One input. Multiple usable outputs.
             </h2>
             <p className="text-[#9ca3af] leading-relaxed">
-              Each generation gives you a sharp memo built for speed and clarity, not vague
-              market noise. Analyst plan adds formatted output channels for distribution and filing.
+              Each generation gives you a structured transmission memo built for speed, clarity,
+              and disciplined market interpretation. The Analyst plan adds additional output formats
+              for briefing, sharing, and filing.
             </p>
           </div>
 
