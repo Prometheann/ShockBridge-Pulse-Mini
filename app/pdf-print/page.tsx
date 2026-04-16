@@ -251,7 +251,7 @@ export default function PdfPrint() {
       {/* PAGE 4 — First-order effects */}
       <div className="page" lang="en">
         <Header />
-        <div className="content content-top">
+        <div className="content">
           <span className="section-label">First-order effects</span>
           <ul>
             {memo.first_order_effects.map((item, i) => (
@@ -266,7 +266,7 @@ export default function PdfPrint() {
       {memo.second_order_effects && (
         <div className="page" lang="en">
           <Header />
-          <div className="content content-top">
+          <div className="content">
             <span className="section-label">Second-order effects</span>
             <ul>
               {memo.second_order_effects.map((item, i) => (
@@ -282,7 +282,7 @@ export default function PdfPrint() {
       {memo.bullish_path && (
         <div className="page" lang="en">
           <Header />
-          <div className="content content-top">
+          <div className="content">
             <span className="section-label">Bullish path</span>
             {bullishParas.map((p, i) => (
               <p key={i} className="body-p">{p}</p>
@@ -296,7 +296,7 @@ export default function PdfPrint() {
       {memo.bearish_path && (
         <div className="page" lang="en">
           <Header />
-          <div className="content content-top">
+          <div className="content">
             <span className="section-label">Bearish path</span>
             {bearishParas.map((p, i) => (
               <p key={i} className="body-p">{p}</p>
@@ -310,7 +310,7 @@ export default function PdfPrint() {
       {memo.key_uncertainties && (
         <div className="page" lang="en">
           <Header />
-          <div className="content content-top">
+          <div className="content">
             <span className="section-label">Key uncertainties</span>
             <ul>
               {memo.key_uncertainties.map((item, i) => (
@@ -325,7 +325,7 @@ export default function PdfPrint() {
       {/* PAGE 9 — Watch next */}
       <div className="page" lang="en">
         <Header />
-        <div className="content content-top">
+        <div className="content">
           <span className="section-label">Watch next</span>
           <ul>
             {memo.watch_next.map((item, i) => (
@@ -340,7 +340,7 @@ export default function PdfPrint() {
       {memo.x_post && (
         <div className="page" lang="en">
           <Header />
-          <div className="content content-top">
+          <div className="content">
             <span className="section-label">Content Outputs: Social</span>
             <div style={{ marginTop: "18px" }}>
               <div className="social-box" style={{ marginBottom: 0 }}>
@@ -357,7 +357,7 @@ export default function PdfPrint() {
       {memo.linkedin_post && (
         <div className="page" lang="en">
           <Header />
-          <div className="content content-top">
+          <div className="content">
             <span className="section-label">LinkedIn Post</span>
             <div style={{ marginTop: "18px" }}>
               <div className="social-box" style={{ marginBottom: 0 }}>
