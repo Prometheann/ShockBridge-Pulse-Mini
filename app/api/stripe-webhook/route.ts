@@ -15,10 +15,16 @@ const redis = new Redis({
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
-// ── Product → plan mapping ────────────────────────────────────────────────────
-const PRODUCT_PLAN: Record<string, { pool: string; internalPlan: "basic" | "creator"; label: string; memos: number }> = {
+// ── Product/Price → plan mapping ──────────────────────────────────────────────
+type PlanMeta = { pool: string; internalPlan: "basic" | "creator"; label: string; memos: number };
+
+const PRODUCT_PLAN: Record<string, PlanMeta> = {
+  // by product ID
   [process.env.STRIPE_BRIDGE_PRODUCT_ID!]:  { pool: "sbp:pool:bridge",  internalPlan: "basic",   label: "Bridge",  memos: 5  },
   [process.env.STRIPE_ANALYST_PRODUCT_ID!]: { pool: "sbp:pool:analyst", internalPlan: "creator", label: "Analyst", memos: 15 },
+  // by price ID (fallback)
+  [process.env.STRIPE_BRIDGE_PRICE_ID!]:    { pool: "sbp:pool:bridge",  internalPlan: "basic",   label: "Bridge",  memos: 5  },
+  [process.env.STRIPE_ANALYST_PRICE_ID!]:   { pool: "sbp:pool:analyst", internalPlan: "creator", label: "Analyst", memos: 15 },
 };
 
 // ── Required: raw body for Stripe signature verification ─────────────────────
@@ -67,8 +73,10 @@ export async function POST(request: NextRequest) {
       expand: ["data.price.product"],
     });
 
-    const productId = (lineItems.data[0]?.price?.product as Stripe.Product)?.id;
-    const plan = PRODUCT_PLAN[productId];
+    const lineItem  = lineItems.data[0];
+    const productId = (lineItem?.price?.product as Stripe.Product)?.id;
+    const priceId   = lineItem?.price?.id;
+    const plan      = PRODUCT_PLAN[productId] ?? PRODUCT_PLAN[priceId ?? ""];
 
     if (!plan) {
       console.error("[stripe-webhook] Unknown product ID:", productId);
