@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "What is the difference between Bridge and Analyst?",
     answer:
-      "Bridge gives you 5 memos with the full scenario analysis. Analyst gives you 15 memos plus X brief, LinkedIn brief, and PDF memo. Built for professionals who need to brief clients, distribute research, or file structured analysis.",
+      "Bridge gives you 5 memos with the full scenario analysis. Analyst gives you 15 memos plus X brief and LinkedIn brief. Built for professionals who need to brief clients or distribute research quickly.",
   },
   {
     question: "How do I access the tool after purchasing?",

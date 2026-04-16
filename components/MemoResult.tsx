@@ -1,10 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { MemoInput, MemoOutput, Plan } from "@/types/memo";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import Image from "next/image";
 import Link from "next/link";
 
 interface MemoResultProps {
@@ -17,7 +15,7 @@ interface MemoResultProps {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mb-6">
-      <p className="text-xs text-amber-500 uppercase tracking-wider mb-2 font-semibold pdf-section-label">{title}</p>
+      <p className="text-xs text-amber-500 uppercase tracking-wider mb-2 font-semibold">{title}</p>
       {children}
     </div>
   );
@@ -62,24 +60,19 @@ function PrintTitle({ title, hook, asset, bridge, theme }: {
     return (
       <>
         <span className="pdf-title-hook">{hook}</span>
-        <br className="pdf-title-break" />
         <span className="pdf-title-asset">{asset}</span>
-        <br className="pdf-title-break" />
         <span className="pdf-title-bridge">{bridge}</span>
-        <br className="pdf-title-break" />
         <span className="pdf-title-sub">{theme}</span>
       </>
     );
   }
-  // Fallback: split at " — "
   const parts = title.split(" — ");
   if (parts.length < 2) return <>{title}</>;
   return (
     <>
       <span className="pdf-title-hook">{parts[0]}</span>
-      <br className="pdf-title-break" />
       <span className="pdf-title-bridge">{parts[1]}</span>
-      {parts[2] && <><br className="pdf-title-break" /><span className="pdf-title-sub">{parts[2]}</span></>}
+      {parts[2] && <span className="pdf-title-sub">{parts[2]}</span>}
     </>
   );
 }
@@ -88,79 +81,13 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
   const isCreator = plan === "creator";
   const isBasicOrCreator = plan === "basic" || plan === "creator";
 
-  const printDate = new Date().toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-
-  function handlePrint() {
-    const count = Math.min(parseInt(localStorage.getItem("sbp_memo_count") || "0") + 1, 15);
-    localStorage.setItem("sbp_memo_count", String(count));
-    const filename = `ShockBridge-Pulse-Memo-${String(count).padStart(2, "0")}`;
-    const printData = { memo, input, plan, date: printDate, filename };
-    sessionStorage.setItem("sbp_print_data", JSON.stringify(printData));
-    window.open("/pdf-print", "_blank");
-  }
-
   return (
     <div id="memo-output">
+      <div className="space-y-6">
 
-      {/* ── PDF Running header — hidden on screen, fixed top every print page ── */}
-      <div id="pdf-run-header" aria-hidden="true">
-        <span id="pdf-run-header-text">ShockBridge Pulse · Scenario Note</span>
-      </div>
-
-      {/* ── PDF Running footer — hidden on screen, fixed bottom every print page ── */}
-      <div id="pdf-run-footer" aria-hidden="true">
-        <span id="pdf-run-footer-disc">ShockBridge Pulse · shockbridgepulse.com · Not financial advice</span>
-        <span id="pdf-run-footer-page" />
-      </div>
-
-      {/* ── PDF Cover Page — hidden on screen, page 1 in print ── */}
-      <div id="pdf-cover">
-        <div id="pdf-cover-accent" />
-        <div id="pdf-cover-inner">
-          {/* Full logo — transparent background, large */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-transparent.png" alt="ShockBridge Pulse" id="pdf-cover-logo-icon" />
-          <div id="pdf-cover-rule" />
-          <p id="pdf-cover-type">Scenario Note</p>
-          <p id="pdf-cover-plan">Analyst</p>
-          <p id="pdf-cover-date">{printDate}</p>
-          <span id="pdf-cover-creator-gap" />
-          <p id="pdf-cover-creator">Created by Rodolfo Pereira</p>
-        </div>
-        <p id="pdf-cover-disclaimer">For research and writing purposes only. Not financial advice.</p>
-      </div>
-
-      {/* ── Memo content — screen view + pages 2+ in print ── */}
-      <div id="memo-content" className="space-y-6">
-
-        {/* Input framework — PDF only, top of page 2 */}
-        {input && (
-          <div id="pdf-input-framework">
-            <p className="pdf-if-plan">{plan.toUpperCase()}</p>
-            <div className="pdf-if-gap-lg" />
-            <p className="pdf-if-section">Scenario</p>
-            <div className="pdf-if-gap-sm" />
-            <div className="pdf-if-fields">
-              <div className="pdf-if-row"><span className="pdf-if-label">Event type</span><span className="pdf-if-value">{input.eventType}</span></div>
-              <div className="pdf-if-row"><span className="pdf-if-label">Region</span><span className="pdf-if-value">{input.region}</span></div>
-              <div className="pdf-if-row"><span className="pdf-if-label">Sector or asset</span><span className="pdf-if-value">{input.sectorAsset}</span></div>
-              <div className="pdf-if-row"><span className="pdf-if-label">Horizon</span><span className="pdf-if-value">{input.horizon}</span></div>
-              <div className="pdf-if-row"><span className="pdf-if-label">Tone</span><span className="pdf-if-value">{input.tone}</span></div>
-              {input.optionalNote && (
-                <div className="pdf-if-row"><span className="pdf-if-label">Optional thesis / context</span><span className="pdf-if-value">{input.optionalNote}</span></div>
-              )}
-            </div>
-            <div className="pdf-if-gap-xl" />
-          </div>
-        )}
-
-        {/* Header — page 3 in print */}
-        <div id="pdf-section-title" className="border-b border-[#2d3148] pb-5">
-          <div id="pdf-badge-row" className="flex items-center gap-2 mb-3">
+        {/* Header */}
+        <div className="border-b border-[#2d3148] pb-5">
+          <div className="flex items-center gap-2 mb-3">
             <Badge variant="accent">Scenario Note</Badge>
             <Badge variant="muted">{{ free: "Free", basic: "Bridge", creator: "Analyst" }[plan]}</Badge>
           </div>
@@ -176,16 +103,16 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
           <p className="text-[#9ca3af] text-sm mt-3 leading-relaxed sm:[text-align:justify] [hyphens:auto]">{memo.summary}</p>
         </div>
 
-        {/* First-order effects — page 4 in print */}
-        <div className="pdf-page-section">
+        {/* First-order effects */}
+        <div>
           <Section title="First-order effects">
             <BulletList items={memo.first_order_effects} />
           </Section>
         </div>
 
-        {/* Basic + Creator: full memo */}
+        {/* Bridge + Analyst: full memo */}
         {isBasicOrCreator && memo.second_order_effects && (
-          <div className="pdf-page-section">
+          <div>
             <Section title="Second-order effects">
               <BulletList items={memo.second_order_effects} />
             </Section>
@@ -193,13 +120,13 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
         )}
 
         {isBasicOrCreator && memo.bullish_path && memo.bearish_path && (
-          <div id="pdf-paths">
-            <div className="pdf-page-section">
+          <div>
+            <div>
               <Section title="Bullish path">
                 <p className="text-sm text-[#f0f0f0] leading-relaxed sm:[text-align:justify] [hyphens:auto]">{memo.bullish_path}</p>
               </Section>
             </div>
-            <div className="pdf-page-section">
+            <div>
               <Section title="Bearish path">
                 <p className="text-sm text-[#f0f0f0] leading-relaxed sm:[text-align:justify] [hyphens:auto]">{memo.bearish_path}</p>
               </Section>
@@ -208,15 +135,15 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
         )}
 
         {isBasicOrCreator && memo.key_uncertainties && (
-          <div className="pdf-page-section">
+          <div>
             <Section title="Key uncertainties">
               <BulletList items={memo.key_uncertainties} />
             </Section>
           </div>
         )}
 
-        {/* Watch next — own page */}
-        <div className="pdf-page-section">
+        {/* Watch next */}
+        <div>
           <Section title="Watch next">
             {memo.watch_next.some((item) => item.length > 40) ? (
               <BulletList items={memo.watch_next} />
@@ -235,11 +162,11 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
           </Section>
         </div>
 
-        {/* Creator: social posts + PDF */}
+        {/* Analyst: X brief + LinkedIn brief */}
         {isCreator && memo.x_post && memo.linkedin_post ? (
-          <div className="pdf-page-section space-y-5" id="pdf-social-section">
-            <p className="text-xs text-amber-500 uppercase tracking-wider font-semibold pdf-section-label">
-              Content outputs: Social
+          <div className="space-y-5">
+            <p className="text-xs text-amber-500 uppercase tracking-wider font-semibold">
+              Briefing outputs
             </p>
 
             {/* X post */}
@@ -265,14 +192,6 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
                 {memo.linkedin_post.split("\n\n").filter(p => !p.toLowerCase().includes("from market shock to clean signal")).join("\n\n")}
               </p>
             </div>
-
-            {/* Closing text — PDF only */}
-            <p id="pdf-closing-text">ShockBridge Pulse — From market shock to clean signal</p>
-
-            {/* PDF */}
-            <Button variant="secondary" size="lg" onClick={handlePrint} className="no-print w-full">
-              Export PDF Memo
-            </Button>
           </div>
         ) : !isCreator ? (
           <div className="border-t border-[#2d3148] pt-6">
@@ -291,7 +210,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
         ) : null}
 
         {/* Actions */}
-        <div className="flex gap-3 pt-2 no-print">
+        <div className="flex gap-3 pt-2">
           <CopyButton
             text={`${memo.title}\n\n${memo.summary}${memo.first_order_effects ? `\n\nFirst-order effects:\n${memo.first_order_effects.map((e) => `• ${e}`).join("\n")}` : ""}`}
             label="memo"

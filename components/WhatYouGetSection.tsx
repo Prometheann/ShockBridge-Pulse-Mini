@@ -12,7 +12,7 @@ const baseItems = [
   "What to watch next",
 ];
 
-const creatorExtras = ["Scenario brief — X format", "Scenario brief — LinkedIn format", "PDF memo for distribution or filing"];
+const creatorExtras = ["Scenario brief — X format", "Scenario brief — LinkedIn format"];
 
 export function WhatYouGetSection() {
   return (

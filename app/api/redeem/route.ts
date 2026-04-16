@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       memosRemaining < memosTotal
         ? `${planLabel} plan — ${memosRemaining} memo${memosRemaining !== 1 ? "s" : ""} remaining.`
         : plan === "creator"
-          ? "Analyst plan unlocked! 15 memos + X brief + LinkedIn brief + PDF memo."
+          ? "Analyst plan unlocked! 15 memos + X brief + LinkedIn brief."
           : "Bridge plan unlocked! 5 memos.";
 
     return NextResponse.json({ valid: true, plan, memosRemaining, memosTotal, message });
