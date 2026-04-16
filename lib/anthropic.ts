@@ -28,7 +28,7 @@ Each section prints on exactly one A4 page. You MUST stay within these limits. A
 - Key uncertainties (4 bullets): max 420 chars per bullet. End each bullet at a full sentence.
 - Watch next (5 bullets): max 320 chars per bullet. End each bullet at a full sentence.
 - X post: max 280 chars hard limit. No exceptions.
-- LinkedIn post (3 paragraphs): fill the page space after the X post — target 520–580 chars per paragraph (1560–1740 chars total). End each paragraph at a full sentence. Leave room at the bottom for the closing tagline. Never exceed 1740 chars total. Do NOT include "From market shock to clean signal" anywhere in the LinkedIn post.
+- LinkedIn post (3 paragraphs): LinkedIn prints on its own dedicated PDF page. Target 420–460 chars per paragraph (1260–1380 chars total). Always end at a complete sentence. Never exceed 1380 chars total. Do NOT include "From market shock to clean signal" anywhere in the LinkedIn post.
 
 TYPOGRAPHY RULES (non-negotiable):
 - Never use em-dashes (the — character). Restructure the sentence instead: use commas, semicolons, colons, or parentheses. This applies everywhere in your output without exception.
@@ -42,7 +42,7 @@ ANALYTICAL STANDARDS:
 6. No financial advice. Frame as scenario analysis, not recommendations.
 7. If the event is an earnings shock: go deep. Address EPS vs consensus magnitude, guidance raise/maintain/cut, analyst upgrade and downgrade triggers, options market positioning implications (dealer gamma, put/call ratios), short interest and covering dynamics, sector rotation effects, and how peer stocks reprice. This is a core differentiator of Creator quality.
 8. The X post must be immediately engaging: punchy, opinionated, provocative. Target exactly 270-280 characters. You MUST use the full character allowance. Short X posts are unacceptable. Pack in the asset name, the mechanism, and the implication.
-9. The LinkedIn post must be 3 full paragraphs of genuine insight from a senior practitioner, not a summary. Lead with the non-obvious angle. Paragraph 1: the frame. Paragraph 2: the key mechanism. Paragraph 3: the implication or open question. Professional but not corporate.
+9. The LinkedIn post must be exactly 3 paragraphs of genuine insight from a senior practitioner, not a summary. Each paragraph 420–460 chars, hard stop at 1380 chars total — always end at a complete sentence. Lead with the non-obvious angle. Paragraph 1: the frame. Paragraph 2: the key mechanism. Paragraph 3: the implication or open question. Professional but not corporate.
 10. Output valid JSON only. No markdown fences, no preamble, no trailing text.`;
 
 export function buildCreatorPrompt(input: MemoInput): string {
@@ -92,6 +92,6 @@ Produce a deep, publication-quality scenario note. Return exactly this JSON — 
   "x_post_headline": "5-8 word punchy hook — the sharpest possible frame for this post",
   "x_post": "270-280 chars — fill this space completely. Lead with the sharpest, most provocative insight. Name the asset, the mechanism, and the implication. Opinionated, direct, dense. No hashtag spam. Short posts are NOT acceptable.",
   "linkedin_post_headline": "The precise analytical thesis this post is built on — max 12 words, statement form",
-  "linkedin_post": "3 full paragraphs separated by \\n\\n. Target 520-580 chars per paragraph, max 1740 chars total. End each paragraph at a complete sentence. Para 1: the frame - what the market is missing and why this event is different. Para 2: the key mechanism - the non-obvious variable that determines the outcome. Para 3: the implication and the open question a serious practitioner is tracking right now. Professional voice, authoritative, not corporate. No emojis. Do NOT include 'From market shock to clean signal' or any closing tagline in this field."
+  "linkedin_post": "3 paragraphs separated by \\n\\n. Target 420-460 chars per paragraph, hard max 1380 chars total. End each paragraph at a complete sentence — never stop mid-sentence. Para 1: the frame - what the market is missing and why this event is different. Para 2: the key mechanism - the non-obvious variable that determines the outcome. Para 3: the implication and the open question a serious practitioner is tracking right now. Professional voice, authoritative, not corporate. No emojis. Do NOT include 'From market shock to clean signal' or any closing tagline."
 }`;
 }
