@@ -31,14 +31,21 @@ export async function POST(request: NextRequest) {
     // Server-side usage — reads real remaining count from Redis
     const { memosRemaining, memosTotal } = await initCode(normalized, plan);
 
+    // Reject fully-exhausted codes
+    if (memosRemaining === 0) {
+      return NextResponse.json(
+        { valid: false, error: "This code has been fully used. All memos have been consumed." },
+        { status: 400 }
+      );
+    }
+
+    const planLabel = plan === "creator" ? "Analyst" : "Bridge";
     const message =
-      plan === "creator"
-        ? memosRemaining < memosTotal
-          ? `Creator plan — ${memosRemaining} memo${memosRemaining !== 1 ? "s" : ""} remaining.`
-          : "Creator plan unlocked! 15 memos + X post + LinkedIn post + PDF export."
-        : memosRemaining < memosTotal
-          ? `Basic plan — ${memosRemaining} memo${memosRemaining !== 1 ? "s" : ""} remaining.`
-          : "Basic plan unlocked! 5 memos.";
+      memosRemaining < memosTotal
+        ? `${planLabel} plan — ${memosRemaining} memo${memosRemaining !== 1 ? "s" : ""} remaining.`
+        : plan === "creator"
+          ? "Analyst plan unlocked! 15 memos + X brief + LinkedIn brief + PDF memo."
+          : "Bridge plan unlocked! 5 memos.";
 
     return NextResponse.json({ valid: true, plan, memosRemaining, memosTotal, message });
   } catch (err) {

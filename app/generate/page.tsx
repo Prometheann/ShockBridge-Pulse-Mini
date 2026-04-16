@@ -14,6 +14,7 @@ type Step = "form" | "loading" | "result" | "paywall";
 const PLAN_MEMOS: Record<Plan, number> = { free: 1, basic: 5, creator: 15 };
 const FREE_MEMO_KEY = "sbp_free_used_at";
 const FREE_WINDOW_MS = 24 * 60 * 60 * 1000;
+const CODE_STORAGE_KEY = "sbp_access_code";
 
 export default function GeneratePage() {
   const [step, setStep] = useState<Step>("form");
@@ -23,8 +24,32 @@ export default function GeneratePage() {
   const [accessCode, setAccessCode] = useState<string>("");
   const [lastInput, setLastInput] = useState<MemoInput | null>(null);
 
-  // On mount: check if free memo was already used within the last 24h
+  // On mount: restore paid code OR check free memo usage
   useEffect(() => {
+    const savedCode = localStorage.getItem(CODE_STORAGE_KEY);
+    if (savedCode) {
+      // Re-validate silently to get fresh remaining count from Redis
+      fetch("/api/redeem", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: savedCode }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.valid) {
+            setCredits({ plan: data.plan as Plan, memosRemaining: data.memosRemaining, memosTotal: data.memosTotal });
+            setAccessCode(savedCode);
+          } else {
+            // Code exhausted or invalid — clear and show paywall
+            localStorage.removeItem(CODE_STORAGE_KEY);
+            setStep("paywall");
+          }
+        })
+        .catch(() => {});
+      return;
+    }
+
+    // No paid code — check free memo window
     const usedAt = localStorage.getItem(FREE_MEMO_KEY);
     if (usedAt) {
       const elapsed = Date.now() - parseInt(usedAt);
@@ -97,8 +122,10 @@ export default function GeneratePage() {
       const data = await res.json();
       if (res.ok && data.valid) {
         const plan = data.plan as Plan;
+        const normalizedCode = code.trim().toUpperCase();
         setCredits({ plan, memosRemaining: data.memosRemaining, memosTotal: data.memosTotal, unlockedAt: Date.now() });
-        setAccessCode(code.trim().toUpperCase());
+        setAccessCode(normalizedCode);
+        localStorage.setItem(CODE_STORAGE_KEY, normalizedCode);
         setCodeStatus("success");
         setCodeMessage(data.message);
         setStep("form");
