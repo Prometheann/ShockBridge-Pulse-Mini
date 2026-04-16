@@ -55,7 +55,7 @@ const CSS = `
     overflow: hidden;
     padding: 3mm 24mm 18mm 24mm;
   }
-  .content-top { padding-top: 16mm; }
+  .content-top { padding-top: 8mm; }
   .section-label {
     color: #f59e0b; background: #0f172a; font-size: 11pt; font-weight: 800;
     letter-spacing: 0.26em; text-transform: uppercase; display: block;
@@ -83,10 +83,10 @@ const CSS = `
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
   .summary + .summary { margin-top: 20px; }
-  .t-hook  { display: block; color: #f59e0b; font-size: 24pt; font-weight: 800; text-transform: uppercase; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .t-asset { display: block; color: #f59e0b; font-size: 28pt; font-weight: 800; text-transform: uppercase; margin-top: 40px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .t-bridge{ display: block; color: #f59e0b; font-size: 16pt; font-weight: 600; opacity: 0.85; margin-top: 40px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .t-sub   { display: block; color: #f8fafc; font-size: 20pt; font-weight: 800; margin-top: 40px; margin-bottom: 32px; }
+  .t-hook  { display: block; color: #f59e0b; font-size: 17pt; font-weight: 800; text-transform: uppercase; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .t-asset { display: block; color: #f59e0b; font-size: 22pt; font-weight: 800; text-transform: uppercase; margin-top: 12px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .t-bridge{ display: block; color: #f59e0b; font-size: 13pt; font-weight: 600; opacity: 0.85; margin-top: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .t-sub   { display: block; color: #f8fafc; font-size: 15pt; font-weight: 800; margin-top: 10px; margin-bottom: 14px; }
   .if-plan    { font-size: 22pt; font-weight: 800; color: #f59e0b; letter-spacing: 0.18em; text-transform: uppercase; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .if-gap-lg  { height: 32px; display: block; }
   .if-section { font-size: 18pt; font-weight: 800; color: #f59e0b; letter-spacing: 0.16em; text-transform: uppercase; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
