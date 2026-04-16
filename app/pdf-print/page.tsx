@@ -25,10 +25,23 @@ const CSS = `
   @media print {
     @page { size: A4 portrait; margin: 0; }
     @page :first { margin: 0; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
     html, body { background: #0a0f1e !important; }
-    .page { margin: 0 !important; page-break-after: always; page-break-inside: avoid; }
+    .page {
+      margin: 0 !important;
+      background: #0a0f1e !important;
+      background-color: #0a0f1e !important;
+      page-break-after: always;
+      page-break-inside: avoid;
+    }
     .page:last-child { page-break-after: auto; }
-    .cover { margin: 0 !important; }
+    .cover {
+      margin: 0 !important;
+      background: #0a0f1e !important;
+      background-color: #0a0f1e !important;
+    }
+    .page-header { background: #0a0f1e !important; background-color: #0a0f1e !important; }
+    .page-footer { background: #0a0f1e !important; background-color: #0a0f1e !important; }
     .no-print { display: none !important; }
   }
   .page-header {
@@ -121,12 +134,12 @@ const CSS = `
   }
   .cover-accent { position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #f59e0b; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .cover-icon { width: 500px; height: 296px; object-fit: cover; object-position: center 38%; display: block; margin-bottom: 0; }
-  .cover-rule { width: 52px; height: 3px; background: #f59e0b; margin-top: 28px; margin-bottom: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .cover-type { font-size: 22pt; font-weight: 300; color: #f1f5f9; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
-  .cover-plan { font-size: 13pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .cover-rule { width: 52px; height: 3px; background: #f59e0b; margin-top: 44px; margin-bottom: 20px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .cover-type { font-size: 22pt; font-weight: 300; color: #f1f5f9; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px; }
+  .cover-plan { font-size: 13pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 18px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .cover-date { font-size: 8.5pt; color: #475569; letter-spacing: 0.06em; margin-bottom: 0; }
-  .cover-creator-gap { height: 12px; display: block; }
-  .cover-by      { font-size: 8pt; color: #475569; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .cover-creator-gap { height: 36px; display: block; }
+  .cover-by      { font-size: 8pt; color: #475569; letter-spacing: 0.08em; margin-bottom: 7px; }
   .cover-creator { font-size: 10.5pt; font-weight: 700; color: #94a3b8; letter-spacing: 0.06em; }
   .cover-disc { position: absolute; bottom: 18mm; left: 0; right: 0; text-align: center; font-size: 11pt; color: #475569; letter-spacing: 0.04em; }
   /* Print button bar */
