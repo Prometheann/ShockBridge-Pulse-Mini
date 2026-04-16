@@ -56,6 +56,9 @@ const CSS = `
     padding: 3mm 24mm 18mm 24mm;
   }
   .content-top { padding-top: 8mm; }
+  .badge-row { display: flex; gap: 6px; margin-bottom: 12px; }
+  .badge-accent { font-size: 7pt; font-weight: 700; color: #f59e0b; border: 1px solid rgba(245,158,11,0.55); border-radius: 4px; padding: 2px 8px; letter-spacing: 0.1em; text-transform: uppercase; display: inline-block; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .badge-muted  { font-size: 7pt; font-weight: 700; color: #6b7280; border: 1px solid #374151; border-radius: 4px; padding: 2px 8px; letter-spacing: 0.1em; text-transform: uppercase; display: inline-block; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .section-label {
     color: #f59e0b; background: #0f172a; font-size: 11pt; font-weight: 800;
     letter-spacing: 0.26em; text-transform: uppercase; display: block;
@@ -123,7 +126,8 @@ const CSS = `
   .cover-plan { font-size: 13pt; font-weight: 700; color: #f59e0b; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 10px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .cover-date { font-size: 8.5pt; color: #475569; letter-spacing: 0.06em; margin-bottom: 0; }
   .cover-creator-gap { height: 12px; display: block; }
-  .cover-creator { font-size: 9.5pt; color: #64748b; letter-spacing: 0.08em; }
+  .cover-by      { font-size: 8pt; color: #475569; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .cover-creator { font-size: 10.5pt; font-weight: 700; color: #94a3b8; letter-spacing: 0.06em; }
   .cover-disc { position: absolute; bottom: 18mm; left: 0; right: 0; text-align: center; font-size: 11pt; color: #475569; letter-spacing: 0.04em; }
   /* Print button bar */
   .print-bar {
@@ -177,6 +181,8 @@ export default function PdfPrint() {
   }
 
   const { memo, input, plan, date } = data;
+  const planLabel   = plan === "creator" ? "Analyst" : plan === "basic" ? "Bridge" : "Free";
+  const planDisplay = planLabel.toUpperCase();
   const summaryParas   = memo.summary.split("\n\n").filter(Boolean);
   const bullishParas   = (memo.bullish_path || "").split("\n\n").filter(Boolean);
   const bearishParas   = (memo.bearish_path || "").split("\n\n").filter(Boolean);
@@ -202,18 +208,19 @@ export default function PdfPrint() {
         <img src="/logo-transparent.png" alt="ShockBridge Pulse" className="cover-icon" />
         <div className="cover-rule" />
         <div className="cover-type">Scenario Note</div>
-        <div className="cover-plan">{plan}</div>
+        <div className="cover-plan">{planDisplay}</div>
         <div className="cover-date">{date}</div>
         <span className="cover-creator-gap" />
-        <div className="cover-creator">Created by Rodolfo Pereira</div>
+        <div className="cover-by">Created by</div>
+        <div className="cover-creator">Rodolfo Pereira</div>
         <div className="cover-disc">For research and writing purposes only. Not financial advice.</div>
       </div>
 
       {/* PAGE 2 — Scenario */}
       <div className="page" lang="en">
         <Header />
-        <div className="content" style={{ paddingTop: "17mm" }}>
-          <p className="if-plan">{plan.toUpperCase()}</p>
+        <div className="content">
+          <p className="if-plan">{planDisplay}</p>
           <span className="if-gap-lg" />
           <p className="if-section">Scenario</p>
           <span className="if-gap-sm" />
@@ -234,7 +241,11 @@ export default function PdfPrint() {
       {/* PAGE 3 — Title + Summary */}
       <div className="page" lang="en">
         <Header />
-        <div className="content content-top">
+        <div className="content">
+          <div className="badge-row">
+            <span className="badge-accent">Scenario Note</span>
+            <span className="badge-muted">{planLabel}</span>
+          </div>
           <h2>
             <span className="t-hook">{memo.title_hook || memo.title}</span>
             {memo.title_asset  && <span className="t-asset">{memo.title_asset}</span>}
