@@ -25,6 +25,10 @@ const CSS = `
   @media print {
     @page { size: A4 portrait; margin: 0; }
     @page :first { margin: 0; }
+    /* globals.css hides everything via "* { visibility: hidden }" for MemoResult's
+       #memo-output trick — that element does not exist on this page, so we must
+       re-show everything here before any other rule runs. */
+    * { visibility: visible !important; }
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
     html, body { background: #0a0f1e !important; }
     .page {
