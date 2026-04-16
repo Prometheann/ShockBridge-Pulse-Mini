@@ -85,7 +85,8 @@ export async function POST(request: NextRequest) {
         <div style="border-top: 1px solid #2d3148; padding-top: 24px;">
           <p style="color: #6b7280; font-size: 12px; margin: 0; line-height: 1.6;">
             Your code gives you <strong style="color: #9ca3af;">${meta.memos} memos</strong> on the ${meta.label} plan.
-            Keep this email. Questions? <a href="mailto:help@shockbridgepulse.com" style="color: #f59e0b;">help@shockbridgepulse.com</a>
+            Keep this email. If you don't see it in your inbox, check your <strong style="color: #f0f0f0;">spam or junk folder</strong> — transactional emails sometimes land there the first time.<br><br>
+            Questions? <a href="mailto:help@shockbridgepulse.com" style="color: #f59e0b;">help@shockbridgepulse.com</a>
           </p>
         </div>
       </div>
