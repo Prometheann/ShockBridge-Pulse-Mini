@@ -14,6 +14,7 @@ const nextConfig = {
       dompurify: "./lib/empty-module.js",
     },
   },
+  serverExternalPackages: ["stripe"],
   async headers() {
     return [
       {
