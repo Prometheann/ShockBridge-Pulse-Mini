@@ -10,14 +10,15 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.82.0",
-    "resend": "^4.0.0",
     "@upstash/redis": "^1.37.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^4.2.1",
     "next": "^15.5.14",
     "openai": "^4.95.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "resend": "^4.0.0",
+    "stripe": "^22.0.2"
   },
   "devDependencies": {
     "@types/node": "^20",
