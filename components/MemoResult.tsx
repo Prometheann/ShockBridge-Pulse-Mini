@@ -277,11 +277,11 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
         ) : !isCreator ? (
           <div className="border-t border-[#2d3148] pt-6">
             <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 text-center">
-              <p className="text-amber-400 font-medium mb-1">
-                X Brief · LinkedIn Brief · PDF Memo
+              <p className="text-amber-400 font-bold mb-1">
+                In-Depth Market Intelligence Output
               </p>
               <p className="text-[#9ca3af] text-sm mb-4">
-                Upgrade to Analyst for deeper analysis, formatted distribution briefs, and PDF memo export.
+                Upgrade to <span className="font-bold text-[#f0f0f0]">Analyst</span> for deeper transmission analysis, sharper scenario framing, and stronger decision support.
               </p>
               <Link href="/#pricing">
                 <Button size="sm">Get Analyst</Button>
