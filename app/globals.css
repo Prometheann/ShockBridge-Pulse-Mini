@@ -42,6 +42,14 @@ p, li {
   line-height: 1.7;
 }
 
+/* ─── PDF elements — hidden on screen ─────────────────────────────────────── */
+#pdf-cover { display: none; }
+#pdf-page-logo { display: none; }
+#pdf-input-framework { display: none; }
+#pdf-run-header { display: none; }
+#pdf-run-footer { display: none; }
+#pdf-closing-text { display: none; }
+.pdf-title-break  { display: none; }
 
 /* ─── Title parts — screen display (each part on its own line) ──────────── */
 .pdf-title-hook {
@@ -84,6 +92,629 @@ p, li {
   line-height: 1.3;
 }
 
+/* ─── PDF Export — Print Styles ─────────────────────────────────────────── */
+@media print {
+
+  /* ── Page setup ── */
+  @page {
+    margin: 0 0 12mm 0;
+    size: A4 portrait;
+    background: #0a0f1e;
+    background-color: #0a0f1e;
+  }
+
+  /* Footer margin boxes — page numbers + disclaimer */
+  @page {
+    @bottom-left {
+      content: "ShockBridge Pulse  ·  shockbridgepulse.com  ·  Not financial advice";
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      font-size: 7pt;
+      color: #475569;
+      background-color: #0a0f1e;
+      border-top: 2px solid #f59e0b;
+      padding: 3.5mm 0 0 24mm;
+      vertical-align: top;
+    }
+    @bottom-center {
+      content: "";
+      background-color: #0a0f1e;
+      border-top: 2px solid #f59e0b;
+    }
+    @bottom-right {
+      content: counter(page);
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      font-size: 10pt;
+      font-weight: 700;
+      color: #f59e0b;
+      background-color: #0a0f1e;
+      border-top: 2px solid #f59e0b;
+      padding: 3mm 24mm 0 0;
+      vertical-align: top;
+      text-align: right;
+    }
+  }
+
+  /* Cover page — full-bleed, no footer */
+  @page :first {
+    margin: 0;
+  }
+  @page :first {
+    @bottom-left   { content: none; background: none; border: none; }
+    @bottom-center { content: none; background: none; border: none; }
+    @bottom-right  { content: none; background: none; border: none; }
+  }
+
+  /* ── Running header — fixed, repeats every page ── */
+  #pdf-run-header {
+    display: flex !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 14mm !important;
+    background: #0a0f1e !important;
+    border-bottom: 2px solid #f59e0b !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 1 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pdf-run-header-text {
+    font-size: 6.5pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.24em !important;
+    color: #f59e0b !important;
+    text-transform: uppercase !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Running footer HTML element — hidden (replaced by @page @bottom-*) ── */
+  #pdf-run-footer {
+    display: none !important;
+  }
+
+  /* ── Visibility trick ── */
+  * { visibility: hidden; }
+  #memo-output,
+  #memo-output * { visibility: visible; }
+  #memo-output {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0a0f1e !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .no-print { display: none !important; }
+
+  html {
+    background: #0a0f1e !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: #0a0f1e !important;
+    color: #f1f5f9 !important;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.75;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    hyphens: auto;
+  }
+
+  /* ── Title three-part layout ── */
+  .pdf-title-break {
+    display: block !important;
+    margin-bottom: 40px !important;
+  }
+
+  /* Part 1 — event label, amber, large */
+  .pdf-title-hook {
+    display: block !important;
+    color: #f59e0b !important;
+    font-size: 24pt !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Part 2 — asset/company, amber, large */
+  .pdf-title-asset {
+    display: block !important;
+    color: #f59e0b !important;
+    font-size: 28pt !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Part 3 — bridge/mechanism, amber, medium */
+  .pdf-title-bridge {
+    display: block !important;
+    color: #f59e0b !important;
+    font-size: 16pt !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.01em;
+    opacity: 0.85;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Part 3 — analytical theme, bold white */
+  .pdf-title-sub {
+    display: block !important;
+    color: #f8fafc !important;
+    font-size: 20pt !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ════════════════════════════════════════
+     COVER PAGE
+  ════════════════════════════════════════ */
+  #pdf-cover {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 44mm;
+    width: 210mm;
+    height: 297mm;
+    background: #0a0f1e !important;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+    z-index: 100 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pdf-cover-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: #f59e0b !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pdf-cover-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Full logo — large, centered, transparent padding cropped */
+  #pdf-cover-logo-icon {
+    display: block !important;
+    width: 500px !important;
+    height: 296px !important;
+    object-fit: cover !important;
+    object-position: center 38% !important;
+    margin-bottom: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Creator credit gap + text */
+  #pdf-cover-creator-gap {
+    display: block !important;
+    height: 12px !important;
+  }
+
+  #pdf-cover-creator {
+    font-size: 9.5pt !important;
+    color: #64748b !important;
+    letter-spacing: 0.08em !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pdf-cover-rule {
+    width: 52px;
+    height: 3px;
+    background: #f59e0b !important;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pdf-cover-type {
+    font-size: 22pt !important;
+    font-weight: 300 !important;
+    color: #f1f5f9 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    margin: 0 0 6px 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pdf-cover-plan {
+    font-size: 13pt !important;
+    font-weight: 700 !important;
+    color: #f59e0b !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    margin: 0 0 10px 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #pdf-cover-date {
+    font-size: 8.5pt !important;
+    color: #475569 !important;
+    letter-spacing: 0.06em !important;
+    margin: 0 !important;
+  }
+
+  #pdf-cover-disclaimer {
+    position: absolute;
+    bottom: 18mm;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 11pt !important;
+    color: #475569 !important;
+    letter-spacing: 0.04em !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ════════════════════════════════════════
+     CONTENT PAGES (page 2+)
+  ════════════════════════════════════════ */
+  #memo-content {
+    background: #0a0f1e !important;
+    padding: 17mm 24mm 10mm 24mm !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Page-break sections — padding clears the 14mm fixed header ── */
+  /* max-height = 297mm page - 14mm header - 12mm footer - 16mm top pad - 10mm bottom pad */
+  .pdf-page-section,
+  #pdf-section-title {
+    page-break-before: always !important;
+    page-break-after: always !important;
+    padding-top: 16mm !important;
+    border-top: none !important;
+    max-height: 245mm !important;
+    overflow: hidden !important;
+  }
+
+  /* ── Hide UI-only elements (actions div uses .no-print) ── */
+  #memo-content button,
+  #memo-content a[href*="pricing"],
+  #memo-content [class*="amber-500\/5"] {
+    display: none !important;
+  }
+
+  /* ── Running logo — hidden in print ── */
+  #pdf-page-logo {
+    display: none !important;
+  }
+
+  /* ── Badges — hidden in print (input framework shows plan/type instead) ── */
+  #pdf-badge-row {
+    display: none !important;
+  }
+
+  /* ── Title ── */
+  #memo-content h2 {
+    font-size: 22pt !important;
+    font-weight: 800 !important;
+    color: #f8fafc !important;
+    line-height: 1.3 !important;
+    margin-bottom: 28px !important;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Summary ── */
+  #memo-content .border-b p {
+    font-size: 12pt !important;
+    color: #94a3b8 !important;
+    line-height: 1.95 !important;
+    text-align: justify !important;
+    margin-top: 8px;
+    border-left: 3px solid #f59e0b;
+    padding-left: 14px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Header divider ── */
+  #memo-content .border-b {
+    border-bottom: 1px solid #1e293b !important;
+    padding-bottom: 30px !important;
+    margin-bottom: 36px !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Section labels — amber full-width bar ── */
+  .pdf-section-label {
+    color: #f59e0b !important;
+    background: #0f172a !important;
+    font-size: 11pt !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.26em !important;
+    text-transform: uppercase !important;
+    display: block !important;
+    margin: 0 -24mm 40px -24mm !important;
+    padding: 12px 24mm !important;
+    border-bottom: 2px solid #f59e0b !important;
+    border-top: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Bullet list ── */
+  #memo-content ul {
+    padding-left: 0 !important;
+    margin: 0 !important;
+  }
+
+  #memo-content li {
+    color: #cbd5e1 !important;
+    background: transparent !important;
+    font-size: 12pt !important;
+    line-height: 1.8 !important;
+    text-align: justify !important;
+    page-break-inside: avoid;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid #1a2540 !important;
+    list-style: none !important;
+    display: flex !important;
+    gap: 12px !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #memo-content li:last-child {
+    border-bottom: none !important;
+  }
+
+  #memo-content li span:first-child {
+    color: #f59e0b !important;
+    font-weight: 700 !important;
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Body paragraphs (paths) ── */
+  #pdf-paths p,
+  #memo-content .mb-6 > p {
+    color: #cbd5e1 !important;
+    font-size: 12pt !important;
+    line-height: 1.9 !important;
+    text-align: justify !important;
+  }
+
+  /* ── Bullish / Bearish paths — inside pdf-paths, page breaks handled by .pdf-page-section ── */
+  #pdf-paths > div {
+    padding-top: 0 !important;
+  }
+
+  /* ── Watch next tags ── */
+  #memo-content span[class*="rounded-full"] {
+    background: #1a2540 !important;
+    color: #f59e0b !important;
+    border: 1px solid #2d3f6e !important;
+    font-size: 8pt !important;
+    font-weight: 600 !important;
+    padding: 3px 10px !important;
+    border-radius: 999px !important;
+    display: inline-block !important;
+    margin: 3px 4px !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Social post boxes (X + LinkedIn) ── */
+  #memo-content .bg-\[\#0f1117\] {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    border-left: 4px solid #f59e0b !important;
+    border-radius: 4px !important;
+    padding: 16px 18px !important;
+    page-break-inside: avoid !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Post headline */
+  #memo-content .bg-\[\#0f1117\] p.font-bold {
+    color: #f8fafc !important;
+    font-size: 11.5pt !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    margin-bottom: 10px !important;
+    text-align: left !important;
+  }
+
+  #memo-content .bg-\[\#0f1117\] p {
+    color: #94a3b8 !important;
+    font-size: 12pt !important;
+    text-align: justify !important;
+    line-height: 1.85 !important;
+  }
+
+  #memo-content .bg-\[\#0f1117\] span[class*="uppercase"] {
+    color: #f59e0b !important;
+    font-weight: 700 !important;
+    font-size: 7pt !important;
+    letter-spacing: 0.18em !important;
+  }
+
+  /* ── Section spacing ── */
+  #memo-content .mb-6 {
+    margin-bottom: 32px !important;
+    page-break-inside: avoid;
+  }
+
+  #memo-content .space-y-6 > * + * {
+    margin-top: 32px !important;
+  }
+
+  /* ── Creator social section divider ── */
+  #memo-content .border-t {
+    border-top: 1px solid #1e293b !important;
+    padding-top: 0 !important;
+    margin-top: 6px !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Social posts — 4× spacing between label, X post, LinkedIn ── */
+  #memo-content .border-t .bg-\[\#0f1117\]:first-of-type {
+    margin-top: 48px !important;
+  }
+
+  #memo-content .border-t .bg-\[\#0f1117\] + .bg-\[\#0f1117\] {
+    margin-top: 56px !important;
+  }
+
+  #memo-content .border-t .space-y-5 > * + * {
+    margin-top: 0 !important;
+  }
+
+  /* ── Page breaks ── */
+  #memo-content > div {
+    page-break-inside: avoid;
+  }
+
+  /* ════════════════════════════════════════
+     INPUT FRAMEWORK BLOCK (top of page 2)
+  ════════════════════════════════════════ */
+  #pdf-input-framework {
+    display: block !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* CREATOR / BASIC / FREE — large amber plan label */
+  .pdf-if-plan {
+    font-size: 22pt !important;
+    font-weight: 800 !important;
+    color: #f59e0b !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Large gap after plan label */
+  .pdf-if-gap-lg {
+    display: block !important;
+    height: 32px !important;
+  }
+
+  /* SCENARIO — large amber section header */
+  .pdf-if-section {
+    font-size: 18pt !important;
+    font-weight: 800 !important;
+    color: #f59e0b !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* 6x gap after SCENARIO — before fields */
+  .pdf-if-gap-sm {
+    display: block !important;
+    height: 48px !important;
+  }
+
+  /* Input fields grid */
+  .pdf-if-fields {
+    display: block !important;
+  }
+
+  .pdf-if-row {
+    display: flex !important;
+    gap: 14px !important;
+    padding: 7px 0 !important;
+    border-bottom: 1px solid #1e293b !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .pdf-if-row:last-child {
+    border-bottom: none !important;
+  }
+
+  .pdf-if-label {
+    font-size: 12pt !important;
+    font-weight: 700 !important;
+    color: #475569 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    min-width: 200px !important;
+    flex-shrink: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .pdf-if-value {
+    font-size: 12pt !important;
+    font-weight: 500 !important;
+    color: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Extra-large gap before title */
+  .pdf-if-gap-xl {
+    display: block !important;
+    height: 60px !important;
+  }
+
+  /* ── Social section — flex column so closing text sticks to bottom ── */
+  #pdf-social-section {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 220mm !important;
+  }
+
+  /* ── Closing tagline — pushed to bottom of social page via flex ── */
+  #pdf-closing-text {
+    display: block !important;
+    text-align: center !important;
+    font-size: 9pt !important;
+    font-weight: 400 !important;
+    color: #64748b !important;
+    letter-spacing: 0.08em !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+    margin-top: auto !important;
+    white-space: nowrap !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar {

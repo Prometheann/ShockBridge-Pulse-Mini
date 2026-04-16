@@ -56,6 +56,7 @@ export function MockResultCard() {
       <div className="border-t border-[#2d3148] pt-3 flex items-center gap-2">
         <Badge variant="green">X Brief</Badge>
         <Badge variant="muted">LinkedIn Brief</Badge>
+        <Badge variant="muted">PDF Memo</Badge>
       </div>
     </div>
   );

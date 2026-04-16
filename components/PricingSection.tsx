@@ -24,6 +24,7 @@ const analystExtras = [
   "Deep earnings shock breakdown (EPS vs consensus, guidance, sector rotation)",
   "Scenario brief — X format",
   "Scenario brief — LinkedIn format",
+  "PDF memo for distribution or filing",
 ];
 
 export function PricingSection() {
