@@ -12,6 +12,7 @@ import { MemoInput, MemoOutput, CreditState, Plan } from "@/types/memo";
 type Step = "form" | "loading" | "result" | "paywall";
 
 const PLAN_MEMOS: Record<Plan, number> = { free: 1, basic: 5, creator: 15 };
+const PLAN_DISPLAY: Record<Plan, string> = { free: "Free", basic: "Bridge", creator: "Analyst" };
 const FREE_MEMO_KEY = "sbp_free_used_at";
 const FREE_WINDOW_MS = 24 * 60 * 60 * 1000;
 const CODE_STORAGE_KEY = "sbp_access_code";
@@ -150,7 +151,7 @@ export default function GeneratePage() {
         <div className="flex items-center justify-between mb-8 bg-[#1a1d27] border border-[#2d3148] rounded-xl px-5 py-3">
           <div className="flex items-center gap-3">
             <span className="text-xs text-[#9ca3af] uppercase tracking-wider">Plan</span>
-            <span className="text-sm font-semibold text-amber-500 capitalize">{currentPlan}</span>
+            <span className="text-sm font-semibold text-amber-500">{PLAN_DISPLAY[currentPlan]}</span>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-xs text-[#9ca3af]">Memos remaining</span>
@@ -198,7 +199,7 @@ export default function GeneratePage() {
                 <input
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
-                  placeholder="SBP-CREATOR-XXXXX"
+                  placeholder="SBP-BRIDGE-XXXXX or SBP-ANALYST-XXXXX"
                   className="flex-1 bg-[#0f1117] border border-[#2d3148] rounded-xl px-4 py-2.5 text-sm text-[#f0f0f0] placeholder-[#6b7280] focus:outline-none focus:border-amber-500/50"
                 />
                 <Button
