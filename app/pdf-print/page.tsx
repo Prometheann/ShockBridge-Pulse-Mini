@@ -3,38 +3,6 @@
 import { useEffect, useState } from "react";
 import { MemoOutput, MemoInput, Plan } from "@/types/memo";
 
-async function downloadAsPDF(filename = "ShockBridge-Pulse-Memo") {
-  const [{ default: jsPDF }, { default: html2canvas }] = await Promise.all([
-    import("jspdf"),
-    import("html2canvas"),
-  ]);
-
-  // Wait for all fonts to finish loading before capturing
-  await document.fonts.ready;
-
-  const PAGE_W_PX = 794; // 210mm at 96dpi
-  const PAGE_H_PX = 1123; // 297mm at 96dpi
-  const pages = Array.from(document.querySelectorAll<HTMLElement>(".cover, .page"));
-  const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
-
-  for (let i = 0; i < pages.length; i++) {
-    const canvas = await html2canvas(pages[i], {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: "#0a0f1e",
-      width: PAGE_W_PX,
-      height: PAGE_H_PX,
-      windowWidth: PAGE_W_PX,
-      logging: false,
-    });
-    const img = canvas.toDataURL("image/jpeg", 0.95);
-    if (i > 0) pdf.addPage();
-    pdf.addImage(img, "JPEG", 0, 0, 210, 297);
-  }
-
-  pdf.save(`${filename}.pdf`);
-}
-
 interface PrintData {
   memo: MemoOutput;
   input: MemoInput;
@@ -61,6 +29,7 @@ const CSS = `
     .page { margin: 0 !important; page-break-after: always; page-break-inside: avoid; }
     .page:last-child { page-break-after: auto; }
     .cover { margin: 0 !important; }
+    .no-print { display: none !important; }
   }
   .page-header {
     position: absolute; top: 0; left: 0; right: 0; height: 14mm;
@@ -156,6 +125,20 @@ const CSS = `
   .cover-creator-gap { height: 12px; display: block; }
   .cover-creator { font-size: 9.5pt; color: #64748b; letter-spacing: 0.08em; }
   .cover-disc { position: absolute; bottom: 18mm; left: 0; right: 0; text-align: center; font-size: 11pt; color: #475569; letter-spacing: 0.04em; }
+  /* Print button bar */
+  .print-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+    background: #1a1d27; border-bottom: 1px solid #2d3148;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 24px; font-family: Inter, sans-serif;
+  }
+  .print-bar span { font-size: 12px; color: #9ca3af; }
+  .print-btn {
+    background: #f59e0b; color: #000; font-size: 13px; font-weight: 700;
+    border: none; border-radius: 8px; padding: 8px 20px; cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+  .print-btn:hover { background: #fbbf24; }
 `;
 
 function Header() {
@@ -177,26 +160,11 @@ function Footer({ n }: { n: number }) {
 
 export default function PdfPrint() {
   const [data, setData] = useState<PrintData | null>(null);
-  const [status, setStatus] = useState<"loading" | "rendering" | "generating" | "done">("loading");
 
   useEffect(() => {
     const raw = sessionStorage.getItem("sbp_print_data");
     if (raw) {
-      const parsed = JSON.parse(raw) as PrintData;
-      setData(parsed);
-      setStatus("rendering");
-      // Wait for React to render, then fonts, then generate
-      setTimeout(async () => {
-        setStatus("generating");
-        try {
-          await downloadAsPDF(parsed.filename || "ShockBridge-Pulse-Memo");
-        } catch (err) {
-          console.error("PDF generation failed:", err);
-          alert("PDF generation failed. Please try again.");
-        }
-        setStatus("done");
-        window.close();
-      }, 600);
+      setData(JSON.parse(raw) as PrintData);
     }
   }, []);
 
@@ -209,27 +177,23 @@ export default function PdfPrint() {
   }
 
   const { memo, input, plan, date } = data;
-  const summaryParas = memo.summary.split("\n\n").filter(Boolean);
-  const bullishParas = (memo.bullish_path || "").split("\n\n").filter(Boolean);
-  const bearishParas = (memo.bearish_path || "").split("\n\n").filter(Boolean);
-  const linkedinParas = (memo.linkedin_post || "").split("\n\n").filter(p => !p.toLowerCase().includes("from market shock to clean signal")).filter(Boolean);
+  const summaryParas   = memo.summary.split("\n\n").filter(Boolean);
+  const bullishParas   = (memo.bullish_path || "").split("\n\n").filter(Boolean);
+  const bearishParas   = (memo.bearish_path || "").split("\n\n").filter(Boolean);
+  const linkedinParas  = (memo.linkedin_post || "").split("\n\n").filter(p => !p.toLowerCase().includes("from market shock to clean signal")).filter(Boolean);
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-      {/* Status overlay */}
-      {status === "generating" && (
-        <div style={{
-          position: "fixed", inset: 0, background: "rgba(10,15,30,0.92)",
-          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-          zIndex: 9999, fontFamily: "Inter, sans-serif", gap: "16px"
-        }}>
-          <div style={{ width: "40px", height: "40px", border: "3px solid #f59e0b", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
-          <p style={{ color: "#f59e0b", fontSize: "13px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" }}>Generating PDF…</p>
-          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-        </div>
-      )}
+      {/* Print bar — hidden when printing */}
+      <div className="print-bar no-print">
+        <span>ShockBridge Pulse · Memo PDF — Click Save as PDF in the print dialog</span>
+        <button className="print-btn" onClick={() => window.print()}>Save as PDF</button>
+      </div>
+
+      {/* Spacer so pages don't hide behind the bar */}
+      <div className="no-print" style={{ height: "52px" }} />
 
       {/* PAGE 1 — Cover */}
       <div className="cover" lang="en">
@@ -273,9 +237,9 @@ export default function PdfPrint() {
         <div className="content content-top">
           <h2>
             <span className="t-hook">{memo.title_hook || memo.title}</span>
-            {memo.title_asset && <span className="t-asset">{memo.title_asset}</span>}
+            {memo.title_asset  && <span className="t-asset">{memo.title_asset}</span>}
             {memo.title_bridge && <span className="t-bridge">{memo.title_bridge}</span>}
-            {memo.title_theme && <span className="t-sub">{memo.title_theme}</span>}
+            {memo.title_theme  && <span className="t-sub">{memo.title_theme}</span>}
           </h2>
           {summaryParas.map((p, i) => (
             <p key={i} className="summary">{p}</p>
