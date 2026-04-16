@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -12,18 +12,30 @@ import { MemoInput, MemoOutput, CreditState, Plan } from "@/types/memo";
 type Step = "form" | "loading" | "result" | "paywall";
 
 const PLAN_MEMOS: Record<Plan, number> = { free: 1, basic: 5, creator: 15 };
-
-function initialCredits(): CreditState {
-  return { plan: "free", memosRemaining: 1, memosTotal: 1 };
-}
+const FREE_MEMO_KEY = "sbp_free_used_at";
+const FREE_WINDOW_MS = 24 * 60 * 60 * 1000;
 
 export default function GeneratePage() {
   const [step, setStep] = useState<Step>("form");
   const [memo, setMemo] = useState<MemoOutput | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [credits, setCredits] = useState<CreditState>(initialCredits());
+  const [credits, setCredits] = useState<CreditState>({ plan: "free", memosRemaining: 1, memosTotal: 1 });
   const [accessCode, setAccessCode] = useState<string>("");
   const [lastInput, setLastInput] = useState<MemoInput | null>(null);
+
+  // On mount: check if free memo was already used within the last 24h
+  useEffect(() => {
+    const usedAt = localStorage.getItem(FREE_MEMO_KEY);
+    if (usedAt) {
+      const elapsed = Date.now() - parseInt(usedAt);
+      if (elapsed < FREE_WINDOW_MS) {
+        setCredits(prev => prev.plan === "free" ? { ...prev, memosRemaining: 0 } : prev);
+        setStep("paywall");
+      } else {
+        localStorage.removeItem(FREE_MEMO_KEY);
+      }
+    }
+  }, []);
 
   // Code redeem state
   const [code, setCode] = useState("");
@@ -60,6 +72,10 @@ export default function GeneratePage() {
         ...prev,
         memosRemaining: data.memosRemaining ?? Math.max(0, prev.memosRemaining - 1),
       }));
+      // Mark free memo as used so refresh shows paywall
+      if (!accessCode) {
+        localStorage.setItem(FREE_MEMO_KEY, String(Date.now()));
+      }
       setLastInput(input);
       setMemo(data.memo);
       setStep("result");

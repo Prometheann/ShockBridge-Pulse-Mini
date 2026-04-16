@@ -1,24 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getOpenAIClient, FREE_SYSTEM_PROMPT, buildFreePrompt, BASIC_SYSTEM_PROMPT, buildBasicPrompt } from "@/lib/openai";
 import { getAnthropicClient, CREATOR_SYSTEM_PROMPT, buildCreatorPrompt } from "@/lib/anthropic";
-import { consumeMemo } from "@/lib/usage";
+import { consumeMemo, checkAndConsumeFreeLimit } from "@/lib/usage";
 import { MemoInput, MemoOutput } from "@/types/memo";
-
-// Simple in-memory rate limiter for free plan (resets on server restart — fine for v1)
-const freeUsage = new Map<string, { count: number; resetAt: number }>();
-
-function checkFreeLimit(ip: string): boolean {
-  const now = Date.now();
-  const windowMs = 24 * 60 * 60 * 1000;
-  const rec = freeUsage.get(ip);
-  if (!rec || now > rec.resetAt) {
-    freeUsage.set(ip, { count: 1, resetAt: now + windowMs });
-    return true;
-  }
-  if (rec.count >= 1) return false;
-  rec.count++;
-  return true;
-}
 
 function getIP(req: NextRequest): string {
   return (
@@ -73,10 +57,11 @@ export async function POST(request: NextRequest) {
       memosRemaining = remaining;
     }
 
-    // Free plan: IP-based rate limit
+    // Free plan: Redis-based IP rate limit (1 memo per 24 hours)
     if (!isPaid) {
       const ip = getIP(request);
-      if (!checkFreeLimit(ip)) {
+      const allowed = await checkAndConsumeFreeLimit(ip);
+      if (!allowed) {
         return NextResponse.json(
           { error: "Free demo limit reached. Purchase a plan to generate more memos.", code: "RATE_LIMIT" },
           { status: 429 }

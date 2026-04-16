@@ -7,6 +7,23 @@ const redis = new Redis({
 
 export const PLAN_MEMOS: Record<string, number> = { basic: 5, creator: 15 };
 
+const FREE_WINDOW_SECONDS = 24 * 60 * 60; // 24 hours
+
+/**
+ * Redis-based free-tier rate limiter.
+ * Allows 1 memo per IP per 24-hour window.
+ * Returns true if the request is allowed.
+ */
+export async function checkAndConsumeFreeLimit(ip: string): Promise<boolean> {
+  const key = `sbp:free:ip:${ip}`;
+  const count = await redis.incr(key);
+  if (count === 1) {
+    // First use — set TTL for the window
+    await redis.expire(key, FREE_WINDOW_SECONDS);
+  }
+  return count <= 1;
+}
+
 /**
  * Called on code redemption.
  * Sets total only on first redemption (NX). Returns current remaining.
