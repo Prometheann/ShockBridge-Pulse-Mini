@@ -389,7 +389,11 @@ export default function PdfPrint() {
                 {memo.linkedin_post_headline && (
                   <p className="headline">{memo.linkedin_post_headline}</p>
                 )}
-                {linkedinParas.map((p, i) => (
+                {linkedinParas.reduce<string[]>((acc, p) => {
+                  const used = acc.join("").length;
+                  if (acc.length === 0 || used < 1400) acc.push(p);
+                  return acc;
+                }, []).map((p, i) => (
                   <p key={i} className="post-text">{p}</p>
                 ))}
               </div>
