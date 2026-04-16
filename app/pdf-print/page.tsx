@@ -53,7 +53,7 @@ const CSS = `
     position: absolute;
     top: 14mm; bottom: 12mm; left: 0; right: 0;
     overflow: hidden;
-    padding: 3mm 24mm 6mm 24mm;
+    padding: 3mm 24mm 18mm 24mm;
   }
   .content-top { padding-top: 16mm; }
   .section-label {
