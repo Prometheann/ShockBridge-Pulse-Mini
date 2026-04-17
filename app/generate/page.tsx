@@ -227,7 +227,7 @@ export default function GeneratePage() {
             </p>
             <p className="text-[#9ca3af] mb-6 leading-relaxed">
               {currentPlan === "free"
-                ? "You've used your free demo. Purchase a plan to generate more memos — or redeem an existing access code below."
+                ? "You've used your free demo. Purchase a plan to generate more memos, or redeem an existing access code below."
                 : "You've used all your memos for this session. Enter your code again to continue."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">

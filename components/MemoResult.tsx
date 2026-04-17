@@ -68,7 +68,7 @@ function buildMemoText(memo: MemoOutput, isBasicOrCreator: boolean): string {
   return parts.join("\n\n");
 }
 
-function CopyFullMemo({ memo, isBasicOrCreator }: { memo: MemoOutput; isBasicOrCreator: boolean }) {
+function CopyFullMemo({ memo, isBasicOrCreator, label }: { memo: MemoOutput; isBasicOrCreator: boolean; label: string }) {
   const [copied, setCopied] = useState(false);
   async function handleCopy() {
     await navigator.clipboard.writeText(buildMemoText(memo, isBasicOrCreator));
@@ -80,7 +80,7 @@ function CopyFullMemo({ memo, isBasicOrCreator }: { memo: MemoOutput; isBasicOrC
       onClick={handleCopy}
       className="w-full py-3 rounded-xl border border-amber-500/40 bg-amber-500/5 text-amber-400 font-semibold text-sm tracking-wide hover:bg-amber-500/10 hover:border-amber-500/70 transition-all"
     >
-      {copied ? "✓ Copied to clipboard" : "Copy Full Memo"}
+      {copied ? "✓ Copied to clipboard" : label}
     </button>
   );
 }
@@ -327,17 +327,15 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
 
         {/* Actions */}
         <div className="pt-4 no-print space-y-3">
-          {plan === "basic" ? (
-            /* Bridge: full-width prominent copy — only way to get the memo */
-            <CopyFullMemo memo={memo} isBasicOrCreator={isBasicOrCreator} />
+          {plan === "creator" ? (
+            /* Analyst: small secondary copy — PDF is the primary output */
+            <CopyButton text={buildMemoText(memo, isBasicOrCreator)} label="memo" />
           ) : (
-            /* Free & Analyst: small secondary copy button */
-            <CopyButton
-              text={plan === "free"
-                ? `${memo.title}\n\n${memo.summary}${memo.first_order_effects ? `\n\nFirst-order effects:\n${memo.first_order_effects.map((e) => `• ${e}`).join("\n")}` : ""}`
-                : buildMemoText(memo, isBasicOrCreator)
-              }
-              label="memo"
+            /* Free & Bridge: full-width amber button — only way to get the memo */
+            <CopyFullMemo
+              memo={memo}
+              isBasicOrCreator={isBasicOrCreator}
+              label={plan === "free" ? "Copy Snapshot" : "Copy Full Memo"}
             />
           )}
           <button
