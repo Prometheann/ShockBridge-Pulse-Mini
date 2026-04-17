@@ -50,6 +50,41 @@ function CopyButton({ text, label }: { text: string; label: string }) {
   );
 }
 
+function buildMemoText(memo: MemoOutput, isBasicOrCreator: boolean): string {
+  const parts: string[] = [];
+  parts.push(`${memo.title}\n\n${memo.summary}`);
+  if (memo.first_order_effects?.length)
+    parts.push(`First-order effects:\n${memo.first_order_effects.map(e => `• ${e}`).join("\n")}`);
+  if (isBasicOrCreator && memo.second_order_effects?.length)
+    parts.push(`Second-order effects:\n${memo.second_order_effects.map(e => `• ${e}`).join("\n")}`);
+  if (isBasicOrCreator && memo.bullish_path)
+    parts.push(`Bullish path:\n${memo.bullish_path}`);
+  if (isBasicOrCreator && memo.bearish_path)
+    parts.push(`Bearish path:\n${memo.bearish_path}`);
+  if (isBasicOrCreator && memo.key_uncertainties?.length)
+    parts.push(`Key uncertainties:\n${memo.key_uncertainties.map(e => `• ${e}`).join("\n")}`);
+  if (memo.watch_next?.length)
+    parts.push(`Watch next:\n${memo.watch_next.map(e => `• ${e}`).join("\n")}`);
+  return parts.join("\n\n");
+}
+
+function CopyFullMemo({ memo, isBasicOrCreator }: { memo: MemoOutput; isBasicOrCreator: boolean }) {
+  const [copied, setCopied] = useState(false);
+  async function handleCopy() {
+    await navigator.clipboard.writeText(buildMemoText(memo, isBasicOrCreator));
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+  return (
+    <button
+      onClick={handleCopy}
+      className="w-full py-3 rounded-xl border border-amber-500/40 bg-amber-500/5 text-amber-400 font-semibold text-sm tracking-wide hover:bg-amber-500/10 hover:border-amber-500/70 transition-all"
+    >
+      {copied ? "✓ Copied to clipboard" : "Copy Full Memo"}
+    </button>
+  );
+}
+
 /** Four-part title: hook → asset → bridge → theme */
 function PrintTitle({ title, hook, asset, bridge, theme }: {
   title: string;
@@ -291,14 +326,23 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
         ) : null}
 
         {/* Actions */}
-        <div className="flex gap-3 pt-2 no-print">
-          <CopyButton
-            text={`${memo.title}\n\n${memo.summary}${memo.first_order_effects ? `\n\nFirst-order effects:\n${memo.first_order_effects.map((e) => `• ${e}`).join("\n")}` : ""}`}
-            label="memo"
-          />
+        <div className="pt-4 no-print space-y-3">
+          {plan === "basic" ? (
+            /* Bridge: full-width prominent copy — only way to get the memo */
+            <CopyFullMemo memo={memo} isBasicOrCreator={isBasicOrCreator} />
+          ) : (
+            /* Free & Analyst: small secondary copy button */
+            <CopyButton
+              text={plan === "free"
+                ? `${memo.title}\n\n${memo.summary}${memo.first_order_effects ? `\n\nFirst-order effects:\n${memo.first_order_effects.map((e) => `• ${e}`).join("\n")}` : ""}`
+                : buildMemoText(memo, isBasicOrCreator)
+              }
+              label="memo"
+            />
+          )}
           <button
             onClick={onReset}
-            className="text-xs text-[#6b7280] hover:text-[#f0f0f0] transition-colors"
+            className="text-xs text-[#6b7280] hover:text-[#f0f0f0] transition-colors block"
           >
             ← Generate another
           </button>
