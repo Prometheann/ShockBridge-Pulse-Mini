@@ -211,12 +211,17 @@ export default function PdfPrint() {
 
       {/* Print bar — hidden when printing */}
       <div className="print-bar no-print">
-        <span>ShockBridge Pulse · Memo PDF — Click Save as PDF in the print dialog</span>
+        <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
+          <span>ShockBridge Pulse · Memo PDF</span>
+          <span style={{ fontSize: "11px", color: "#f59e0b" }}>
+            ⚠ In the print dialog, set Destination to <strong>Save as PDF</strong> and enable <strong>Background graphics</strong> to keep the dark theme.
+          </span>
+        </div>
         <button className="print-btn" onClick={() => window.print()}>Save as PDF</button>
       </div>
 
       {/* Spacer so pages don't hide behind the bar */}
-      <div className="no-print" style={{ height: "52px" }} />
+      <div className="no-print" style={{ height: "62px" }} />
 
       {/* PAGE 1 — Cover */}
       <div className="cover" lang="en">
