@@ -30,7 +30,7 @@ export default function HomePage() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
           </span>
-          <span className="text-amber-400 font-semibold whitespace-nowrap">Live Crisis Research</span>
+          <span className="text-amber-400 font-semibold whitespace-nowrap">Live: Hormuz Crisis Research</span>
           <span className="text-[#6b7280] hidden sm:inline">—</span>
           <span className="text-[#d1d5db] hidden sm:inline">
             Oil is the Headline. Helium is the Hidden Bottleneck.
