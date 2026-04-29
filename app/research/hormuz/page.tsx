@@ -1,93 +1,59 @@
-"use client";
-
-import { useState } from "react";
+import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 const C = "min(1180px, calc(100% - 32px))";
 const SH = "0 20px 50px rgba(0,0,0,.35)";
 
+const btnPrimary: React.CSSProperties = {
+  display: "inline-flex", alignItems: "center", justifyContent: "center",
+  padding: "13px 22px", borderRadius: "999px", border: "1px solid transparent",
+  fontWeight: 600, background: "linear-gradient(180deg, #f4c978, #d8a145)",
+  color: "#15110a", boxShadow: "0 12px 30px rgba(216,161,69,.18)",
+  textDecoration: "none", whiteSpace: "nowrap", cursor: "pointer", fontSize: "15px",
+};
+
+const btnSecondary: React.CSSProperties = {
+  display: "inline-flex", alignItems: "center", justifyContent: "center",
+  padding: "13px 22px", borderRadius: "999px",
+  border: "1px solid rgba(255,255,255,.08)",
+  fontWeight: 600, background: "rgba(255,255,255,.03)", color: "#f2f4f8",
+  textDecoration: "none", whiteSpace: "nowrap",
+};
+
+const metrics = [
+  { label: "Panel window", value: "2020–2026", note: "Seventeen public daily series, no synthetic inputs" },
+  { label: "Long-horizon structure", value: "ρ = 0.825", note: "Sparse scale-64 Brent↔SOX direction" },
+  { label: "Transmission clock", value: "2 layers", note: "Immediate energy repricing, slower helium channel" },
+  { label: "Tail frame", value: "26 weeks", note: "Designed for the quarterly horizon, not only day zero" },
+];
+
+const cards = [
+  { num: "01", title: "Real data, no synthetic inputs", body: "The framework uses a public daily panel from January 2020 to April 2026, built to study cross-block transmission under live geopolitical stress rather than only abstract macro shock." },
+  { num: "02", title: "Two-layer transmission", body: "The first layer is immediate and visible: energy, freight, rates, FX, volatility. The second layer is slower: helium pressure feeding semiconductor stress and downstream compute constraints." },
+  { num: "03", title: "Long-horizon bottleneck", body: "At the 64-day scale, the structure sharpens rather than disappears. Sparse CCA collapses the quarterly regime into a single Brent↔SOX direction with a held-out correlation of 0.825." },
+];
+
+const watchlist = [
+  { item: "Tanker and LNG stress signals", note: "visible first-order repricing" },
+  { item: "New Hormuz escalation windows", note: "changes event intensity" },
+  { item: "Helium-window pressure", note: "delayed industrial propagation" },
+  { item: "SOX / SMH long-horizon weakness", note: "quarterly bottleneck expression" },
+];
+
+const checklist = [
+  "The two-layer transmission model",
+  "The long-horizon Brent↔SOX bottleneck in plain English",
+  "What to watch next week, not just what happened today",
+  "A cleaner lens for semiconductors and AI-compute risk",
+];
+
 export default function HormuzPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
-  const [focusField, setFocusField] = useState<string | null>(null);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
-
-  function inputStyle(name: string): React.CSSProperties {
-    const focused = focusField === name;
-    return {
-      width: "100%",
-      padding: "14px 15px",
-      borderRadius: "14px",
-      border: `1px solid ${focused ? "rgba(216,161,69,.42)" : "rgba(255,255,255,.10)"}`,
-      background: "rgba(255,255,255,.03)",
-      color: "#f2f4f8",
-      outline: "none",
-      fontSize: "15px",
-      boxShadow: focused ? "0 0 0 4px rgba(216,161,69,.08)" : "none",
-      transition: "border-color .2s, box-shadow .2s",
-    };
-  }
-
-  const btnPrimary: React.CSSProperties = {
-    display: "inline-flex", alignItems: "center", justifyContent: "center",
-    padding: "13px 22px", borderRadius: "999px", border: "1px solid transparent",
-    fontWeight: 600, background: "linear-gradient(180deg, #f4c978, #d8a145)",
-    color: "#15110a", boxShadow: "0 12px 30px rgba(216,161,69,.18)",
-    textDecoration: "none", whiteSpace: "nowrap", cursor: "pointer", fontSize: "15px",
-  };
-
-  const btnSecondary: React.CSSProperties = {
-    display: "inline-flex", alignItems: "center", justifyContent: "center",
-    padding: "13px 22px", borderRadius: "999px",
-    border: "1px solid rgba(255,255,255,.08)",
-    fontWeight: 600, background: "rgba(255,255,255,.03)", color: "#f2f4f8",
-    textDecoration: "none", whiteSpace: "nowrap",
-  };
-
-  const metrics = [
-    { label: "Panel window", value: "2020–2026", note: "Seventeen public daily series, no synthetic inputs" },
-    { label: "Long-horizon structure", value: "ρ = 0.825", note: "Sparse scale-64 Brent↔SOX direction" },
-    { label: "Transmission clock", value: "2 layers", note: "Immediate energy repricing, slower helium channel" },
-    { label: "Tail frame", value: "26 weeks", note: "Designed for the quarterly horizon, not only day zero" },
-  ];
-
-  const cards = [
-    { num: "01", title: "Real data, no synthetic inputs", body: "The framework uses a public daily panel from January 2020 to April 2026, built to study cross-block transmission under live geopolitical stress rather than only abstract macro shock." },
-    { num: "02", title: "Two-layer transmission", body: "The first layer is immediate and visible: energy, freight, rates, FX, volatility. The second layer is slower: helium pressure feeding semiconductor stress and downstream compute constraints." },
-    { num: "03", title: "Long-horizon bottleneck", body: "At the 64-day scale, the structure sharpens rather than disappears. Sparse CCA collapses the quarterly regime into a single Brent↔SOX direction with a held-out correlation of 0.825." },
-  ];
-
-  const watchlist = [
-    { item: "Tanker and LNG stress signals", note: "visible first-order repricing" },
-    { item: "New Hormuz escalation windows", note: "changes event intensity" },
-    { item: "Helium-window pressure", note: "delayed industrial propagation" },
-    { item: "SOX / SMH long-horizon weakness", note: "quarterly bottleneck expression" },
-  ];
-
-  const checklist = [
-    "The two-layer transmission model",
-    "The long-horizon Brent↔SOX bottleneck in plain English",
-    "What to watch next week, not just what happened today",
-    "A cleaner lens for semiconductors and AI-compute risk",
-  ];
-
   return (
     <>
-      <style>{`
-        @keyframes hormuz-pulse {
-          0%   { box-shadow: 0 0 0 0   rgba(216,161,69,.45); }
-          70%  { box-shadow: 0 0 0 10px rgba(216,161,69,0);  }
-          100% { box-shadow: 0 0 0 0   rgba(216,161,69,0);   }
-        }
-        .hormuz-input::placeholder { color: #4b5563; }
+      <Script src="https://tally.so/widgets/embed.js" strategy="lazyOnload" />
 
+      <style>{`
         @media (max-width: 980px) {
           .hz-hero    { grid-template-columns: 1fr !important; }
           .hz-cards   { grid-template-columns: 1fr !important; }
@@ -96,7 +62,6 @@ export default function HormuzPage() {
           .hz-signal  { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 640px) {
-          .hz-grid2   { grid-template-columns: 1fr !important; }
           .hz-h1      { font-size: 42px !important; max-width: none !important; }
           .hz-signal  { grid-template-columns: 1fr !important; }
         }
@@ -148,7 +113,18 @@ export default function HormuzPage() {
                   </p>
 
                   <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", margin: "24px 0 18px" }}>
-                    <a href="#brief" style={btnPrimary}>Get the Crisis Brief</a>
+                    {/* Primary CTA — opens Tally popup */}
+                    <button
+                      data-tally-open="XxBvBg"
+                      data-tally-align-left="1"
+                      data-tally-overlay="1"
+                      data-tally-emoji-animation="none"
+                      data-tally-auto-close="25000"
+                      data-tally-form-events-forwarding="1"
+                      style={btnPrimary}
+                    >
+                      Get the Crisis Brief
+                    </button>
                     <a href="#research" style={btnSecondary}>Read the Research Summary</a>
                   </div>
 
@@ -314,12 +290,12 @@ export default function HormuzPage() {
             </div>
           </section>
 
-          {/* ─────────────── BRIEF / FORM ─────────────── */}
+          {/* ─────────────── BRIEF / CTA ─────────────── */}
           <section id="brief" style={{ padding: "10px 0 72px" }}>
             <div style={{ width: C, margin: "0 auto" }}>
               <div className="hz-brief" style={{ display: "grid", gridTemplateColumns: "1.05fr 0.95fr", gap: "24px", alignItems: "start" }}>
 
-                {/* Left: what you get */}
+                {/* Left: what's inside */}
                 <div style={{
                   background: "linear-gradient(180deg, rgba(216,161,69,.07), rgba(255,255,255,.02))",
                   border: "1px solid rgba(216,161,69,.15)", borderRadius: "24px",
@@ -347,94 +323,39 @@ export default function HormuzPage() {
                   </div>
                 </div>
 
-                {/* Right: form */}
+                {/* Right: Tally CTA */}
                 <div style={{
                   background: "linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015))",
                   border: "1px solid rgba(255,255,255,.08)", borderRadius: "24px",
                   padding: "28px", boxShadow: SH,
+                  display: "flex", flexDirection: "column", gap: "20px",
                 }}>
-                  <h3 style={{ margin: "0 0 8px", fontSize: "24px", letterSpacing: "-.02em" }}>Send me the brief</h3>
-                  <p style={{ margin: "0 0 20px", color: "#a9b2c3", fontSize: "15px" }}>
-                    Enter your details and I'll send the Hormuz Transmission Brief directly to your inbox.
+                  <div>
+                    <h3 style={{ margin: "0 0 8px", fontSize: "24px", letterSpacing: "-.02em" }}>
+                      Send me the brief
+                    </h3>
+                    <p style={{ margin: 0, color: "#a9b2c3", fontSize: "15px" }}>
+                      Takes 30 seconds. I'll send the Hormuz Transmission Brief directly to your inbox.
+                    </p>
+                  </div>
+
+                  <button
+                    data-tally-open="XxBvBg"
+                    data-tally-align-left="1"
+                    data-tally-overlay="1"
+                    data-tally-emoji-animation="none"
+                    data-tally-auto-close="25000"
+                    data-tally-form-events-forwarding="1"
+                    style={{ ...btnPrimary, width: "100%", justifyContent: "center", padding: "15px 22px", fontSize: "16px" }}
+                  >
+                    Get the Crisis Brief
+                  </button>
+
+                  <p style={{ margin: 0, color: "#7f8aa0", fontSize: "13px" }}>
+                    I'll only email major updates, new crisis notes, and research releases.
                   </p>
-
-                  {submitted ? (
-                    <div style={{
-                      padding: "22px", borderRadius: "16px",
-                      background: "rgba(216,161,69,.07)", border: "1px solid rgba(216,161,69,.22)",
-                      color: "#f4c978", fontSize: "15px", lineHeight: "1.65",
-                    }}>
-                      <strong style={{ display: "block", marginBottom: "6px", fontSize: "17px" }}>You're on the list.</strong>
-                      I'll send the Hormuz Transmission Brief to your inbox shortly.
-                      Watch for an email from ShockBridge Pulse.
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmit}>
-                      <div className="hz-grid2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-                        <div>
-                          <label style={{ display: "block", fontSize: "13px", color: "#a9b2c3", marginBottom: "8px", fontWeight: 600 }}>
-                            First name
-                          </label>
-                          <input
-                            className="hormuz-input"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            onFocus={() => setFocusField("firstName")}
-                            onBlur={() => setFocusField(null)}
-                            placeholder="Rodolfo"
-                            required
-                            style={inputStyle("firstName")}
-                          />
-                        </div>
-                        <div>
-                          <label style={{ display: "block", fontSize: "13px", color: "#a9b2c3", marginBottom: "8px", fontWeight: 600 }}>
-                            Email
-                          </label>
-                          <input
-                            className="hormuz-input"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            onFocus={() => setFocusField("email")}
-                            onBlur={() => setFocusField(null)}
-                            placeholder="you@example.com"
-                            required
-                            style={inputStyle("email")}
-                          />
-                        </div>
-                      </div>
-
-                      <div style={{ marginTop: "14px" }}>
-                        <label style={{ display: "block", fontSize: "13px", color: "#a9b2c3", marginBottom: "8px", fontWeight: 600 }}>
-                          Role or interest{" "}
-                          <span style={{ color: "#7f8aa0", fontWeight: 400 }}>(optional)</span>
-                        </label>
-                        <input
-                          className="hormuz-input"
-                          value={role}
-                          onChange={(e) => setRole(e.target.value)}
-                          onFocus={() => setFocusField("role")}
-                          onBlur={() => setFocusField(null)}
-                          placeholder="Investor, analyst, risk, semiconductors, AI infrastructure..."
-                          style={inputStyle("role")}
-                        />
-                      </div>
-
-                      <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", margin: "20px 0 10px" }}>
-                        <button type="submit" style={btnPrimary}>
-                          Get the Crisis Brief
-                        </button>
-                        <a href="#research" style={btnSecondary}>
-                          Read the Summary
-                        </a>
-                      </div>
-
-                      <p style={{ color: "#7f8aa0", fontSize: "13px", margin: "12px 0 0" }}>
-                        I'll only email major updates, new crisis notes, and research releases.
-                      </p>
-                    </form>
-                  )}
                 </div>
+
               </div>
             </div>
           </section>
