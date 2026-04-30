@@ -10,6 +10,7 @@ import { AudienceSection } from "@/components/AudienceSection";
 import { PricingSection } from "@/components/PricingSection";
 import { FoundingAccessSection } from "@/components/FoundingAccessSection";
 import { ResearchSection } from "@/components/ResearchSection";
+import { AnalystSection } from "@/components/AnalystSection";
 import { AboutSection } from "@/components/AboutSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FinalCTASection } from "@/components/FinalCTASection";
@@ -50,6 +51,7 @@ export default function HomePage() {
         <PricingSection />
         <FoundingAccessSection />
         <ResearchSection />
+        <AnalystSection />
         <AboutSection />
         <FaqSection />
         <FinalCTASection />

@@ -4,37 +4,42 @@ const faqs = [
   {
     question: "What is ShockBridge Pulse?",
     answer:
-      "A micro-tool that turns a macro event, earnings surprise, or market shock into a structured analyst-style memo. You enter the event details, and it returns a clean scenario note with first-order effects, second-order risks, bullish/bearish paths, and what to watch next.",
-  },
-  {
-    question: "Is this financial advice?",
-    answer:
-      "No. ShockBridge Pulse is a market-interpretation and research tool designed to help users think more clearly about market scenarios. It does not provide investment recommendations or buy/sell advice.",
-  },
-  {
-    question: "Do I need trading experience to use it?",
-    answer:
-      "No. It helps both experienced market participants and curious users who want cleaner market logic. The outputs are written in clear financial language without unnecessary jargon.",
-  },
-  {
-    question: "What counts as one memo?",
-    answer:
-      "One completed scenario generation counts as one memo credit. If the generation fails due to a server error, it does not consume a credit.",
+      "A macro-intelligence product that maps how shocks in financial markets and the economy transmit across exposures, sectors, and decision environments. It turns macro events, earnings surprises, and geopolitical stress into structured Intelligence Briefs — so you can move from noise to structure with speed.",
   },
   {
     question: "What is the difference between Bridge and Analyst?",
     answer:
-      "Bridge gives you 5 memos with the full scenario analysis. Analyst gives you 15 memos plus X brief, LinkedIn brief, and PDF memo. Built for professionals who need to brief clients, distribute research, or file structured analysis.",
+      "Bridge is the recurring macro-intelligence subscription — structured, automated, and productized. It delivers 4 Intelligence Briefs per month plus alerts, watchpoints, and workflow-ready formats. Analyst is a separate custom engagement: a founder-led, tailored analysis built specifically around your business, portfolio, or real exposure. Products deliver briefs. Analyst delivers judgment.",
   },
   {
-    question: "How do I access the tool after purchasing?",
+    question: "Why is Bridge priced lower right now?",
     answer:
-      "After payment you will receive an access code. Go to the Generate page, click 'Redeem a code', enter your code, and your memos will be unlocked immediately.",
+      "Current pricing reflects founding access while ShockBridge expands its proprietary modeling and macro-intelligence capabilities. The price will rise as deeper analytical layers are integrated.",
   },
   {
-    question: "Is there a subscription?",
+    question: "Is Analyst a subscription?",
     answer:
-      "Not at launch. The current version uses a one-time purchase model. You buy a credit pack and use it at your own pace.",
+      "No. The Analyst Report is a one-time custom engagement. Pricing starts at $199 and depends on scope and complexity. Ongoing arrangements can be discussed separately.",
+  },
+  {
+    question: "How often does Bridge update?",
+    answer:
+      "Bridge includes 4 Intelligence Briefs per month plus event-driven alerts when relevant conditions emerge. The cadence follows the macro environment — not a fixed calendar.",
+  },
+  {
+    question: "Who is Analyst for?",
+    answer:
+      "Analyst is for users who need tailored interpretation applied to a real situation — a specific business exposure, portfolio risk, sector, or decision context. It is not for general market monitoring. That is what Bridge is for.",
+  },
+  {
+    question: "Is this investment advice?",
+    answer:
+      "No. ShockBridge Pulse is a macro-intelligence and research product. It provides structured transmission analysis and scenario interpretation — not investment recommendations or buy/sell advice.",
+  },
+  {
+    question: "How do I access Bridge after purchasing?",
+    answer:
+      "After purchase you receive an access code by email. Go to the Generate page, enter your code in the Redeem section, and your Intelligence Briefs are unlocked immediately.",
   },
 ];
 

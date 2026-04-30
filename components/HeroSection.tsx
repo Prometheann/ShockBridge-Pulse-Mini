@@ -19,16 +19,17 @@ export function HeroSection() {
             to signal.
           </h1>
           <p className="text-[#9ca3af] text-lg leading-relaxed mb-8">
-            ShockBridge Pulse turns macro events, earnings surprises, and liquidity stress
-            into structured transmission memos, so you can move from noise to structure with speed.
+            ShockBridge Pulse maps how macro events, geopolitical shocks, and market stress
+            transmit across exposures — and turns that into structured Intelligence Briefs
+            for faster, clearer decisions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/generate" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto">Try a Sample</Button>
+              <Button size="lg" className="w-full sm:w-auto">Get Snapshot</Button>
             </Link>
             <Link href="#pricing" className="w-full sm:w-auto">
               <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                See Pricing
+                Join Bridge
               </Button>
             </Link>
           </div>

@@ -1,18 +1,19 @@
-import React from "react";
-
 const baseItems = [
-  "Sharp title",
-  "Concise summary",
-  "Macro + earnings shocks analysis",
+  "Sharp transmission title",
+  "Concise macro summary",
   "First-order effects",
   "Second-order risks",
   "Bullish path",
   "Bearish path",
   "Key uncertainties",
-  "What to watch next",
+  "Watchpoints",
 ];
 
-const creatorExtras = ["Scenario brief — X format", "Scenario brief — LinkedIn format", "PDF memo for distribution or filing"];
+const bridgeExtras = [
+  "X post Intelligence Brief",
+  "LinkedIn Intelligence Post",
+  "PDF brief for distribution or filing",
+];
 
 export function WhatYouGetSection() {
   return (
@@ -22,19 +23,19 @@ export function WhatYouGetSection() {
           {/* Left */}
           <div>
             <h2 className="text-3xl font-bold text-[#f0f0f0] mb-4">
-              One event. A complete transmission memo.
+              One event. A complete Intelligence Brief.
             </h2>
             <p className="text-[#9ca3af] leading-relaxed">
-              Each generation gives you a structured transmission memo built for speed, clarity,
-              and disciplined market interpretation. The Analyst plan adds additional output formats
-              for briefing, sharing, and filing.
+              Each generation delivers a structured transmission brief built for speed, clarity,
+              and disciplined market interpretation. Bridge subscribers also receive
+              workflow-ready formats — X post, LinkedIn, and PDF — from every brief.
             </p>
           </div>
 
           {/* Right */}
           <div className="space-y-4">
             <div className="bg-[#0f1117] rounded-xl p-5 border border-[#2d3148]">
-              <p className="text-xs text-[#9ca3af] uppercase tracking-wider mb-3">Every memo includes</p>
+              <p className="text-xs text-[#9ca3af] uppercase tracking-wider mb-3">Every Brief includes</p>
               <ul className="space-y-2">
                 {baseItems.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-[#f0f0f0]">
@@ -47,10 +48,10 @@ export function WhatYouGetSection() {
 
             <div className="bg-amber-500/5 rounded-xl p-5 border border-amber-500/20">
               <p className="text-xs text-amber-400 uppercase tracking-wider mb-3">
-                Analyst plan also includes
+                Bridge subscribers also receive
               </p>
               <ul className="space-y-2">
-                {creatorExtras.map((item) => (
+                {bridgeExtras.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-amber-300">
                     <span className="text-amber-500">★</span>
                     {item}

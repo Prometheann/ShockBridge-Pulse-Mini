@@ -27,22 +27,23 @@ export function AboutSection() {
             move first. What may spill over next. Where exposure can hide before it becomes obvious.
           </p>
           <p>
-            The result is a structured scenario memo designed to help professionals think more
-            clearly under pressure. It is not financial advice. It is an intelligence layer for
-            turning fast-moving conditions into usable logic.
+            The result is a structured Intelligence Brief designed to help professionals think more
+            clearly under pressure. It is not investment advice. It is an intelligence layer for
+            turning fast-moving conditions into usable, decision-ready logic.
           </p>
           <p>
-            Phase 1 is live today through ShockBridge Pulse. In parallel, the broader SaaS layer
-            is being developed to expand this framework into a more advanced macro transmission system.
+            ShockBridge Pulse is live today as a productized intelligence layer — Snapshot for
+            fast entry, Bridge for recurring macro-intelligence. In parallel, the broader
+            proprietary modeling framework is being developed to deepen the analytical capabilities.
           </p>
         </div>
 
         {/* Stat strip */}
         <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-6">
           {[
-            { value: "3 plans", label: "Snapshot · Bridge · Analyst" },
-            { value: "No subscription", label: "One payment, full access" },
-            { value: "< 30s", label: "From event to structured memo" },
+            { value: "2 products", label: "Snapshot · Bridge" },
+            { value: "From $29/mo", label: "Bridge founding price" },
+            { value: "< 30s", label: "From event to Intelligence Brief" },
           ].map((s) => (
             <div key={s.value} className="border-l-2 border-amber-500 pl-4">
               <p className="text-[#f0f0f0] text-xl font-bold">{s.value}</p>
@@ -53,8 +54,8 @@ export function AboutSection() {
 
         {/* Disclaimer */}
         <p className="mt-10 text-[#4b5563] text-xs leading-relaxed border-t border-[#1e2130] pt-6">
-          Market-interpretation and research tool only. Not financial advice. No positions are recommended.
-          All outputs should be verified before any investment decision.
+          Research & Market Risk Transmission Analysis · Not investment advice. No positions are recommended.
+          All outputs should be independently verified before any investment decision.
         </p>
       </div>
     </section>

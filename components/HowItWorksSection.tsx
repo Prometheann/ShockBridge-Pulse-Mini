@@ -1,21 +1,21 @@
 const steps = [
   {
     number: "01",
-    title: "Enter the event",
+    title: "Identify the shock",
     description:
-      "Choose your event type: macro shock, earnings surprise, or geopolitical rupture. Set region, asset or sector, time horizon, and tone.",
+      "Select the event type — macro shock, geopolitical rupture, or earnings surprise. Set the region, sector, asset, and time horizon.",
   },
   {
     number: "02",
-    title: "Generate the memo",
+    title: "Map the transmission",
     description:
-      "Get a structured scenario note built around cause, pressure, spillover, and watchpoints.",
+      "The engine traces how the shock moves: first-order effects, second-order risks, spillover paths, and structured watchpoints.",
   },
   {
     number: "03",
-    title: "Use it immediately",
+    title: "Act on the brief",
     description:
-      "Read it, brief from it, export it, or plug it directly into your market workflow.",
+      "Receive a structured Intelligence Brief — formatted for speed, clarity, and immediate use in your decision workflow.",
   },
 ];
 
@@ -24,7 +24,7 @@ export function HowItWorksSection() {
     <section id="features" className="py-20 max-w-6xl mx-auto px-6">
       <div className="mb-12">
         <h2 className="text-3xl font-bold text-[#f0f0f0] mb-3">Simple in. Sharp out.</h2>
-        <p className="text-[#9ca3af]">Three steps from event to structured conviction.</p>
+        <p className="text-[#9ca3af]">Three steps from event to structured intelligence.</p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">

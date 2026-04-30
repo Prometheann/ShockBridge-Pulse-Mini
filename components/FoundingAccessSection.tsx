@@ -1,7 +1,7 @@
 import { FoundingAccessForm } from "@/components/FoundingAccessForm";
 
 const includes = [
-  "Full Analyst access",
+  "Full Bridge access",
   "Priority product updates",
   "Early visibility into upcoming features",
   "Founder notes and selected product insights",
@@ -26,7 +26,7 @@ export function FoundingAccessSection() {
             <div className="w-12 h-1 bg-amber-500 rounded-full mb-6" />
             <p className="text-[#9ca3af] text-base leading-relaxed mb-6">
               ShockBridge Founding Access is a limited early layer for people who want closer
-              visibility into the product as it evolves beyond the current memo engine.
+              visibility into the product as it evolves beyond the current intelligence engine.
             </p>
             <p className="text-[#9ca3af] text-base leading-relaxed mb-8">
               It is designed for users who see the direction, value the framework, and want

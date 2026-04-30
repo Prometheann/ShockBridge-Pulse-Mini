@@ -9,8 +9,9 @@ const points = [
       "It maps what hits first, what spills over next, and what deserves attention.",
   },
   {
-    title: "Not just analysis. Workflow-ready formats.",
-    description: "Analyst plan turns one event into multiple workflow-ready formats for faster decision support.",
+    title: "Not just analysis. Decision-ready briefs.",
+    description:
+      "Bridge turns one event into multiple workflow-ready formats — X post, LinkedIn post, and PDF — for faster decision support.",
   },
 ];
 
