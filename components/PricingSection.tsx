@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/Button";
 
+const freeFeatures = [
+  "1 free Intelligence Brief",
+  "See how shocks are structured",
+  "Preview the transmission output",
+  "Evaluate the logic before upgrading",
+];
+
 const snapshotFeatures = [
   "1 Risk Snapshot",
   "1 short follow-up update",
@@ -31,12 +38,34 @@ export function PricingSection() {
             One entry. One recurring intelligence layer.
           </h2>
           <p className="text-[#9ca3af]">
-            Start with Snapshot to test the signal. Move to Bridge for ongoing
-            macro-intelligence and decision support.
+            Start free to test the signal. Move to Snapshot for your first paid brief.
+            Join Bridge for ongoing macro-intelligence and decision support.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+          {/* Free */}
+          <div className="flex flex-col bg-[#0f1117] border border-[#2d3148] rounded-2xl p-8">
+            <p className="text-xs text-[#6b7280] uppercase tracking-wider mb-2">Free</p>
+            <div className="flex items-end gap-1 mb-1">
+              <span className="text-4xl font-bold text-[#f0f0f0]">Free</span>
+            </div>
+            <p className="text-[#9ca3af] text-sm mb-6">A first look at the intelligence engine</p>
+
+            <ul className="space-y-3 mb-8 flex-1">
+              {freeFeatures.map((f) => (
+                <li key={f} className="flex items-start gap-2 text-sm text-[#9ca3af]">
+                  <span className="text-amber-500 mt-0.5 shrink-0">✓</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <a href="/generate" className="mt-auto">
+              <Button variant="secondary" className="w-full">Try Free</Button>
+            </a>
+          </div>
 
           {/* Snapshot */}
           <div className="flex flex-col bg-[#0f1117] border border-[#2d3148] rounded-2xl p-8">
@@ -94,9 +123,10 @@ export function PricingSection() {
               Founding price while ShockBridge expands its proprietary modeling layer.
             </p>
           </div>
+
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <p className="text-xs text-[#6b7280] mt-6">
             Snapshot is a one-time entry product. Bridge is a monthly subscription.
             After purchase you receive an access code by email — redeem it in the app
