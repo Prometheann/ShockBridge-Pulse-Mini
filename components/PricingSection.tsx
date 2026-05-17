@@ -17,10 +17,9 @@ const snapshotFeatures = [
 const bridgeFeatures = [
   "4 in-depth Intelligence Briefs per month",
   "Research Desk: hidden variable analysis",
-  "Multi-horizon structural analysis",
   "Transmission watchpoints + risk flags",
   "Structured macro-intelligence output",
-  "11-page publication-quality PDF brief",
+  "12-page publication-quality PDF brief",
 ];
 
 export function PricingSection() {
@@ -94,6 +93,22 @@ export function PricingSection() {
                   {f}
                 </li>
               ))}
+              <li className="flex items-start gap-2 text-sm text-[#f0f0f0]">
+                <span className="text-amber-500 mt-0.5 shrink-0">✓</span>
+                <span>
+                  Regime Horizon
+                  <ul className="mt-1.5 space-y-1">
+                    <li className="flex items-start gap-1.5 text-[#9ca3af]">
+                      <span className="text-amber-500/50 shrink-0">·</span>
+                      regime condition (6M)
+                    </li>
+                    <li className="flex items-start gap-1.5 text-[#9ca3af]">
+                      <span className="text-amber-500/50 shrink-0">·</span>
+                      structural equilibrium (12M)
+                    </li>
+                  </ul>
+                </span>
+              </li>
             </ul>
 
             <a href={bridgeLink} target="_blank" rel="noopener noreferrer" className="mt-auto">

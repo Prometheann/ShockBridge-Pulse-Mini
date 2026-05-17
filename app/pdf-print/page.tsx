@@ -438,14 +438,14 @@ export default function PdfPrint() {
         <div className="page" lang="en">
           <Header />
           <div className="content">
-            <span className="section-label">Extended Horizon Assessment</span>
-            <p className="method-subtitle">Base Case · 6 Months and 12 Months</p>
+            <span className="section-label">Regime Horizon</span>
+            <p className="method-subtitle">Regime Condition (6M) · Structural Equilibrium (12M)</p>
             <div className="horizon-block">
-              <span className="horizon-label">6-Month Base Case</span>
+              <span className="horizon-label">Regime Condition · 6-Month Horizon</span>
               <p className="body-p">{horizonAssessment.six_month}</p>
             </div>
             <div className="horizon-block">
-              <span className="horizon-label">12-Month Base Case</span>
+              <span className="horizon-label">Structural Equilibrium · 12-Month Horizon</span>
               <p className="body-p">{horizonAssessment.twelve_month}</p>
             </div>
           </div>
