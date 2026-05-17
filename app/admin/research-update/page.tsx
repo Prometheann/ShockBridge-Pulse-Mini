@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 const STAGES = [
-  { value: "1", label: "Stage 1 — Conceptual framework locked" },
-  { value: "2", label: "Stage 2 — Data construction complete" },
-  { value: "3", label: "Stage 3 — First empirical results in" },
-  { value: "4", label: "Stage 4 — Monte Carlo calibration done" },
-  { value: "5", label: "Stage 5 — Paper draft complete" },
+  { value: "1", label: "Stage 1: Conceptual framework locked" },
+  { value: "2", label: "Stage 2: Data construction complete" },
+  { value: "3", label: "Stage 3: First empirical results in" },
+  { value: "4", label: "Stage 4: Monte Carlo calibration done" },
+  { value: "5", label: "Stage 5: Paper draft complete" },
 ];
 
 export default function ResearchUpdateAdmin() {
@@ -100,7 +100,7 @@ export default function ResearchUpdateAdmin() {
               onChange={(e) => setMessage(e.target.value)}
               required
               rows={5}
-              placeholder="Write a short update for your subscribers — what was completed, what it means for the paper, what comes next."
+              placeholder="Write a short update for your subscribers: what was completed, what it means for the paper, what comes next."
               style={{ width: "100%", background: "#0d0f1a", border: "1px solid #2d3148", borderRadius: "10px", padding: "12px 14px", fontSize: "14px", color: "#f0f0f0", outline: "none", resize: "vertical", boxSizing: "border-box", lineHeight: 1.6 }}
             />
           </div>

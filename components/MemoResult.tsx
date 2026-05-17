@@ -106,8 +106,8 @@ function PrintTitle({ title, hook, asset, bridge, theme }: {
       </>
     );
   }
-  // Fallback: split at " — "
-  const parts = title.split(" — ");
+  // Fallback: split at " · "
+  const parts = title.split(" · ");
   if (parts.length < 2) return <>{title}</>;
   return (
     <>
@@ -297,7 +297,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
               </div>
             )}
             {/* Closing text — PDF only */}
-            <p id="pdf-closing-text">ShockBridge Pulse — From market shock to clean signal</p>
+            <p id="pdf-closing-text">ShockBridge Pulse · From market shock to clean signal</p>
             {/* PDF export */}
             <Button variant="secondary" size="lg" onClick={handlePrint} className="no-print w-full mt-4">
               Export PDF Brief
@@ -331,15 +331,15 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
                 {memo.linkedin_post.split("\n\n").filter(p => !p.toLowerCase().includes("from market shock to clean signal")).join("\n\n")}
               </p>
             </div>
-            <p id="pdf-closing-text">ShockBridge Pulse — From market shock to clean signal</p>
+            <p id="pdf-closing-text">ShockBridge Pulse · From market shock to clean signal</p>
             <Button variant="secondary" size="lg" onClick={handlePrint} className="no-print w-full">
               Export PDF Memo
             </Button>
           </div>
         )}
 
-        {/* Creator: no methodology and no social — Analyst CTA */}
-        {isCreator && !memo.methodology_frame && !(memo.x_post && memo.linkedin_post) ? (
+        {/* Analyst Report CTA — Bridge vs Free/Snapshot */}
+        {isCreator ? (
           <div className="border-t border-[#2d3148] pt-6">
             <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 text-center">
               <p className="text-amber-400 font-bold mb-1">

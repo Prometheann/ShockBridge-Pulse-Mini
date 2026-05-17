@@ -402,7 +402,7 @@ export default function PdfPrint() {
               ))}
             </ul>
           </div>
-          <p className="closing">ShockBridge Pulse — From market shock to clean signal</p>
+          <p className="closing">ShockBridge Pulse · From market shock to clean signal</p>
           <Footer n={11} />
         </div>
       )}
@@ -446,7 +446,7 @@ export default function PdfPrint() {
               </div>
             </div>
           </div>
-          <p className="closing">ShockBridge Pulse — From market shock to clean signal</p>
+          <p className="closing">ShockBridge Pulse · From market shock to clean signal</p>
           <Footer n={11} />
         </div>
       )}

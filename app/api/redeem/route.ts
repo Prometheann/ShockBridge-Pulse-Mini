@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     const planLabel = plan === "creator" ? "Bridge" : "Snapshot";
     const message =
       memosRemaining < memosTotal
-        ? `${planLabel} plan — ${memosRemaining} brief${memosRemaining !== 1 ? "s" : ""} remaining.`
+        ? `${planLabel} plan: ${memosRemaining} brief${memosRemaining !== 1 ? "s" : ""} remaining.`
         : plan === "creator"
           ? "Analyst plan unlocked! 15 Intelligence Briefs available."
           : "Bridge plan unlocked! 4 Intelligence Briefs available.";

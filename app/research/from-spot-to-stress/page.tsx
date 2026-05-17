@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { ResearchSubscribeForm } from "@/components/ResearchSubscribeForm";
 
 export const metadata: Metadata = {
-  title: "From Spot to Stress — ShockBridge Pulse Research",
+  title: "From Spot to Stress · ShockBridge Pulse Research",
   description:
     "A working paper on multiscale contagion in Brazilian equities using Airy wavelets, regularized canonical dependence, and option-implied stress signals.",
 };
@@ -169,7 +169,7 @@ export default function FromSpotToStressPage() {
         {/* Bottom rule + tagline */}
         <div className="mt-16 pt-8 border-t border-[#1e2130]">
           <p className="text-[#4b5563] text-xs">
-            ShockBridge Pulse Research — market structure, stress transmission, and financial intelligence.
+            ShockBridge Pulse Research: market structure, stress transmission, and financial intelligence.
           </p>
           <p className="text-[#4b5563] text-xs mt-2">
             Market-interpretation and research tool only. Not financial advice.

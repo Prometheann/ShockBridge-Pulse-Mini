@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
       await resend.emails.send({
         from: "Rodolfo Pereira <research@shockbridgepulse.com>",
         to: normalised,
-        subject: "You're on the list — From Spot to Stress",
+        subject: "You're on the list: From Spot to Stress",
         html: `
           <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 560px; margin: 0 auto; padding: 40px 24px; background: #ffffff; color: #1a1a2e;">
             <p style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #f59e0b; margin: 0 0 24px 0;">
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
               You're on the list.
             </p>
             <p style="font-size: 15px; color: #374151; line-height: 1.7; margin: 0 0 28px 0;">
-              I'll send you one email when the working paper is released — no newsletter, no recurring updates. Just a notification when it's done.
+              I'll send you one email when the working paper is released. No newsletter, no recurring updates. Just a notification when it's done.
             </p>
             <a href="https://shockbridgepulse.com/research/from-spot-to-stress"
                style="display: inline-block; padding: 12px 20px; background: #f59e0b; color: #0a0f1e; font-size: 13px; font-weight: 700; text-decoration: none; border-radius: 8px;">

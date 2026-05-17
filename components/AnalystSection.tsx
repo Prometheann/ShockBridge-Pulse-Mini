@@ -2,7 +2,7 @@ const includes = [
   "Intake and context collection",
   "Tailored risk analysis",
   "Exposure interpretation",
-  "Scenario-based analysis — 3 scenarios",
+  "Scenario-based analysis: 3 scenarios",
   "Mitigation direction and response options",
   "Founder-led judgment",
   "Custom PDF report",
@@ -25,7 +25,7 @@ export function AnalystSection() {
             </h2>
             <div className="w-12 h-1 bg-amber-500 rounded-full mb-6" />
             <p className="text-[#9ca3af] text-base leading-relaxed mb-4">
-              The Analyst Report is a custom engagement — not a plan, not a subscription.
+              The Analyst Report is a custom engagement, not a plan, not a subscription.
               ShockBridge intelligence applied directly to a real business, portfolio,
               sector, or specific exposure.
             </p>

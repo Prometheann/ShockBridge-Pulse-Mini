@@ -32,7 +32,7 @@ export function AboutSection() {
             turning fast-moving conditions into usable, decision-ready logic.
           </p>
           <p>
-            ShockBridge Pulse is live today as a productized intelligence layer — Snapshot for
+            ShockBridge Pulse is live today as a productized intelligence layer: Snapshot for
             fast entry, Bridge for recurring macro-intelligence. In parallel, the broader
             proprietary modeling framework is being developed to deepen the analytical capabilities.
           </p>

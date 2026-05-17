@@ -21,7 +21,7 @@ export function WhatYouGetSection() {
             </h2>
             <p className="text-[#9ca3af] leading-relaxed">
               Each generation delivers a structured transmission brief built for speed, clarity,
-              and disciplined market interpretation — readable under pressure and built
+              and disciplined market interpretation, readable under pressure and built
               for fast decision cycles.
             </p>
           </div>

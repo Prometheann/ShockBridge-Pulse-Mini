@@ -11,7 +11,7 @@ export function FinalCTASection() {
           Structured intelligence for what happens next.
         </h2>
         <p className="text-[#9ca3af] text-lg mb-8">
-          Whether a macro shock, geopolitical rupture, or sudden market stress —
+          Whether a macro shock, geopolitical rupture, or sudden market stress,
           ShockBridge Pulse turns scattered reaction into a disciplined transmission view.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">

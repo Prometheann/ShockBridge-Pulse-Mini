@@ -126,7 +126,7 @@ export function PricingSection() {
         <div className="max-w-5xl mx-auto">
           <p className="text-xs text-[#6b7280] mt-6">
             Snapshot is a one-time entry product. Bridge is a monthly subscription.
-            After purchase you receive an access code by email — redeem it in the app
+            After purchase you receive an access code by email. Redeem it in the app
             to unlock your briefs immediately.
           </p>
           <p className="text-xs text-[#4b5563] mt-2">

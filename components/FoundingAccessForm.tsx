@@ -69,7 +69,7 @@ export function FoundingAccessForm() {
       <textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder="Brief context — what draws you to Founding Access? (optional)"
+        placeholder="Brief context: what draws you to Founding Access? (optional)"
         rows={3}
         disabled={status === "loading"}
         className="w-full bg-[#0a0d16] border border-[#2d3148] rounded-xl px-4 py-3 text-sm text-[#f0f0f0] placeholder-[#4b5563] focus:outline-none focus:border-amber-500/60 transition-colors disabled:opacity-50 resize-none"

@@ -6,11 +6,11 @@ const redis = Redis.fromEnv();
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const STAGES = [
-  "Stage 1 — Conceptual framework locked",
-  "Stage 2 — Data construction complete",
-  "Stage 3 — First empirical results in",
-  "Stage 4 — Monte Carlo calibration done",
-  "Stage 5 — Paper draft complete",
+  "Stage 1: Conceptual framework locked",
+  "Stage 2: Data construction complete",
+  "Stage 3: First empirical results in",
+  "Stage 4: Monte Carlo calibration done",
+  "Stage 5: Paper draft complete",
 ];
 
 export async function POST(req: NextRequest) {

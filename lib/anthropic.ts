@@ -64,13 +64,13 @@ Time horizon: ${input.horizon}
 Tone: ${input.tone}
 Analyst thesis / additional context: ${input.optionalNote || "None provided"}
 
-Produce a deep, publication-quality scenario note. Return exactly this JSON — nothing else:
+Produce a deep, publication-quality scenario note. Return exactly this JSON. Nothing else:
 {
-  "title": "full title combining all parts below, separated by ' — '",
-  "title_hook": "2-3 words MAX — the event type only, no company name (e.g. 'EARNINGS MISS' or 'RATE SHOCK' or 'OIL SPIKE'). ALL CAPS.",
-  "title_asset": "1-3 words — the company, ticker, or asset name only (e.g. 'NVIDIA' or 'FED' or 'BRL'). ALL CAPS.",
-  "title_bridge": "4-8 words — the mechanism or collision (e.g. 'Collides With Middle East Risk' or 'Hits an Overextended Market'). No trailing colon.",
-  "title_theme": "3-6 words — the core analytical theme (e.g. 'AI Premium Under Siege' or 'Dollar Breaks Its Anchor'). No trailing punctuation.",
+  "title": "full title combining all parts below, separated by ' · '",
+  "title_hook": "2-3 words MAX: the event type only, no company name (e.g. 'EARNINGS MISS' or 'RATE SHOCK' or 'OIL SPIKE'). ALL CAPS.",
+  "title_asset": "1-3 words: the company, ticker, or asset name only (e.g. 'NVIDIA' or 'FED' or 'BRL'). ALL CAPS.",
+  "title_bridge": "4-8 words: the mechanism or collision (e.g. 'Collides With Middle East Risk' or 'Hits an Overextended Market'). No trailing colon.",
+  "title_theme": "3-6 words: the core analytical theme (e.g. 'AI Premium Under Siege' or 'Dollar Breaks Its Anchor'). No trailing punctuation.",
   "summary": "3 paragraphs separated by \\n\\n. MAX 550 chars per paragraph - end each at a complete sentence. Para 1: non-obvious angle and core tension. Para 2: structural mechanism - what makes this event different. Para 3: cross-asset or macro implication. Dense, efficient prose.",
   "first_order_effects": [
     "MAX 320 chars - end at a complete sentence. Effect + causal mechanism + specific instrument/sector affected + magnitude range.",
@@ -100,7 +100,7 @@ Produce a deep, publication-quality scenario note. Return exactly this JSON — 
     "MAX 320 chars - end at a complete sentence. Specific indicator + why it matters + how to read each direction + timeframe.",
     "MAX 320 chars - end at a complete sentence. Specific indicator + why it matters + how to read each direction + timeframe."
   ],
-  "methodology_frame": "2 paragraphs separated by \\n\\n. Max 500 chars per paragraph, end each at a complete sentence. Para 1: name the specific headline variable the market is focused on for this scenario, what standard analysis correctly captures about it, and the structural gap — the dimension of the outcome being systematically underweighted or ignored. Para 2: identify the hidden structural variable operating at a different time horizon, the precise economic mechanism that connects it to the eventual outcome, and why it does not appear in current positioning or pricing.",
+  "methodology_frame": "2 paragraphs separated by \\n\\n. Max 500 chars per paragraph, end each at a complete sentence. Para 1: name the specific headline variable the market is focused on for this scenario, what standard analysis correctly captures about it, and the structural gap: the dimension of the outcome being systematically underweighted or ignored. Para 2: identify the hidden structural variable operating at a different time horizon, the precise economic mechanism that connects it to the eventual outcome, and why it does not appear in current positioning or pricing.",
   "hidden_variable_analysis": [
     "MAX 380 chars - end at a full sentence. Short-horizon signal: what the 1-4 week price and flow data implies about the immediate driver, how much of the current move is headline-reactive versus structurally grounded, and what that distinction means for near-term risk.",
     "MAX 380 chars - end at a full sentence. Structural divergence: where exactly the hidden variable and the headline variable diverge across time scales, which specific assets or spreads make that divergence most readable right now, and the positioning implication that follows.",

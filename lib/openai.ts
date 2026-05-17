@@ -20,7 +20,7 @@ Focus only on the most immediate first-order effects. No depth required, but no 
 STYLE RULES (non-negotiable):
 - Never use em-dashes (the — character). Use commas, semicolons, colons, or parentheses instead.
 - Active voice. Short declarative sentences. No filler.
-- No hedging verbs: write "will", "breaks", "forces" — never "could", "might", "may potentially."
+- No hedging verbs: write "will", "breaks", "forces" -- never "could", "might", "may potentially."
 - Banned words: "navigating", "landscape", "headwinds", "tailwinds", "nuanced", "robust", "importantly", "it is worth noting."
 - Name specific instruments or sectors. Never write "risk assets" or "long-duration assets" without specifying which.
 - Output valid JSON only. No markdown, no extra text.`;
@@ -33,7 +33,7 @@ Time horizon: ${input.horizon}
 Tone: ${input.tone}
 Optional note: ${input.optionalNote || "None"}
 
-Return exactly this JSON — nothing else:
+Return exactly this JSON. Nothing else:
 {
   "title": "clear descriptive title (max 10 words)",
   "summary": "1-2 sentence plain-language overview of what this event means",
@@ -80,7 +80,7 @@ Time horizon: ${input.horizon}
 Tone: ${input.tone}
 Optional thesis: ${input.optionalNote || "None provided"}
 
-Return exactly this JSON — nothing else:
+Return exactly this JSON. Nothing else:
 {
   "title": "sharp analytical title (max 12 words)",
   "summary": "2-3 sentences. State what happened, why it matters, and what the key tension is.",

@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
       await resend.emails.send({
         from: "ShockBridge Pulse <research@shockbridgepulse.com>",
         to:   "research@shockbridgepulse.com",
-        subject: `⚠️ Code pool empty — ${plan.label} plan`,
+        subject: `⚠️ Code pool empty: ${plan.label} plan`,
         html: `
           <p>A customer just purchased the <strong>${plan.label}</strong> plan but the code pool is empty.</p>
           <p><strong>Customer email:</strong> ${customerEmail}</p>
@@ -144,8 +144,8 @@ export async function POST(request: NextRequest) {
           <div style="border-top: 1px solid #2d3148; padding-top: 24px;">
             <p style="color: #6b7280; font-size: 12px; margin: 0; line-height: 1.6;">
               Your code gives you <strong style="color: #9ca3af;">${plan.memos} Intelligence Brief${plan.memos !== 1 ? "s" : ""}</strong> on the ${plan.label} plan.
-              Briefs are tracked server-side — they persist across devices and browser resets.<br><br>
-              Keep this email. If you don't see it in your inbox, check your <strong style="color: #f0f0f0;">spam or junk folder</strong> — transactional emails sometimes land there the first time.<br><br>
+              Briefs are tracked server-side. They persist across devices and browser resets.<br><br>
+              Keep this email. If you don't see it in your inbox, check your <strong style="color: #f0f0f0;">spam or junk folder</strong>. Transactional emails sometimes land there the first time.<br><br>
               Questions? <a href="mailto:help@shockbridgepulse.com" style="color: #f59e0b;">help@shockbridgepulse.com</a>
             </p>
           </div>
@@ -158,7 +158,7 @@ export async function POST(request: NextRequest) {
     await resend.emails.send({
       from: "ShockBridge Pulse <research@shockbridgepulse.com>",
       to:   "research@shockbridgepulse.com",
-      subject: `✅ New ${plan.label} sale — code sent`,
+      subject: `✅ New ${plan.label} sale, code sent`,
       html: `
         <p><strong>Plan:</strong> ${plan.label}</p>
         <p><strong>Customer:</strong> ${customerName} (${customerEmail})</p>

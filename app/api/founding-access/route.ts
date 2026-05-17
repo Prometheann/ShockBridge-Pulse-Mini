@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: "ShockBridge Pulse <research@shockbridgepulse.com>",
       to: "research@shockbridgepulse.com",
-      subject: `New Founding Access application — ${normalised}`,
+      subject: `New Founding Access application: ${normalised}`,
       html: `
         <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 560px; margin: 0 auto; padding: 32px 24px; background: #ffffff; color: #1a1a2e;">
           <p style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #f59e0b; margin: 0 0 16px 0;">
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
           <h2 style="font-size: 18px; font-weight: 700; margin: 0 0 16px 0; color: #0f172a;">
             New application
           </h2>
-          <p style="font-size: 14px; color: #374151; margin: 0 0 8px 0;"><strong>Name:</strong> ${name?.trim() || "—"}</p>
+          <p style="font-size: 14px; color: #374151; margin: 0 0 8px 0;"><strong>Name:</strong> ${name?.trim() || "(not provided)"}</p>
           <p style="font-size: 14px; color: #374151; margin: 0 0 8px 0;"><strong>Email:</strong> ${normalised}</p>
           ${message?.trim() ? `<p style="font-size: 14px; color: #374151; margin: 0 0 8px 0;"><strong>Message:</strong> ${message.trim()}</p>` : ""}
           <p style="font-size: 12px; color: #9ca3af; margin: 24px 0 0 0;">${new Date().toISOString()}</p>
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: "Rodolfo Pereira <research@shockbridgepulse.com>",
       to: normalised,
-      subject: "Founding Access — application received",
+      subject: "Founding Access: application received",
       html: `
         <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 560px; margin: 0 auto; padding: 40px 24px; background: #ffffff; color: #1a1a2e;">
           <p style="font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #f59e0b; margin: 0 0 24px 0;">

@@ -20,7 +20,7 @@ export function HeroSection() {
           </h1>
           <p className="text-[#9ca3af] text-lg leading-relaxed mb-8">
             ShockBridge Pulse maps how macro events, geopolitical shocks, and market stress
-            transmit across exposures — and turns that into structured Intelligence Briefs
+            transmit across exposures, turning that into structured Intelligence Briefs
             for faster, clearer decisions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">

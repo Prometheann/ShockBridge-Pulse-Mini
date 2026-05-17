@@ -3,7 +3,7 @@ const steps = [
     number: "01",
     title: "Identify the shock",
     description:
-      "Select the event type — macro shock, geopolitical rupture, or earnings surprise. Set the region, sector, asset, and time horizon.",
+      "Select the event type: macro shock, geopolitical rupture, or earnings surprise. Set the region, sector, asset, and time horizon.",
   },
   {
     number: "02",
@@ -15,7 +15,7 @@ const steps = [
     number: "03",
     title: "Act on the brief",
     description:
-      "Receive a structured Intelligence Brief — formatted for speed, clarity, and immediate use in your decision workflow.",
+      "Receive a structured Intelligence Brief, formatted for speed, clarity, and immediate use in your decision workflow.",
   },
 ];
 

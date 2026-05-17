@@ -4,12 +4,12 @@ const faqs = [
   {
     question: "What is ShockBridge Pulse?",
     answer:
-      "A macro-intelligence product that maps how shocks in financial markets and the economy transmit across exposures, sectors, and decision environments. It turns macro events, earnings surprises, and geopolitical stress into structured Intelligence Briefs — so you can move from noise to structure with speed.",
+      "A macro-intelligence product that maps how shocks in financial markets and the economy transmit across exposures, sectors, and decision environments. It turns macro events, earnings surprises, and geopolitical stress into structured Intelligence Briefs, so you can move from noise to structure with speed.",
   },
   {
     question: "What is the difference between Bridge and Analyst?",
     answer:
-      "Bridge is the recurring macro-intelligence subscription. It gives you 4 on-demand Intelligence Briefs per month — you trigger them for any event, shock, or exposure relevant to you — plus founder-curated event briefs and a monthly macro watchlist. Analyst is a separate custom engagement: a founder-led, tailored analysis built specifically around your business, portfolio, or real exposure. Bridge delivers structured intelligence. Analyst delivers judgment.",
+      "Bridge is the recurring macro-intelligence subscription. It gives you 4 on-demand Intelligence Briefs per month, each delivered as an 11-page PDF with Research Desk hidden variable analysis. You trigger them for any event, shock, or exposure relevant to you. Analyst is a separate custom engagement: a founder-led, tailored analysis built specifically around your business, portfolio, or real exposure. Bridge delivers structured intelligence. Analyst delivers judgment.",
   },
   {
     question: "Why is Bridge priced lower right now?",
@@ -24,17 +24,17 @@ const faqs = [
   {
     question: "How often does Bridge update?",
     answer:
-      "Bridge gives you 4 on-demand Intelligence Briefs per month — generate them whenever a relevant event hits. On top of that, you receive founder-curated event briefs when significant macro conditions emerge, and a monthly macro watchlist. The cadence follows the macro environment, not a fixed calendar.",
+      "Bridge gives you 4 on-demand Intelligence Briefs per month. Generate them whenever a relevant event hits. Each brief includes multi-horizon structural analysis, transmission watchpoints, and Research Desk hidden variable analysis, delivered as an 11-page PDF. The cadence follows the macro environment, not a fixed calendar.",
   },
   {
     question: "Who is Analyst for?",
     answer:
-      "Analyst is for users who need tailored interpretation applied to a real situation — a specific business exposure, portfolio risk, sector, or decision context. It is not for general market monitoring. That is what Bridge is for.",
+      "Analyst is for users who need tailored interpretation applied to a real situation: a specific business exposure, portfolio risk, sector, or decision context. It is not for general market monitoring. That is what Bridge is for.",
   },
   {
     question: "Is this investment advice?",
     answer:
-      "No. ShockBridge Pulse is a macro-intelligence and research product. It provides structured transmission analysis and scenario interpretation — not investment recommendations or buy/sell advice.",
+      "No. ShockBridge Pulse is a macro-intelligence and research product. It provides structured transmission analysis and scenario interpretation, not investment recommendations or buy/sell advice.",
   },
   {
     question: "How do I access Bridge after purchasing?",

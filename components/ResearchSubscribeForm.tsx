@@ -40,7 +40,7 @@ export function ResearchSubscribeForm() {
         <span className="text-amber-500 mt-0.5">✓</span>
         <div className="space-y-1">
           <p className="text-sm text-[#f0f0f0]">{message}</p>
-          <p className="text-xs text-[#6b7280]">Check your spam or junk folder — the confirmation email may land there the first time.</p>
+          <p className="text-xs text-[#6b7280]">Check your spam or junk folder. The confirmation email may land there the first time.</p>
         </div>
       </div>
     );
