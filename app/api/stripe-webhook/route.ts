@@ -20,11 +20,11 @@ type PlanMeta = { pool: string; internalPlan: "basic" | "creator"; label: string
 
 const PRODUCT_PLAN: Record<string, PlanMeta> = {
   // by product ID
-  [process.env.STRIPE_BRIDGE_PRODUCT_ID!]:  { pool: "sbp:pool:bridge",  internalPlan: "basic",   label: "Bridge",  memos: 5  },
-  [process.env.STRIPE_ANALYST_PRODUCT_ID!]: { pool: "sbp:pool:analyst", internalPlan: "creator", label: "Analyst", memos: 15 },
+  [process.env.STRIPE_SNAPSHOT_PRODUCT_ID!]: { pool: "sbp:pool:snapshot", internalPlan: "basic",   label: "Snapshot", memos: 1  },
+  [process.env.STRIPE_BRIDGE_PRODUCT_ID!]:   { pool: "sbp:pool:bridge",   internalPlan: "basic",   label: "Bridge",   memos: 4  },
   // by price ID (fallback)
-  [process.env.STRIPE_BRIDGE_PRICE_ID!]:    { pool: "sbp:pool:bridge",  internalPlan: "basic",   label: "Bridge",  memos: 5  },
-  [process.env.STRIPE_ANALYST_PRICE_ID!]:   { pool: "sbp:pool:analyst", internalPlan: "creator", label: "Analyst", memos: 15 },
+  [process.env.STRIPE_SNAPSHOT_PRICE_ID!]:   { pool: "sbp:pool:snapshot", internalPlan: "basic",   label: "Snapshot", memos: 1  },
+  [process.env.STRIPE_BRIDGE_PRICE_ID!]:     { pool: "sbp:pool:bridge",   internalPlan: "basic",   label: "Bridge",   memos: 4  },
 };
 
 // ── Required: raw body for Stripe signature verification ─────────────────────
@@ -143,8 +143,8 @@ export async function POST(request: NextRequest) {
 
           <div style="border-top: 1px solid #2d3148; padding-top: 24px;">
             <p style="color: #6b7280; font-size: 12px; margin: 0; line-height: 1.6;">
-              Your code gives you <strong style="color: #9ca3af;">${plan.memos} memos</strong> on the ${plan.label} plan.
-              Memos are tracked server-side — they persist across devices and browser resets.<br><br>
+              Your code gives you <strong style="color: #9ca3af;">${plan.memos} Intelligence Brief${plan.memos !== 1 ? "s" : ""}</strong> on the ${plan.label} plan.
+              Briefs are tracked server-side — they persist across devices and browser resets.<br><br>
               Keep this email. If you don't see it in your inbox, check your <strong style="color: #f0f0f0;">spam or junk folder</strong> — transactional emails sometimes land there the first time.<br><br>
               Questions? <a href="mailto:help@shockbridgepulse.com" style="color: #f59e0b;">help@shockbridgepulse.com</a>
             </p>
