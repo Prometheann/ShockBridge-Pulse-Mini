@@ -335,7 +335,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
             <CopyFullMemo
               memo={memo}
               isBasicOrCreator={isBasicOrCreator}
-              label={plan === "free" ? "Copy Snapshot" : "Copy Full Memo"}
+              label={plan === "free" ? "Copy Brief" : "Copy Full Brief"}
             />
           )}
           <button
