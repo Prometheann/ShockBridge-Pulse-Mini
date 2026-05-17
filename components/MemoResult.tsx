@@ -313,10 +313,10 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
           <div className="border-t border-[#2d3148] pt-6">
             <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 text-center">
               <p className="text-amber-400 font-bold mb-1">
-                Need deeper analysis?
+                This brief is general. Your situation isn't.
               </p>
               <p className="text-[#9ca3af] text-sm mb-4">
-                The <span className="font-bold text-[#f0f0f0]">Analyst Report</span> is a custom engagement — ShockBridge intelligence applied directly to your business, portfolio, or specific exposure. Starting at $199.
+                The <span className="font-bold text-[#f0f0f0]">Analyst Report</span> applies ShockBridge intelligence directly to your business, portfolio, or specific exposure. Custom. Founder-led. Starting at $199.
               </p>
               <a href="mailto:help@shockbridgepulse.com?subject=Analyst Report Request">
                 <Button size="sm">Request Analyst Report</Button>
