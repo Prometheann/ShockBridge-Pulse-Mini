@@ -333,7 +333,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
             </div>
             <p id="pdf-closing-text">ShockBridge Pulse · From market shock to clean signal</p>
             <Button variant="secondary" size="lg" onClick={handlePrint} className="no-print w-full">
-              Export PDF Memo
+              Export PDF Brief
             </Button>
           </div>
         )}

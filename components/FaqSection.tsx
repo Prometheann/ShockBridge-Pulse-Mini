@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "What is the difference between Bridge and Analyst?",
     answer:
-      "Bridge is the recurring macro-intelligence subscription. It gives you 4 on-demand Intelligence Briefs per month, each delivered as an 11-page PDF with Research Desk hidden variable analysis. You trigger them for any event, shock, or exposure relevant to you. Analyst is a separate custom engagement: a founder-led, tailored analysis built specifically around your business, portfolio, or real exposure. Bridge delivers structured intelligence. Analyst delivers judgment.",
+      "Bridge is the recurring macro-intelligence subscription. It gives you 4 on-demand Intelligence Briefs per month, each delivered as a 12-page PDF with Research Desk hidden variable analysis and Regime Horizon forward projections. You trigger them for any event, shock, or exposure relevant to you. Analyst is a separate custom engagement: a founder-led, tailored analysis built specifically around your business, portfolio, or real exposure. Bridge delivers structured intelligence. Analyst delivers judgment.",
   },
   {
     question: "Why is Bridge priced lower right now?",
@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "How often does Bridge update?",
     answer:
-      "Bridge gives you 4 on-demand Intelligence Briefs per month. Generate them whenever a relevant event hits. Each brief includes multi-horizon structural analysis, transmission watchpoints, and Research Desk hidden variable analysis, delivered as an 11-page PDF. The cadence follows the macro environment, not a fixed calendar.",
+      "Bridge gives you 4 on-demand Intelligence Briefs per month. Generate them whenever a relevant event hits. Each brief includes Research Desk hidden variable analysis, Regime Horizon forward projections, and transmission watchpoints, delivered as a 12-page PDF. The cadence follows the macro environment, not a fixed calendar.",
   },
   {
     question: "Who is Analyst for?",

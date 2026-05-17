@@ -132,8 +132,8 @@ export default function TopUpAdmin() {
             >
               <option value="1">1 brief</option>
               <option value="2">2 briefs</option>
-              <option value="4">4 briefs — standard monthly renewal</option>
-              <option value="8">8 briefs — two months</option>
+              <option value="4">4 briefs (standard monthly renewal)</option>
+              <option value="8">8 briefs (two months)</option>
             </select>
           </div>
 
