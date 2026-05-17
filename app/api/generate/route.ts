@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
       const { allowed, memosRemaining: remaining } = await consumeMemo(normalizedCode);
       if (!allowed) {
         return NextResponse.json(
-          { error: "All memos used. Enter your code to check remaining balance.", code: "QUOTA_EXCEEDED" },
+          { error: "All briefs used. Enter your code to check remaining balance.", code: "QUOTA_EXCEEDED" },
           { status: 403 }
         );
       }
@@ -140,7 +140,7 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     console.error("[/api/generate]", err);
     return NextResponse.json(
-      { error: "Failed to generate memo. Please try again." },
+      { error: "Failed to generate brief. Please try again." },
       { status: 500 }
     );
   }

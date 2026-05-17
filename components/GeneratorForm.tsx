@@ -129,7 +129,7 @@ export function GeneratorForm({ onSubmit, loading }: GeneratorFormProps) {
           name="optionalNote"
           value={form.optionalNote}
           onChange={handleChange}
-          placeholder="Add any specific angle, assumption, or context you want the memo to consider..."
+          placeholder="Add any specific angle, assumption, or context you want the brief to consider..."
           className={`${inputClass} h-20 resize-none`}
         />
       </div>

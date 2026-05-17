@@ -132,7 +132,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
   function handlePrint() {
     const count = Math.min(parseInt(localStorage.getItem("sbp_memo_count") || "0") + 1, 15);
     localStorage.setItem("sbp_memo_count", String(count));
-    const filename = `ShockBridge-Pulse-Memo-${String(count).padStart(2, "0")}`;
+    const filename = `ShockBridge-Pulse-Brief-${String(count).padStart(2, "0")}`;
     const printData = { memo, input, plan, date: printDate, filename };
     sessionStorage.setItem("sbp_print_data", JSON.stringify(printData));
     window.open("/pdf-print", "_blank");
@@ -372,10 +372,10 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
         {/* Actions */}
         <div className="pt-4 no-print space-y-3">
           {plan === "creator" ? (
-            /* Analyst: small secondary copy — PDF is the primary output */
-            <CopyButton text={buildMemoText(memo, isBasicOrCreator)} label="memo" />
+            /* Bridge: small secondary copy button — PDF is the primary output */
+            <CopyButton text={buildMemoText(memo, isBasicOrCreator)} label="brief" />
           ) : (
-            /* Free & Bridge: full-width amber button — only way to get the memo */
+            /* Free & Snapshot: full-width amber button — only way to get the brief */
             <CopyFullMemo
               memo={memo}
               isBasicOrCreator={isBasicOrCreator}
