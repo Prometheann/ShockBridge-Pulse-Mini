@@ -161,7 +161,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
           <img src="/logo-transparent.png" alt="ShockBridge Pulse" id="pdf-cover-logo-icon" />
           <div id="pdf-cover-rule" />
           <p id="pdf-cover-type">Intelligence Brief</p>
-          <p id="pdf-cover-plan">Analyst</p>
+          <p id="pdf-cover-plan">{{ free: "Free", basic: "Snapshot", creator: "Bridge" }[plan]}</p>
           <p id="pdf-cover-date">{printDate}</p>
           <span id="pdf-cover-creator-gap" />
           <p id="pdf-cover-creator">Created by Rodolfo Pereira</p>

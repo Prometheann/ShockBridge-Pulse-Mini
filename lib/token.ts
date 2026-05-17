@@ -1,6 +1,7 @@
 import crypto from "crypto";
 
-const SECRET = process.env.TOKEN_SECRET || "sbp-dev-secret-change-in-prod";
+const SECRET = process.env.TOKEN_SECRET;
+if (!SECRET) throw new Error("TOKEN_SECRET env var is not set");
 
 export interface UsageToken {
   code: string;
