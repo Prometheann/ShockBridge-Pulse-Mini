@@ -190,7 +190,7 @@ export default function GeneratePage() {
                 <p className="text-red-400 text-xs mt-2">{codeMessage}</p>
               )}
               <p className="text-xs text-[#6b7280] mt-2">
-                Received a code after purchase? Enter it here.
+                Received a code after purchase? Enter it here. If you don&apos;t see the email, check your spam or junk folder.
               </p>
             </div>
           </div>
