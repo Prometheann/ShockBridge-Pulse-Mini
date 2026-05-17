@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const planLabel = plan === "creator" ? "Analyst" : "Bridge";
+    const planLabel = plan === "creator" ? "Bridge" : "Snapshot";
     const message =
       memosRemaining < memosTotal
         ? `${planLabel} plan — ${memosRemaining} brief${memosRemaining !== 1 ? "s" : ""} remaining.`

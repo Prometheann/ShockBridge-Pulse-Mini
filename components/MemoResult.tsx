@@ -197,7 +197,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
         <div id="pdf-section-title" className="border-b border-[#2d3148] pb-5">
           <div id="pdf-badge-row" className="flex items-center gap-2 mb-3">
             <Badge variant="accent">Scenario Brief</Badge>
-            <Badge variant="muted">{{ free: "Free", basic: "Bridge", creator: "Analyst" }[plan]}</Badge>
+            <Badge variant="muted">{{ free: "Free", basic: "Snapshot", creator: "Bridge" }[plan]}</Badge>
           </div>
           <h2 className="text-xl font-bold text-[#f0f0f0] leading-snug">
             <PrintTitle

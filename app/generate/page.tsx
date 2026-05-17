@@ -12,7 +12,7 @@ import { MemoInput, MemoOutput, CreditState, Plan } from "@/types/memo";
 type Step = "form" | "loading" | "result" | "paywall";
 
 const PLAN_MEMOS: Record<Plan, number> = { free: 1, basic: 4, creator: 15 };
-const PLAN_DISPLAY: Record<Plan, string> = { free: "Free", basic: "Bridge", creator: "Analyst" };
+const PLAN_DISPLAY: Record<Plan, string> = { free: "Free", basic: "Snapshot", creator: "Bridge" };
 const FREE_MEMO_KEY = "sbp_free_used_at";
 const FREE_WINDOW_MS = 24 * 60 * 60 * 1000;
 
