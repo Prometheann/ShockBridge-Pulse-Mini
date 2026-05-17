@@ -21,9 +21,6 @@ const bridgeFeatures = [
   "Risk flags",
   "Structured macro-intelligence output",
   "Ongoing monitoring layer",
-  "X post Intelligence Brief",
-  "LinkedIn Intelligence Post",
-  "PDF for distribution or filing",
 ];
 
 export function PricingSection() {

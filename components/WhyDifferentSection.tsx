@@ -11,7 +11,7 @@ const points = [
   {
     title: "Not just analysis. Decision-ready briefs.",
     description:
-      "Bridge turns one event into multiple workflow-ready formats — X post, LinkedIn post, and PDF — for faster decision support.",
+      "Every brief is structured for immediate use — readable under pressure, action-oriented, and built for fast decision cycles.",
   },
 ];
 
