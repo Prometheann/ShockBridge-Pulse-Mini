@@ -21,11 +21,14 @@ export interface MemoOutput {
   bearish_path?: string;
   key_uncertainties?: string[];
   watch_next: string[];
-  // Creator only
+  // Creator only — legacy social (kept for backward compat)
   x_post?: string;
   x_post_headline?: string;
   linkedin_post?: string;
   linkedin_post_headline?: string;
+  // Creator only — Beta Research Desk Methodology
+  methodology_frame?: string;
+  hidden_variable_analysis?: string[];
 }
 
 export type Plan = "free" | "basic" | "creator";

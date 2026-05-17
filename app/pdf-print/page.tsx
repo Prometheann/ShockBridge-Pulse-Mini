@@ -129,6 +129,10 @@ const CSS = `
     letter-spacing: 0.08em; white-space: nowrap;
     position: absolute; left: 24mm; right: 24mm; bottom: 14mm;
   }
+  .method-subtitle {
+    font-size: 13pt; font-weight: 700; color: #f8fafc;
+    letter-spacing: 0.05em; margin-top: 0; margin-bottom: 22px;
+  }
   .cover {
     display: flex; flex-direction: column; align-items: center;
     justify-content: flex-start; padding-top: 44mm;
@@ -198,12 +202,14 @@ export default function PdfPrint() {
   }
 
   const { memo, input, plan, date } = data;
-  const planLabel   = plan === "creator" ? "Analyst" : plan === "basic" ? "Bridge" : "Free";
+  const planLabel   = plan === "creator" ? "Bridge" : plan === "basic" ? "Snapshot" : "Free";
   const planDisplay = planLabel.toUpperCase();
-  const summaryParas   = memo.summary.split("\n\n").filter(Boolean);
-  const bullishParas   = (memo.bullish_path || "").split("\n\n").filter(Boolean);
-  const bearishParas   = (memo.bearish_path || "").split("\n\n").filter(Boolean);
-  const linkedinParas  = (memo.linkedin_post || "").split("\n\n").filter(p => !p.toLowerCase().includes("from market shock to clean signal")).filter(Boolean);
+  const summaryParas      = memo.summary.split("\n\n").filter(Boolean);
+  const bullishParas      = (memo.bullish_path || "").split("\n\n").filter(Boolean);
+  const bearishParas      = (memo.bearish_path || "").split("\n\n").filter(Boolean);
+  const linkedinParas     = (memo.linkedin_post || "").split("\n\n").filter(p => !p.toLowerCase().includes("from market shock to clean signal")).filter(Boolean);
+  const methodologyParas  = (memo.methodology_frame || "").split("\n\n").filter(Boolean);
+  const hiddenVarItems    = memo.hidden_variable_analysis || [];
 
   return (
     <>
@@ -369,8 +375,40 @@ export default function PdfPrint() {
         <Footer n={9} />
       </div>
 
-      {/* PAGE 10 — X Post */}
-      {memo.x_post && (
+      {/* PAGE 10 — Beta Research Desk Methodology (framework) */}
+      {methodologyParas.length > 0 && (
+        <div className="page" lang="en">
+          <Header />
+          <div className="content">
+            <span className="section-label">Beta Research Desk Methodology</span>
+            <p className="method-subtitle">The Hidden Variable</p>
+            {methodologyParas.map((p, i) => (
+              <p key={i} className="body-p">{p}</p>
+            ))}
+          </div>
+          <Footer n={10} />
+        </div>
+      )}
+
+      {/* PAGE 11 — Model Output (findings) */}
+      {hiddenVarItems.length > 0 && (
+        <div className="page" lang="en">
+          <Header />
+          <div className="content">
+            <span className="section-label">Model Output</span>
+            <ul>
+              {hiddenVarItems.map((item, i) => (
+                <li key={i}><span className="arrow">→</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </div>
+          <p className="closing">ShockBridge Pulse — From market shock to clean signal</p>
+          <Footer n={11} />
+        </div>
+      )}
+
+      {/* Legacy: X Post (old memos without methodology) */}
+      {!methodologyParas.length && memo.x_post && (
         <div className="page" lang="en">
           <Header />
           <div className="content">
@@ -386,8 +424,8 @@ export default function PdfPrint() {
         </div>
       )}
 
-      {/* PAGE 11 — LinkedIn Post */}
-      {memo.linkedin_post && (
+      {/* Legacy: LinkedIn Post (old memos without methodology) */}
+      {!methodologyParas.length && memo.linkedin_post && (
         <div className="page" lang="en">
           <Header />
           <div className="content">

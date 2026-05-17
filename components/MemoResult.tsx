@@ -270,14 +270,47 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
           </Section>
         </div>
 
-        {/* Creator: social posts + PDF */}
-        {isCreator && memo.x_post && memo.linkedin_post ? (
+        {/* Creator: Beta Research Desk Methodology */}
+        {isCreator && memo.methodology_frame && (
+          <>
+            <div className="pdf-page-section">
+              <div className="mb-6">
+                <div className="flex items-center gap-2 mb-1">
+                  <p className="text-xs text-amber-500 uppercase tracking-wider font-semibold pdf-section-label">
+                    Beta Research Desk Methodology
+                  </p>
+                  <span className="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/30 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider no-print">
+                    Beta
+                  </span>
+                </div>
+                <p className="text-xs text-[#9ca3af] uppercase tracking-wider font-medium mb-4">The Hidden Variable</p>
+                {memo.methodology_frame.split("\n\n").map((p, i) => (
+                  <p key={i} className="text-sm text-[#f0f0f0] leading-relaxed mb-3 sm:[text-align:justify] [hyphens:auto]">{p}</p>
+                ))}
+              </div>
+            </div>
+            {memo.hidden_variable_analysis && memo.hidden_variable_analysis.length > 0 && (
+              <div className="pdf-page-section">
+                <Section title="Model Output">
+                  <BulletList items={memo.hidden_variable_analysis} />
+                </Section>
+              </div>
+            )}
+            {/* Closing text — PDF only */}
+            <p id="pdf-closing-text">ShockBridge Pulse — From market shock to clean signal</p>
+            {/* PDF export */}
+            <Button variant="secondary" size="lg" onClick={handlePrint} className="no-print w-full mt-4">
+              Export PDF Brief
+            </Button>
+          </>
+        )}
+
+        {/* Creator: legacy social posts (backward compat for old memos) */}
+        {isCreator && !memo.methodology_frame && memo.x_post && memo.linkedin_post && (
           <div className="pdf-page-section space-y-5" id="pdf-social-section">
             <p className="text-xs text-amber-500 uppercase tracking-wider font-semibold pdf-section-label">
               Content outputs: Social
             </p>
-
-            {/* X post */}
             <div className="bg-[#0f1117] rounded-xl p-4 border border-[#2d3148]">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">X Brief</span>
@@ -286,8 +319,6 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
               <p className="text-sm text-[#f0f0f0] leading-relaxed whitespace-pre-line sm:[text-align:justify] [hyphens:auto]">{memo.x_post}</p>
               <p className="text-xs text-[#4b5563] mt-2">{memo.x_post.length} / 280 characters</p>
             </div>
-
-            {/* LinkedIn */}
             <div className="bg-[#0f1117] rounded-xl p-4 border border-[#2d3148]">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs text-[#9ca3af] font-medium uppercase tracking-wider">LinkedIn Brief</span>
@@ -300,16 +331,15 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
                 {memo.linkedin_post.split("\n\n").filter(p => !p.toLowerCase().includes("from market shock to clean signal")).join("\n\n")}
               </p>
             </div>
-
-            {/* Closing text — PDF only */}
             <p id="pdf-closing-text">ShockBridge Pulse — From market shock to clean signal</p>
-
-            {/* PDF */}
             <Button variant="secondary" size="lg" onClick={handlePrint} className="no-print w-full">
               Export PDF Memo
             </Button>
           </div>
-        ) : isCreator ? (
+        )}
+
+        {/* Creator: no methodology and no social — Analyst CTA */}
+        {isCreator && !memo.methodology_frame && !(memo.x_post && memo.linkedin_post) ? (
           <div className="border-t border-[#2d3148] pt-6">
             <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 text-center">
               <p className="text-amber-400 font-bold mb-1">
