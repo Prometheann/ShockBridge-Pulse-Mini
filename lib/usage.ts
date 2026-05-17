@@ -9,9 +9,11 @@ export const PLAN_MEMOS: Record<string, number> = { basic: 4, creator: 15 };
 
 const FREE_WINDOW_SECONDS = 24 * 60 * 60; // 24 hours
 
+const FREE_IP_LIMIT = 3; // briefs per IP per 24h window
+
 /**
  * Redis-based free-tier rate limiter.
- * Allows 1 memo per IP per 24-hour window.
+ * Allows up to FREE_IP_LIMIT briefs per IP per 24-hour window.
  * Returns true if the request is allowed.
  */
 export async function checkAndConsumeFreeLimit(ip: string): Promise<boolean> {
@@ -21,7 +23,7 @@ export async function checkAndConsumeFreeLimit(ip: string): Promise<boolean> {
     // First use — set TTL for the window
     await redis.expire(key, FREE_WINDOW_SECONDS);
   }
-  return count <= 1;
+  return count <= FREE_IP_LIMIT;
 }
 
 /**

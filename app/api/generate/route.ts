@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getOpenAIClient, FREE_SYSTEM_PROMPT, buildFreePrompt, BASIC_SYSTEM_PROMPT, buildBasicPrompt } from "@/lib/openai";
 import { getAnthropicClient, CREATOR_SYSTEM_PROMPT, buildCreatorPrompt } from "@/lib/anthropic";
-import { consumeMemo } from "@/lib/usage";
+import { consumeMemo, checkAndConsumeFreeLimit } from "@/lib/usage";
 import { MemoInput, MemoOutput } from "@/types/memo";
 import { Redis } from "@upstash/redis";
 
@@ -10,6 +10,13 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN!,
 });
 
+function getIP(req: NextRequest): string {
+  return (
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    "unknown"
+  );
+}
 
 async function resolveServerPlan(code: string): Promise<"free" | "basic" | "creator"> {
   if (!code) return "free";
@@ -62,8 +69,17 @@ export async function POST(request: NextRequest) {
       memosRemaining = remaining;
     }
 
-    // Free plan: rate limiting handled client-side via localStorage (per browser)
-    // IP-based rate limiting removed — too aggressive for shared networks
+    // Free plan: IP-based rate limit (3 briefs per IP per 24h) — covers shared home networks
+    if (!isPaid) {
+      const ip = getIP(request);
+      const allowed = await checkAndConsumeFreeLimit(ip);
+      if (!allowed) {
+        return NextResponse.json(
+          { error: "Free demo limit reached. Purchase a plan to generate more briefs.", code: "RATE_LIMIT" },
+          { status: 429 }
+        );
+      }
+    }
 
     let content: string | null = null;
 
