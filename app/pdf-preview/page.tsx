@@ -99,7 +99,7 @@ export default function PdfPreview() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/logo-transparent.png" alt="ShockBridge Pulse" className="cover-icon" />
         <div className="cover-rule" />
-        <div className="cover-type">Scenario Note</div>
+        <div className="cover-type">Intelligence Brief</div>
         <div className="cover-plan">Creator</div>
         <div className="cover-date">April 8, 2026</div>
         <span className="cover-creator-gap" />
@@ -110,7 +110,7 @@ export default function PdfPreview() {
       {/* PAGE 2 — Input Framework */}
       <div className="page">
         <span className="page-label">PAGE 2</span>
-        <div className="page-header"><span>ShockBridge Pulse · Scenario Note</span></div>
+        <div className="page-header"><span>ShockBridge Pulse · Intelligence Brief</span></div>
         <div className="content">
           <div style={{paddingTop:"17mm"}}>
             <p className="if-plan">Creator</p>
@@ -133,7 +133,7 @@ export default function PdfPreview() {
       {/* PAGE 3 — Title */}
       <div className="page">
         <span className="page-label">PAGE 3</span>
-        <div className="page-header"><span>ShockBridge Pulse · Scenario Note</span></div>
+        <div className="page-header"><span>ShockBridge Pulse · Intelligence Brief</span></div>
         <div className="content" style={{paddingTop:"16mm"}}>
           <h2>
             <span className="t-hook">Earnings Miss</span>
@@ -151,7 +151,7 @@ export default function PdfPreview() {
       {/* PAGE 4 — First-order effects */}
       <div className="page">
         <span className="page-label">PAGE 4</span>
-        <div className="page-header"><span>ShockBridge Pulse · Scenario Note</span></div>
+        <div className="page-header"><span>ShockBridge Pulse · Intelligence Brief</span></div>
         <div className="content" style={{paddingTop:"16mm"}}>
           <span className="section-label">First-order effects</span>
           <ul>
@@ -168,7 +168,7 @@ export default function PdfPreview() {
       {/* PAGE 5 — Second-order effects */}
       <div className="page">
         <span className="page-label">PAGE 5</span>
-        <div className="page-header"><span>ShockBridge Pulse · Scenario Note</span></div>
+        <div className="page-header"><span>ShockBridge Pulse · Intelligence Brief</span></div>
         <div className="content" style={{paddingTop:"16mm"}}>
           <span className="section-label">Second-order effects</span>
           <ul>
@@ -184,7 +184,7 @@ export default function PdfPreview() {
       {/* PAGE 6 — Bullish path */}
       <div className="page">
         <span className="page-label">PAGE 6</span>
-        <div className="page-header"><span>ShockBridge Pulse · Scenario Note</span></div>
+        <div className="page-header"><span>ShockBridge Pulse · Intelligence Brief</span></div>
         <div className="content" style={{paddingTop:"16mm"}}>
           <span className="section-label">Bullish path</span>
           <p className="body-p" style={{textAlign:"justify",hyphens:"auto"}}>The bullish resolution requires three conditions to hold simultaneously within the one-week window. First, the earnings miss must be quantifiably small — EPS within 3% of consensus with no guidance cut on the data center segment. A small miss against already-cautious whisper numbers can be absorbed if the narrative around forward demand remains intact. Second, management must explicitly address the Middle East export control angle on the earnings call, confirming that H100 and H200 backlog is not materially exposed to incremental BIS licensing restrictions. A clear, quantified statement — rather than a hedge — removes the structural demand ceiling overhang that would otherwise sustain the selling pressure beyond the initial session. Third, hyperscaler capex commentary from MSFT or GOOGL in the days following must reinforce rather than soften AI infrastructure spend commitments, providing an independent data point that validates the demand side of NVIDIA&apos;s forward model.</p>
@@ -196,7 +196,7 @@ export default function PdfPreview() {
       {/* PAGE 7 — Bearish path */}
       <div className="page">
         <span className="page-label">PAGE 7</span>
-        <div className="page-header"><span>ShockBridge Pulse · Scenario Note</span></div>
+        <div className="page-header"><span>ShockBridge Pulse · Intelligence Brief</span></div>
         <div className="content" style={{paddingTop:"16mm"}}>
           <span className="section-label">Bearish path</span>
           <p className="body-p" style={{textAlign:"justify",hyphens:"auto"}}>The bearish transmission begins if guidance is cut or withheld — particularly on the data center segment, which has been the primary driver of NVIDIA&apos;s revenue re-rating over the past six quarters. A revenue miss exceeding 5% against consensus triggers model breaks across the sell-side simultaneously: EPS estimates are slashed, price targets fall below current market price, and the analyst community shifts from buy to neutral in a compressed window that forces passive and active funds to reduce their positioning in tandem. The Middle East export control angle becomes the dominant narrative if management hedges on H100 and H200 shipment timelines, because it reframes the miss from a cyclical event into a structural demand ceiling — a categorically different investment thesis that justifies a lower steady-state multiple regardless of near-term demand recovery. Once the structural ceiling narrative takes hold, it is extremely difficult to dislodge within a single earnings cycle.</p>
@@ -208,7 +208,7 @@ export default function PdfPreview() {
       {/* PAGE 8 — Key uncertainties */}
       <div className="page">
         <span className="page-label">PAGE 8</span>
-        <div className="page-header"><span>ShockBridge Pulse · Scenario Note</span></div>
+        <div className="page-header"><span>ShockBridge Pulse · Intelligence Brief</span></div>
         <div className="content" style={{paddingTop:"16mm"}}>
           <span className="section-label">Key uncertainties</span>
           <ul>
@@ -224,7 +224,7 @@ export default function PdfPreview() {
       {/* PAGE 9 — Watch next */}
       <div className="page">
         <span className="page-label">PAGE 9</span>
-        <div className="page-header"><span>ShockBridge Pulse · Scenario Note</span></div>
+        <div className="page-header"><span>ShockBridge Pulse · Intelligence Brief</span></div>
         <div className="content" style={{paddingTop:"16mm"}}>
           <span className="section-label">Watch next</span>
           <ul>
@@ -241,7 +241,7 @@ export default function PdfPreview() {
       {/* PAGE 10 — Content Outputs: Social */}
       <div className="page">
         <span className="page-label">PAGE 10</span>
-        <div className="page-header"><span>ShockBridge Pulse · Scenario Note</span></div>
+        <div className="page-header"><span>ShockBridge Pulse · Intelligence Brief</span></div>
         <div className="content" style={{paddingTop:"16mm", position:"relative", minHeight:"calc(297mm - 14mm - 12mm)"}}>
           <span className="section-label">Content Outputs: Social</span>
           <div style={{marginTop:"40px"}}>
