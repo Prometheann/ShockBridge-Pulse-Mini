@@ -21,10 +21,10 @@ type PlanMeta = { pool: string; internalPlan: "basic" | "creator"; label: string
 const PRODUCT_PLAN: Record<string, PlanMeta> = {
   // by product ID
   [process.env.STRIPE_SNAPSHOT_PRODUCT_ID!]: { pool: "sbp:pool:snapshot", internalPlan: "basic",   label: "Snapshot", memos: 1  },
-  [process.env.STRIPE_BRIDGE_PRODUCT_ID!]:   { pool: "sbp:pool:bridge",   internalPlan: "basic",   label: "Bridge",   memos: 4  },
+  [process.env.STRIPE_BRIDGE_PRODUCT_ID!]:   { pool: "sbp:pool:bridge",   internalPlan: "creator", label: "Bridge",   memos: 4  },
   // by price ID (fallback)
   [process.env.STRIPE_SNAPSHOT_PRICE_ID!]:   { pool: "sbp:pool:snapshot", internalPlan: "basic",   label: "Snapshot", memos: 1  },
-  [process.env.STRIPE_BRIDGE_PRICE_ID!]:     { pool: "sbp:pool:bridge",   internalPlan: "basic",   label: "Bridge",   memos: 4  },
+  [process.env.STRIPE_BRIDGE_PRICE_ID!]:     { pool: "sbp:pool:bridge",   internalPlan: "creator", label: "Bridge",   memos: 4  },
 };
 
 // ── Required: raw body for Stripe signature verification ─────────────────────

@@ -3,6 +3,12 @@ import { getOpenAIClient, FREE_SYSTEM_PROMPT, buildFreePrompt, BASIC_SYSTEM_PROM
 import { getAnthropicClient, CREATOR_SYSTEM_PROMPT, buildCreatorPrompt } from "@/lib/anthropic";
 import { consumeMemo, checkAndConsumeFreeLimit } from "@/lib/usage";
 import { MemoInput, MemoOutput } from "@/types/memo";
+import { Redis } from "@upstash/redis";
+
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL!,
+  token: process.env.KV_REST_API_TOKEN!,
+});
 
 function getIP(req: NextRequest): string {
   return (
@@ -12,9 +18,15 @@ function getIP(req: NextRequest): string {
   );
 }
 
-function resolveServerPlan(code: string): "free" | "basic" | "creator" {
+async function resolveServerPlan(code: string): Promise<"free" | "basic" | "creator"> {
   if (!code) return "free";
   const normalized = code.trim().toUpperCase();
+
+  // Check Redis first — production codes have their plan stored here
+  const redisPlan = await redis.get<string>(`sbp:plan:${normalized}`);
+  if (redisPlan === "basic" || redisPlan === "creator") return redisPlan;
+
+  // Fallback: env var lists (manual/emergency codes)
   const basicCodes = (process.env.BASIC_CODES || "").split(",").map(c => c.trim().toUpperCase()).filter(Boolean);
   const creatorCodes = (process.env.CREATOR_CODES || "").split(",").map(c => c.trim().toUpperCase()).filter(Boolean);
   if (creatorCodes.includes(normalized)) return "creator";
@@ -40,7 +52,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Derive plan server-side — never trust client
-    const safePlan = resolveServerPlan(code ?? "");
+    const safePlan = await resolveServerPlan(code ?? "");
     const isPaid = safePlan === "basic" || safePlan === "creator";
 
     // Paid plans: enforce quota via Redis

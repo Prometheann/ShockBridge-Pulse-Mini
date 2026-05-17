@@ -143,7 +143,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
 
       {/* ── PDF Running header — hidden on screen, fixed top every print page ── */}
       <div id="pdf-run-header" aria-hidden="true">
-        <span id="pdf-run-header-text">ShockBridge Pulse · Scenario Note</span>
+        <span id="pdf-run-header-text">ShockBridge Pulse · Scenario Brief</span>
       </div>
 
       {/* ── PDF Running footer — hidden on screen, fixed bottom every print page ── */}
@@ -160,7 +160,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-transparent.png" alt="ShockBridge Pulse" id="pdf-cover-logo-icon" />
           <div id="pdf-cover-rule" />
-          <p id="pdf-cover-type">Scenario Note</p>
+          <p id="pdf-cover-type">Scenario Brief</p>
           <p id="pdf-cover-plan">Analyst</p>
           <p id="pdf-cover-date">{printDate}</p>
           <span id="pdf-cover-creator-gap" />
@@ -196,7 +196,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
         {/* Header — page 3 in print */}
         <div id="pdf-section-title" className="border-b border-[#2d3148] pb-5">
           <div id="pdf-badge-row" className="flex items-center gap-2 mb-3">
-            <Badge variant="accent">Scenario Note</Badge>
+            <Badge variant="accent">Scenario Brief</Badge>
             <Badge variant="muted">{{ free: "Free", basic: "Bridge", creator: "Analyst" }[plan]}</Badge>
           </div>
           <h2 className="text-xl font-bold text-[#f0f0f0] leading-snug">
@@ -313,14 +313,14 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
           <div className="border-t border-[#2d3148] pt-6">
             <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 text-center">
               <p className="text-amber-400 font-bold mb-1">
-                In-Depth Market Intelligence Output
+                Need deeper analysis?
               </p>
               <p className="text-[#9ca3af] text-sm mb-4">
-                Upgrade to <span className="font-bold text-[#f0f0f0]">Analyst</span> for deeper transmission analysis, sharper scenario framing, and stronger decision support.
+                The <span className="font-bold text-[#f0f0f0]">Analyst Report</span> is a custom engagement — ShockBridge intelligence applied directly to your business, portfolio, or specific exposure. Starting at $199.
               </p>
-              <Link href="/#pricing">
-                <Button size="sm">Get Analyst</Button>
-              </Link>
+              <a href="mailto:help@shockbridgepulse.com?subject=Analyst Report Request">
+                <Button size="sm">Request Analyst Report</Button>
+              </a>
             </div>
           </div>
         ) : null}
