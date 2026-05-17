@@ -29,6 +29,8 @@ Each section prints on exactly one A4 page. You MUST stay within these limits. A
 - Watch next (5 bullets): max 320 chars per bullet. End each bullet at a full sentence.
 - methodology_frame (2 paragraphs): max 500 chars per paragraph (1000 chars total). End each paragraph at a full sentence.
 - hidden_variable_analysis (3 findings): max 380 chars per finding. End each finding at a full sentence.
+- horizon_assessment.six_month (1 paragraph): max 450 chars. End at a complete sentence.
+- horizon_assessment.twelve_month (1 paragraph): max 450 chars. End at a complete sentence.
 
 TYPOGRAPHY RULES (non-negotiable):
 - Never use em-dashes (the — character). Restructure the sentence instead: use commas, semicolons, colons, or parentheses. This applies everywhere in your output without exception.
@@ -54,7 +56,9 @@ ANALYTICAL STANDARDS:
 6. If the event is an earnings shock: go deep. Address EPS vs consensus magnitude, guidance raise/maintain/cut, analyst upgrade and downgrade triggers, options market positioning implications (dealer gamma, put/call ratios), short interest and covering dynamics, sector rotation effects, and how peer stocks reprice. This is a core differentiator of Creator quality.
 7. The methodology_frame must surface a structural variable operating at a different time horizon than the headline event: not a generic "macro backdrop" but a specific named variable that is not in the current price. Para 1 diagnoses exactly what standard analysis misses and why. Para 2 names the hidden structural variable, its economic mechanism, and why it does not appear in current positioning.
 8. The hidden_variable_analysis must deliver 3 concrete findings using the prescribed label prefixes. Each finding must be specific and actionable: a practitioner should be able to act on Finding 3 immediately. Never hedge. Name assets, spreads, levels, timeframes.
-9. Output valid JSON only. No markdown fences, no preamble, no trailing text.`;
+9. horizon_assessment.six_month: base case at 6 months. Name the specific conditions required to hold the current view, the named assets and levels expected to move, and the single variable that would break the thesis. Max 450 chars.
+10. horizon_assessment.twelve_month: structural regime expected at 12 months. Name the instruments, the expected repricing magnitude, and what confirms or invalidates this view at full horizon. Max 450 chars.
+11. Output valid JSON only. No markdown fences, no preamble, no trailing text.`;
 
 export function buildCreatorPrompt(input: MemoInput): string {
   return `Event type: ${input.eventType}
@@ -105,6 +109,10 @@ Produce a deep, publication-quality scenario note. Return exactly this JSON. Not
     "MAX 380 chars - end at a full sentence. Short-horizon signal: what the 1-4 week price and flow data implies about the immediate driver, how much of the current move is headline-reactive versus structurally grounded, and what that distinction means for near-term risk.",
     "MAX 380 chars - end at a full sentence. Structural divergence: where exactly the hidden variable and the headline variable diverge across time scales, which specific assets or spreads make that divergence most readable right now, and the positioning implication that follows.",
     "MAX 380 chars - end at a full sentence. Key observation: the single most non-obvious insight from this structural analysis that would not appear in a standard brief, plus the specific indicator and threshold that would confirm or invalidate the structural thesis within the stated horizon."
-  ]
+  ],
+  "horizon_assessment": {
+    "six_month": "MAX 450 chars - end at a complete sentence. Base case at 6 months: the specific conditions required to hold the current view, the named assets and levels expected to move, and the single variable that would break the thesis.",
+    "twelve_month": "MAX 450 chars - end at a complete sentence. Structural regime at 12 months: the named instruments, the expected repricing magnitude, and what confirms or invalidates this view at full horizon."
+  }
 }`;
 }

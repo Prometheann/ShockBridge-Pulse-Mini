@@ -133,6 +133,12 @@ const CSS = `
     font-size: 13pt; font-weight: 700; color: #f8fafc;
     letter-spacing: 0.05em; margin-top: 0; margin-bottom: 22px;
   }
+  .horizon-block { margin-bottom: 28px; }
+  .horizon-label {
+    font-size: 9pt; font-weight: 700; color: #f59e0b;
+    letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 10px;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
   .cover {
     display: flex; flex-direction: column; align-items: center;
     justify-content: flex-start; padding-top: 44mm;
@@ -210,6 +216,7 @@ export default function PdfPrint() {
   const linkedinParas     = (memo.linkedin_post || "").split("\n\n").filter(p => !p.toLowerCase().includes("from market shock to clean signal")).filter(Boolean);
   const methodologyParas  = (memo.methodology_frame || "").split("\n\n").filter(Boolean);
   const hiddenVarItems    = memo.hidden_variable_analysis || [];
+  const horizonAssessment = memo.horizon_assessment;
 
   return (
     <>
@@ -390,7 +397,7 @@ export default function PdfPrint() {
         </div>
       )}
 
-      {/* PAGE 11 — Model Output (findings) */}
+      {/* PAGE 11 — Research Desk Findings */}
       {hiddenVarItems.length > 0 && (
         <div className="page" lang="en">
           <Header />
@@ -402,7 +409,9 @@ export default function PdfPrint() {
               ))}
             </ul>
           </div>
-          <p className="closing">ShockBridge Pulse · From market shock to clean signal</p>
+          {!horizonAssessment && (
+            <p className="closing">ShockBridge Pulse · From market shock to clean signal</p>
+          )}
           <Footer n={11} />
         </div>
       )}
@@ -421,6 +430,27 @@ export default function PdfPrint() {
             </div>
           </div>
           <Footer n={10} />
+        </div>
+      )}
+
+      {/* PAGE 12 — Extended Horizon Assessment */}
+      {horizonAssessment && (
+        <div className="page" lang="en">
+          <Header />
+          <div className="content">
+            <span className="section-label">Extended Horizon Assessment</span>
+            <p className="method-subtitle">Base Case · 6 Months and 12 Months</p>
+            <div className="horizon-block">
+              <span className="horizon-label">6-Month Base Case</span>
+              <p className="body-p">{horizonAssessment.six_month}</p>
+            </div>
+            <div className="horizon-block">
+              <span className="horizon-label">12-Month Base Case</span>
+              <p className="body-p">{horizonAssessment.twelve_month}</p>
+            </div>
+          </div>
+          <p className="closing">ShockBridge Pulse · From market shock to clean signal</p>
+          <Footer n={12} />
         </div>
       )}
 

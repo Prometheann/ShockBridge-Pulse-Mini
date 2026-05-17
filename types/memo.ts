@@ -29,6 +29,11 @@ export interface MemoOutput {
   // Creator only — Beta Research Desk Methodology
   methodology_frame?: string;
   hidden_variable_analysis?: string[];
+  // Creator only — Extended Horizon Assessment (Phase 2)
+  horizon_assessment?: {
+    six_month: string;
+    twelve_month: string;
+  };
 }
 
 export type Plan = "free" | "basic" | "creator";
