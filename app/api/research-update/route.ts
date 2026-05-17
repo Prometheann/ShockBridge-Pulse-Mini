@@ -3,7 +3,7 @@ import { Redis } from "@upstash/redis";
 import { Resend } from "resend";
 
 const redis = Redis.fromEnv();
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
 const STAGES = [
   "Stage 1: Conceptual framework locked",
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     const { secret, stage, message } = await req.json();
 
     // Auth check
-    if (!secret || secret !== process.env.RESEARCH_UPDATE_SECRET) {
+    if (!secret || secret !== (process.env.RESEARCH_UPDATE_SECRET ?? "")) {
       return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
     }
 
