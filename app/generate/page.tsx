@@ -128,7 +128,7 @@ export default function GeneratePage() {
             <span className="text-sm font-semibold text-amber-500">{PLAN_DISPLAY[currentPlan]}</span>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-[#9ca3af]">Memos remaining</span>
+            <span className="text-xs text-[#9ca3af]">Briefs remaining</span>
             <span className={`text-sm font-bold ${credits.memosRemaining > 0 ? "text-[#f0f0f0]" : "text-red-400"}`}>
               {credits.memosRemaining}
             </span>
@@ -137,7 +137,7 @@ export default function GeneratePage() {
 
         {/* Title */}
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-[#f0f0f0]">Generate a Market Memo</h1>
+          <h1 className="text-2xl font-bold text-[#f0f0f0]">Generate an Intelligence Brief</h1>
           <p className="text-[#9ca3af] text-sm mt-1">
             Enter your event details and get a cited scenario note in seconds.
           </p>
@@ -173,7 +173,7 @@ export default function GeneratePage() {
                 <input
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
-                  placeholder="SBP-BRIDGE-XXXXX or SBP-ANALYST-XXXXX"
+                  placeholder="SBP-SNAPSHOT-XXXXX or SBP-BRIDGE-XXXXX"
                   className="flex-1 bg-[#0f1117] border border-[#2d3148] rounded-xl px-4 py-2.5 text-sm text-[#f0f0f0] placeholder-[#6b7280] focus:outline-none focus:border-amber-500/50"
                 />
                 <Button
@@ -223,12 +223,12 @@ export default function GeneratePage() {
         {step === "paywall" && (
           <div className="bg-[#1a1d27] border border-[#2d3148] rounded-2xl p-8 text-center">
             <p className="text-2xl font-bold text-[#f0f0f0] mb-3">
-              {currentPlan === "free" ? "Free demo memo used" : "All memos used"}
+              {currentPlan === "free" ? "Free demo brief used" : "All briefs used"}
             </p>
             <p className="text-[#9ca3af] mb-6 leading-relaxed">
               {currentPlan === "free"
-                ? "You've used your free demo. Purchase a plan to generate more memos, or redeem an existing access code below."
-                : "You've used all your memos for this session. Enter your code again to continue."}
+                ? "You've used your free demo. Purchase a plan to generate more briefs, or redeem an existing access code below."
+                : "You've used all your briefs for this session. Enter your code again to continue."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <Link href="/#pricing" className="w-full sm:w-auto">
