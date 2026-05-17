@@ -28,7 +28,7 @@ const bridgeFeatures = [
 
 export function PricingSection() {
   const snapshotLink = process.env.NEXT_PUBLIC_SNAPSHOT_LINK ?? "/generate";
-  const bridgeLink = process.env.NEXT_PUBLIC_BASIC_LINK ?? "/generate";
+  const bridgeLink = process.env.NEXT_PUBLIC_BRIDGE_LINK ?? "/generate";
 
   return (
     <section id="pricing" className="py-20 bg-[#1a1d27] border-y border-[#2d3148]">
