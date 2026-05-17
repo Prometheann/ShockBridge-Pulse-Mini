@@ -316,7 +316,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
                 Have a specific situation that needs dedicated analysis?
               </p>
               <p className="text-[#9ca3af] text-sm mb-4">
-                The <span className="font-bold text-[#f0f0f0]">Analyst Report</span> delivers customized intelligence — built around your portfolio, business, or real exposure. Founder-led. Starting at $199.
+                The <span className="font-bold text-[#f0f0f0]">Analyst Report</span> delivers customized intelligence built around your portfolio, business, or real exposure. Founder-led. Starting at $199.
               </p>
               <a href="mailto:help@shockbridgepulse.com?subject=Analyst Report Request">
                 <Button size="sm">Request Analyst Report</Button>
