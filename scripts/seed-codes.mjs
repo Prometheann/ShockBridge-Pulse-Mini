@@ -1,5 +1,5 @@
 /**
- * Seed script — generates 1,000 Bridge codes and 1,000 Analyst codes
+ * Seed script — generates 1,000 Snapshot codes and 1,000 Bridge codes
  * and loads them into Upstash Redis.
  *
  * Run once from the web/ directory:
@@ -51,22 +51,28 @@ async function seed() {
   const COUNT = 1000;
 
   // Check existing pool sizes
-  const existingBridge = await redis.llen("sbp:pool:bridge");
-  const existingAnalyst = await redis.llen("sbp:pool:analyst");
+  const existingSnapshot = await redis.llen("sbp:pool:snapshot");
+  const existingBridge   = await redis.llen("sbp:pool:bridge");
 
   console.log(`\nExisting pool:`);
-  console.log(`  Bridge:  ${existingBridge} codes`);
-  console.log(`  Analyst: ${existingAnalyst} codes`);
+  console.log(`  Snapshot: ${existingSnapshot} codes`);
+  console.log(`  Bridge:   ${existingBridge} codes`);
 
   // Generate new codes
-  console.log(`\nGenerating ${COUNT} Bridge codes...`);
-  const bridgeCodes = generateCodes("SBP-BRIDGE", COUNT);
+  console.log(`\nGenerating ${COUNT} Snapshot codes...`);
+  const snapshotCodes = generateCodes("SBP-SNAPSHOT", COUNT);
 
-  console.log(`Generating ${COUNT} Analyst codes...`);
-  const analystCodes = generateCodes("SBP-ANALYST", COUNT);
+  console.log(`Generating ${COUNT} Bridge codes...`);
+  const bridgeCodes = generateCodes("SBP-BRIDGE", COUNT);
 
   // Push to Redis in batches of 100
   const BATCH = 100;
+
+  console.log(`\nLoading Snapshot codes into Redis...`);
+  for (let i = 0; i < snapshotCodes.length; i += BATCH) {
+    await redis.rpush("sbp:pool:snapshot", ...snapshotCodes.slice(i, i + BATCH));
+    process.stdout.write(`  ${Math.min(i + BATCH, snapshotCodes.length)}/${COUNT}\r`);
+  }
 
   console.log(`\nLoading Bridge codes into Redis...`);
   for (let i = 0; i < bridgeCodes.length; i += BATCH) {
@@ -74,23 +80,17 @@ async function seed() {
     process.stdout.write(`  ${Math.min(i + BATCH, bridgeCodes.length)}/${COUNT}\r`);
   }
 
-  console.log(`\nLoading Analyst codes into Redis...`);
-  for (let i = 0; i < analystCodes.length; i += BATCH) {
-    await redis.rpush("sbp:pool:analyst", ...analystCodes.slice(i, i + BATCH));
-    process.stdout.write(`  ${Math.min(i + BATCH, analystCodes.length)}/${COUNT}\r`);
-  }
-
   // Final count
-  const finalBridge = await redis.llen("sbp:pool:bridge");
-  const finalAnalyst = await redis.llen("sbp:pool:analyst");
+  const finalSnapshot = await redis.llen("sbp:pool:snapshot");
+  const finalBridge   = await redis.llen("sbp:pool:bridge");
 
   console.log(`\n✓ Done!`);
-  console.log(`  Bridge pool:  ${finalBridge} codes`);
-  console.log(`  Analyst pool: ${finalAnalyst} codes`);
+  console.log(`  Snapshot pool: ${finalSnapshot} codes`);
+  console.log(`  Bridge pool:   ${finalBridge} codes`);
+  console.log(`\nSample Snapshot codes:`);
+  snapshotCodes.slice(0, 3).forEach(c => console.log(`  ${c}`));
   console.log(`\nSample Bridge codes:`);
   bridgeCodes.slice(0, 3).forEach(c => console.log(`  ${c}`));
-  console.log(`\nSample Analyst codes:`);
-  analystCodes.slice(0, 3).forEach(c => console.log(`  ${c}`));
 
   process.exit(0);
 }
