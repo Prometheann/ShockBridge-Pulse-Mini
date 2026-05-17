@@ -35,34 +35,18 @@ export function PricingSection() {
             One entry. One recurring intelligence layer.
           </h2>
           <p className="text-[#9ca3af]">
-            Start free to test the signal. Move to Snapshot for your first paid brief.
-            Join Bridge for ongoing macro-intelligence and decision support.
+            Snapshot for your first paid brief. Bridge for ongoing macro-intelligence
+            and Research Desk analysis every month.
+          </p>
+          <p className="text-xs text-[#4b5563] mt-2">
+            Want to test the signal first?{" "}
+            <a href="/generate" className="text-amber-500/70 hover:text-amber-400 underline underline-offset-2 transition-colors">
+              Try a free Intelligence Brief →
+            </a>
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-
-          {/* Free */}
-          <div className="flex flex-col bg-[#0f1117] border border-[#2d3148] rounded-2xl p-8">
-            <p className="text-xs text-[#6b7280] uppercase tracking-wider mb-2">Free</p>
-            <div className="flex items-end gap-1 mb-1">
-              <span className="text-4xl font-bold text-[#f0f0f0]">Free</span>
-            </div>
-            <p className="text-[#9ca3af] text-sm mb-6">A first look at the intelligence engine</p>
-
-            <ul className="space-y-3 mb-8 flex-1">
-              {freeFeatures.map((f) => (
-                <li key={f} className="flex items-start gap-2 text-sm text-[#9ca3af]">
-                  <span className="text-amber-500 mt-0.5 shrink-0">✓</span>
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            <a href="/generate" className="mt-auto">
-              <Button variant="secondary" className="w-full">Try Free</Button>
-            </a>
-          </div>
+        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
 
           {/* Snapshot */}
           <div className="flex flex-col bg-[#0f1117] border border-[#2d3148] rounded-2xl p-8">

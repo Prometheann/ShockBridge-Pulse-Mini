@@ -23,8 +23,8 @@ export function AboutSection() {
             most tools stop at the headline. What serious operators need is structure.
           </p>
           <p>
-            I built ShockBridge Pulse to map the transmission chain behind a shock. What tends to
-            move first. What may spill over next. Where exposure can hide before it becomes obvious.
+            I built ShockBridge Pulse to map the transmission chain behind a shock. What moves first.
+            What spills over next. Where exposure hides before it becomes obvious.
           </p>
           <p>
             The result is a structured Intelligence Brief designed to help professionals think more
@@ -33,8 +33,9 @@ export function AboutSection() {
           </p>
           <p>
             ShockBridge Pulse is live today as a productized intelligence layer: Snapshot for
-            fast entry, Bridge for recurring macro-intelligence. In parallel, the broader
-            proprietary modeling framework is being developed to deepen the analytical capabilities.
+            fast entry, Bridge for recurring macro-intelligence. The Research Desk analytical layer
+            ships inside every Bridge brief, with deeper structural capabilities expanding
+            as the subscriber base grows.
           </p>
         </div>
 
