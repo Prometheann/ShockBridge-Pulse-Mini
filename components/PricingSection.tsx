@@ -16,10 +16,10 @@ const snapshotFeatures = [
 
 const bridgeFeatures = [
   "4 on-demand Intelligence Briefs per month",
-  "Founder-curated event briefs",
-  "Monthly macro watchlist",
-  "Transmission watchpoints inside every brief",
-  "Risk flags inside every brief",
+  "Research Desk: surfaces the hidden variable standard briefs miss",
+  "Multi-horizon findings — short, medium, and structural-term analysis",
+  "11-page PDF export — publication-quality brief",
+  "Transmission watchpoints + risk flags in every brief",
   "Structured macro-intelligence output",
 ];
 
@@ -100,7 +100,7 @@ export function PricingSection() {
               <span className="text-[#9ca3af] text-sm mb-1.5">/month</span>
             </div>
             <p className="text-[#9ca3af] text-sm mb-6">
-              Recurring macro-intelligence for ongoing decision support
+              Recurring macro-intelligence with Research Desk analysis in every brief
             </p>
 
             <ul className="space-y-3 mb-8 flex-1">
@@ -117,7 +117,7 @@ export function PricingSection() {
             </a>
 
             <p className="text-xs text-[#6b7280] mt-3 text-center leading-relaxed">
-              Founding price while ShockBridge expands its proprietary modeling layer.
+              Founding price while the Research Desk analytical layer expands.
             </p>
           </div>
 
