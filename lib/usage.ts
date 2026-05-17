@@ -5,7 +5,7 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN!,
 });
 
-export const PLAN_MEMOS: Record<string, number> = { basic: 5, creator: 15 };
+export const PLAN_MEMOS: Record<string, number> = { basic: 4, creator: 15 };
 
 const FREE_WINDOW_SECONDS = 24 * 60 * 60; // 24 hours
 

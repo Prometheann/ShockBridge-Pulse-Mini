@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { initCode } from "@/lib/usage";
+import { Redis } from "@upstash/redis";
+
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL!,
+  token: process.env.KV_REST_API_TOKEN!,
+});
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,19 +16,23 @@ export async function POST(request: NextRequest) {
 
     const normalized = code.trim().toUpperCase();
 
-    const basicCodes = (process.env.BASIC_CODES || "")
-      .split(",")
-      .map((c) => c.trim().toUpperCase())
-      .filter(Boolean);
-
-    const creatorCodes = (process.env.CREATOR_CODES || "")
-      .split(",")
-      .map((c) => c.trim().toUpperCase())
-      .filter(Boolean);
-
+    // 1. Check Redis first — codes activated by webhook have their plan stored here
     let plan: "basic" | "creator" | null = null;
-    if (creatorCodes.includes(normalized)) plan = "creator";
-    else if (basicCodes.includes(normalized)) plan = "basic";
+    const redisPlan = await redis.get<string>(`sbp:plan:${normalized}`);
+    if (redisPlan === "basic" || redisPlan === "creator") {
+      plan = redisPlan;
+    }
+
+    // 2. Fallback: check env var lists (manual/emergency codes)
+    if (!plan) {
+      const basicCodes = (process.env.BASIC_CODES || "")
+        .split(",").map((c) => c.trim().toUpperCase()).filter(Boolean);
+      const snapshotCodes = (process.env.SNAPSHOT_CODES || "")
+        .split(",").map((c) => c.trim().toUpperCase()).filter(Boolean);
+
+      if (snapshotCodes.includes(normalized)) plan = "basic";
+      else if (basicCodes.includes(normalized)) plan = "basic";
+    }
 
     if (!plan) {
       return NextResponse.json({ valid: false, error: "Invalid code." }, { status: 400 });
