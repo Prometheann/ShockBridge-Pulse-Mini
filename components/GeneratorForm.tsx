@@ -135,7 +135,7 @@ export function GeneratorForm({ onSubmit, loading }: GeneratorFormProps) {
       </div>
 
       <Button type="submit" size="lg" className="w-full" disabled={loading}>
-        {loading ? "Generating..." : "Generate Memo"}
+        {loading ? "Generating..." : "Generate Brief"}
       </Button>
     </form>
   );
