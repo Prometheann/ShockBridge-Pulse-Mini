@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/Button";
 import { MockResultCard } from "@/components/MockResultCard";
 
 export function HeroSection() {
+  const snapshotLink = process.env.NEXT_PUBLIC_SNAPSHOT_LINK ?? "/generate";
+
   return (
     <section className="max-w-6xl mx-auto px-6 pt-12 pb-10 md:pt-20 md:pb-16">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -24,9 +26,9 @@ export function HeroSection() {
             for faster, clearer decisions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/generate" className="w-full sm:w-auto">
+            <a href={snapshotLink} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
               <Button size="lg" className="w-full sm:w-auto">Get Snapshot</Button>
-            </Link>
+            </a>
             <Link href="#pricing" className="w-full sm:w-auto">
               <Button size="lg" variant="secondary" className="w-full sm:w-auto">
                 Join Bridge

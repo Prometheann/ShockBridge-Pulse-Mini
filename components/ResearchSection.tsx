@@ -32,7 +32,7 @@ export function ResearchSection() {
         <p
           className="text-[#6b7280] text-sm leading-relaxed mb-12"
         >
-          The live product is the memo layer. The research section shows the deeper transmission
+          The live product is the intelligence layer. The research section shows the deeper transmission
           architecture being developed in parallel to strengthen the platform over time.
         </p>
 
