@@ -309,7 +309,21 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
               Export PDF Memo
             </Button>
           </div>
-        ) : !isCreator ? (
+        ) : isCreator ? (
+          <div className="border-t border-[#2d3148] pt-6">
+            <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 text-center">
+              <p className="text-amber-400 font-bold mb-1">
+                Have a specific situation that needs dedicated analysis?
+              </p>
+              <p className="text-[#9ca3af] text-sm mb-4">
+                The <span className="font-bold text-[#f0f0f0]">Analyst Report</span> delivers customized intelligence — built around your portfolio, business, or real exposure. Founder-led. Starting at $199.
+              </p>
+              <a href="mailto:help@shockbridgepulse.com?subject=Analyst Report Request">
+                <Button size="sm">Request Analyst Report</Button>
+              </a>
+            </div>
+          </div>
+        ) : (
           <div className="border-t border-[#2d3148] pt-6">
             <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 text-center">
               <p className="text-amber-400 font-bold mb-1">
@@ -323,7 +337,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
               </a>
             </div>
           </div>
-        ) : null}
+        )}
 
         {/* Actions */}
         <div className="pt-4 no-print space-y-3">
