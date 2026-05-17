@@ -49,9 +49,9 @@ export default function HomePage() {
         <WhyDifferentSection />
         <AudienceSection />
         <PricingSection />
+        <AnalystSection />
         <FoundingAccessSection />
         <ResearchSection />
-        <AnalystSection />
         <AboutSection />
         <FaqSection />
         <FinalCTASection />
