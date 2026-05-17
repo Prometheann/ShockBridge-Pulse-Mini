@@ -15,12 +15,12 @@ const snapshotFeatures = [
 ];
 
 const bridgeFeatures = [
-  "4 on-demand Intelligence Briefs per month",
-  "Research Desk: surfaces the hidden variable standard briefs miss",
-  "Multi-horizon findings — short, medium, and structural-term analysis",
-  "11-page PDF export — publication-quality brief",
-  "Transmission watchpoints + risk flags in every brief",
+  "4 in-depth Intelligence Briefs per month",
+  "Research Desk: hidden variable analysis",
+  "Multi-horizon structural analysis",
+  "Transmission watchpoints + risk flags",
   "Structured macro-intelligence output",
+  "11-page publication-quality PDF brief",
 ];
 
 export function PricingSection() {
