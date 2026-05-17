@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     // Reject fully-exhausted codes
     if (memosRemaining === 0) {
       return NextResponse.json(
-        { valid: false, error: "This code has been fully used. All memos have been consumed." },
+        { valid: false, error: "This code has been fully used. All briefs have been consumed." },
         { status: 400 }
       );
     }
@@ -42,10 +42,10 @@ export async function POST(request: NextRequest) {
     const planLabel = plan === "creator" ? "Analyst" : "Bridge";
     const message =
       memosRemaining < memosTotal
-        ? `${planLabel} plan — ${memosRemaining} memo${memosRemaining !== 1 ? "s" : ""} remaining.`
+        ? `${planLabel} plan — ${memosRemaining} brief${memosRemaining !== 1 ? "s" : ""} remaining.`
         : plan === "creator"
-          ? "Analyst plan unlocked! 15 memos + X brief + LinkedIn brief + PDF memo."
-          : "Bridge plan unlocked! 5 memos.";
+          ? "Analyst plan unlocked! 15 Intelligence Briefs available."
+          : "Bridge plan unlocked! 4 Intelligence Briefs available.";
 
     return NextResponse.json({ valid: true, plan, memosRemaining, memosTotal, message });
   } catch (err) {
