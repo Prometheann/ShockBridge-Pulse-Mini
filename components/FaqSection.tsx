@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "What is the difference between Bridge and Analyst?",
     answer:
-      "Bridge is the recurring macro-intelligence subscription — structured, automated, and productized. It delivers 4 Intelligence Briefs per month plus alerts, watchpoints, and workflow-ready formats. Analyst is a separate custom engagement: a founder-led, tailored analysis built specifically around your business, portfolio, or real exposure. Products deliver briefs. Analyst delivers judgment.",
+      "Bridge is the recurring macro-intelligence subscription. It gives you 4 on-demand Intelligence Briefs per month — you trigger them for any event, shock, or exposure relevant to you — plus founder-curated event briefs and a monthly macro watchlist. Analyst is a separate custom engagement: a founder-led, tailored analysis built specifically around your business, portfolio, or real exposure. Bridge delivers structured intelligence. Analyst delivers judgment.",
   },
   {
     question: "Why is Bridge priced lower right now?",
@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "How often does Bridge update?",
     answer:
-      "Bridge includes 4 Intelligence Briefs per month plus event-driven alerts when relevant conditions emerge. The cadence follows the macro environment — not a fixed calendar.",
+      "Bridge gives you 4 on-demand Intelligence Briefs per month — generate them whenever a relevant event hits. On top of that, you receive founder-curated event briefs when significant macro conditions emerge, and a monthly macro watchlist. The cadence follows the macro environment, not a fixed calendar.",
   },
   {
     question: "Who is Analyst for?",

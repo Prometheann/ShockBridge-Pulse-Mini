@@ -15,12 +15,12 @@ const snapshotFeatures = [
 ];
 
 const bridgeFeatures = [
-  "4 Intelligence Briefs per month",
-  "Event-driven alerts",
-  "Transmission watchpoints",
-  "Risk flags",
+  "4 on-demand Intelligence Briefs per month",
+  "Founder-curated event briefs",
+  "Monthly macro watchlist",
+  "Transmission watchpoints inside every brief",
+  "Risk flags inside every brief",
   "Structured macro-intelligence output",
-  "Ongoing monitoring layer",
 ];
 
 export function PricingSection() {
