@@ -42,7 +42,7 @@ export function AboutSection() {
         <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-6">
           {[
             { value: "2 products", label: "Snapshot · Bridge" },
-            { value: "From $29/mo", label: "Bridge founding price" },
+            { value: "From $29.90/mo", label: "Bridge founding price" },
             { value: "< 30s", label: "From event to Intelligence Brief" },
           ].map((s) => (
             <div key={s.value} className="border-l-2 border-amber-500 pl-4">

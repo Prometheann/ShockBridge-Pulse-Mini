@@ -99,7 +99,7 @@ export function PricingSection() {
 
             <p className="text-xs text-amber-400 uppercase tracking-wider mb-2">Bridge</p>
             <div className="flex items-end gap-1 mb-1">
-              <span className="text-4xl font-bold text-[#f0f0f0]">$29</span>
+              <span className="text-4xl font-bold text-[#f0f0f0]">$29.90</span>
               <span className="text-[#9ca3af] text-sm mb-1.5">/month</span>
             </div>
             <p className="text-[#9ca3af] text-sm mb-6">
