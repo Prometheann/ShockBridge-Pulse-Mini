@@ -11,7 +11,7 @@ const points = [
   {
     title: "Not just analysis. Decision-ready briefs.",
     description:
-      "Every brief is structured for immediate use — readable under pressure, action-oriented, and built for fast decision cycles.",
+      "Every brief is structured for immediate use. Readable under pressure, action-oriented, and built for fast decision cycles.",
   },
 ];
 
