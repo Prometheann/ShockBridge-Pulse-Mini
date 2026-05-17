@@ -139,7 +139,7 @@ export default function GeneratePage() {
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-[#f0f0f0]">Generate an Intelligence Brief</h1>
           <p className="text-[#9ca3af] text-sm mt-1">
-            Enter your event details and get a structured Transmission Brief in seconds.
+            Enter your event details and get a structured Intelligence Brief in seconds.
           </p>
         </div>
 

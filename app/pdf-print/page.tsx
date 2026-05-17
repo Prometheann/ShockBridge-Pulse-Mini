@@ -175,7 +175,7 @@ const CSS = `
 function Header() {
   return (
     <div className="page-header">
-      <span>ShockBridge Pulse · Scenario Note</span>
+      <span>ShockBridge Pulse · Intelligence Brief</span>
     </div>
   );
 }
@@ -242,7 +242,7 @@ export default function PdfPrint() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/logo-transparent.png" alt="ShockBridge Pulse" className="cover-icon" />
         <div className="cover-rule" />
-        <div className="cover-type">Scenario Note</div>
+        <div className="cover-type">Intelligence Brief</div>
         <div className="cover-plan">{planDisplay}</div>
         <div className="cover-date">{date}</div>
         <span className="cover-creator-gap" />
@@ -278,7 +278,7 @@ export default function PdfPrint() {
         <Header />
         <div className="content">
           <div className="badge-row">
-            <span className="badge-accent">Scenario Note</span>
+            <span className="badge-accent">Intelligence Brief</span>
             <span className="badge-muted">{planLabel}</span>
           </div>
           <h2>

@@ -143,7 +143,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
 
       {/* ── PDF Running header — hidden on screen, fixed top every print page ── */}
       <div id="pdf-run-header" aria-hidden="true">
-        <span id="pdf-run-header-text">ShockBridge Pulse · Scenario Brief</span>
+        <span id="pdf-run-header-text">ShockBridge Pulse · Intelligence Brief</span>
       </div>
 
       {/* ── PDF Running footer — hidden on screen, fixed bottom every print page ── */}
@@ -160,7 +160,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-transparent.png" alt="ShockBridge Pulse" id="pdf-cover-logo-icon" />
           <div id="pdf-cover-rule" />
-          <p id="pdf-cover-type">Scenario Brief</p>
+          <p id="pdf-cover-type">Intelligence Brief</p>
           <p id="pdf-cover-plan">Analyst</p>
           <p id="pdf-cover-date">{printDate}</p>
           <span id="pdf-cover-creator-gap" />
@@ -196,7 +196,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
         {/* Header — page 3 in print */}
         <div id="pdf-section-title" className="border-b border-[#2d3148] pb-5">
           <div id="pdf-badge-row" className="flex items-center gap-2 mb-3">
-            <Badge variant="accent">Scenario Brief</Badge>
+            <Badge variant="accent">Intelligence Brief</Badge>
             <Badge variant="muted">{{ free: "Free", basic: "Snapshot", creator: "Bridge" }[plan]}</Badge>
           </div>
           <h2 className="text-xl font-bold text-[#f0f0f0] leading-snug">

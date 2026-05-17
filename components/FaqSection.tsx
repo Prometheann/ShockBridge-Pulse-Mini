@@ -32,6 +32,11 @@ const faqs = [
       "Analyst is for users who need tailored interpretation applied to a real situation: a specific business exposure, portfolio risk, sector, or decision context. It is not for general market monitoring. That is what Bridge is for.",
   },
   {
+    question: "What is Regime Horizon?",
+    answer:
+      "Regime Horizon is a Research Desk output exclusive to Bridge subscribers. It appears on page 12 of every Bridge brief and delivers two forward projections: Regime Condition (6-month horizon) diagnoses the likely macro state and stress transmission path from the current shock. Structural Equilibrium (12-month horizon) assesses where the regime settles once cyclical pressure resolves. It is not a price forecast. It is a structural regime diagnosis.",
+  },
+  {
     question: "Is this investment advice?",
     answer:
       "No. ShockBridge Pulse is a macro-intelligence and research product. It provides structured transmission analysis and scenario interpretation, not investment recommendations or buy/sell advice.",
