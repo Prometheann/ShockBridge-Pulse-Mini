@@ -277,7 +277,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-1">
                   <p className="text-xs text-amber-500 uppercase tracking-wider font-semibold pdf-section-label">
-                    Beta Research Desk Methodology
+                    Research Desk
                   </p>
                   <span className="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/30 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider no-print">
                     Beta
@@ -291,7 +291,7 @@ export function MemoResult({ memo, plan, input, onReset }: MemoResultProps) {
             </div>
             {memo.hidden_variable_analysis && memo.hidden_variable_analysis.length > 0 && (
               <div className="pdf-page-section">
-                <Section title="Model Output">
+                <Section title="Research Desk · Findings">
                   <BulletList items={memo.hidden_variable_analysis} />
                 </Section>
               </div>

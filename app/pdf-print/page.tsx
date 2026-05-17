@@ -380,7 +380,7 @@ export default function PdfPrint() {
         <div className="page" lang="en">
           <Header />
           <div className="content">
-            <span className="section-label">Beta Research Desk Methodology</span>
+            <span className="section-label">Research Desk</span>
             <p className="method-subtitle">The Hidden Variable</p>
             {methodologyParas.map((p, i) => (
               <p key={i} className="body-p">{p}</p>
@@ -395,7 +395,7 @@ export default function PdfPrint() {
         <div className="page" lang="en">
           <Header />
           <div className="content">
-            <span className="section-label">Model Output</span>
+            <span className="section-label">Research Desk · Findings</span>
             <ul>
               {hiddenVarItems.map((item, i) => (
                 <li key={i}><span className="arrow">→</span><span>{item}</span></li>
